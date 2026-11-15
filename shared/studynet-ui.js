@@ -1285,12 +1285,70 @@
         resolveUrl: resolveUrl
     };
 
+    function activateHashTab(hash) {
+        if (!hash || hash.charAt(0) !== "#") return false;
+        var id = hash.slice(1);
+        if (!id) return false;
+
+        // html_css.html (.nav-btn[data-section])
+        var dsBtn = document.querySelector('.nav-btn[data-section="' + id + '"]');
+        if (dsBtn) {
+            dsBtn.click();
+            return true;
+        }
+        // PHP.html (showSection)
+        if (typeof window.showSection === "function") {
+            var phpBtn = document.querySelector('.main-nav .nav-btn[onclick*="\'' + id + '\'"]');
+            if (phpBtn) {
+                window.showSection(id, phpBtn);
+                return true;
+            }
+        }
+        // Generalites-et-notions-de-base.htm (showPart)
+        if (typeof window.showPart === "function") {
+            var genBtn = document.querySelector('.tabs button[onclick*="\'' + id + '\'"]');
+            if (genBtn) {
+                window.showPart(id, genBtn);
+                return true;
+            }
+        }
+        // limites-continuite.html (showTab)
+        if (typeof window.showTab === "function" && (id === "cours" || id === "exercices" || id === "quiz")) {
+            window.showTab(id);
+            return true;
+        }
+        return false;
+    }
+
+    function initTabHashSync() {
+        document.querySelectorAll(".sn-topnav a[href^='#']").forEach(function (link) {
+            link.addEventListener("click", function (e) {
+                var href = link.getAttribute("href");
+                if (activateHashTab(href)) {
+                    e.preventDefault();
+                    if (window.history && window.history.replaceState) {
+                        try { window.history.replaceState(null, "", href); } catch (_err) { /* noop */ }
+                    }
+                }
+            });
+        });
+        if (window.location.hash) {
+            window.setTimeout(function () {
+                activateHashTab(window.location.hash);
+            }, 0);
+        }
+        window.addEventListener("hashchange", function () {
+            activateHashTab(window.location.hash);
+        });
+    }
+
     function boot() {
         initTheme();
         initScrollChrome();
         initCourseTracking();
         decorateHubProgress();
         initCourseNavigation();
+        initTabHashSync();
         initPalette();
         initResilience();
         initOnboarding();

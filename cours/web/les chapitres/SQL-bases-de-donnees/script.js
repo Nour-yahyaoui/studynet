@@ -1798,9 +1798,7 @@
             }
 
             if (available.length < count) {
-                alert(
-                    "Le nombre de questions disponibles pour ce niveau est insuffisant. Choisissez un autre niveau ou réduisez le nombre de questions."
-                );
+                (window.StudyNet?window.StudyNet.notify("Le nombre de questions disponibles pour ce niveau est insuffisant. Choisissez un autre niveau ou réduisez le nombre de questions."):void 0);
                 return;
             }
 

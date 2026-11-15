@@ -1,44 +1,83 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-sn-root="../../../.." data-sn-course="web-js" data-sn-parent="../../langages-web.html" data-sn-parent-label="Langages Web">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Cours complet JavaScript, projets académiques et quiz interactif.">
-<title>JavaScript — Cours, Projets & Quiz</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chapitre 5 de développement web L1 TI : bases du langage JavaScript, fonctions, tableaux, objets, DOM, événements, formulaires, asynchrone, 8 projets et quiz.">
+  <meta name="theme-color" content="#FAF7F1">
+  <title>JavaScript — StudyNet</title>
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("studynet:theme");
+        var theme = (saved === "dark" || saved === "light")
+          ? saved
+          : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute("content", theme === "dark" ? "#151210" : "#FAF7F1");
+      } catch (_e) {}
+    })();
+  </script>
+  <link rel="icon" type="image/svg+xml" href="../../../../shared/favicon.svg">
+  <link rel="stylesheet" href="../../../../shared/tokens.css">
   <link rel="stylesheet" href="style.css">
-
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23141312'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='system-ui,sans-serif' font-size='36' font-weight='800' fill='%23f57921'%3ES%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="../../../../shared/studynet-ui.css">
 </head>
-
-<body>
-
-<header class="topbar">
-    <a class="brand sn-brand-link" href="../../../../index.html">Study<span>Net</span></a>
-    <nav class="topnav">
-        <a class="sn-back sn-back--dark" href="../../langages-web.html"><span class="sn-back-arrow" aria-hidden="true">←</span><span>Langages Web</span></a>
-        <a href="#cours">Cours</a>
-        <a href="#projets">Projets</a>
-        <a href="#quiz">Quiz</a>
-    </nav>
+<body class="sn-course-page">
+<a href="#main-content" class="sn-skip-link">Aller au contenu principal</a>
+<header class="sn-topbar">
+  <div class="sn-topbar-inner">
+    <div class="sn-topbar-start">
+      <a href="../../../../index.html" class="sn-brand" aria-label="StudyNet — Accueil">
+        <svg class="sn-brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="4" y="6" width="56" height="52" rx="8" fill="#231E19"/><path d="M12 15.5C12 14.12 13.12 13 14.5 13H29.5C30.88 13 32 14.12 32 15.5V49.5C29.4 47.9 25.8 47.2 21.5 47.2H14.5C13.12 47.2 12 46.08 12 44.7V15.5Z" fill="#FAF7F1"/><path d="M52 15.5C52 14.12 50.88 13 49.5 13H34.5C33.12 13 32 14.12 32 15.5V49.5C34.6 47.9 38.2 47.2 42.5 47.2H49.5C50.88 47.2 52 46.08 52 44.7V15.5Z" fill="#F2EDE3"/><rect x="30.5" y="12" width="3" height="39" rx="1.5" fill="#A63E1C"/><path d="M40 13H45V29L42.5 26.8L40 29V13Z" fill="#A63E1C"/></svg>
+        <span class="sn-brand-name">Study<em>Net</em></span>
+      </a>
+      <nav class="sn-crumb" aria-label="Fil d'Ariane">
+        <a href="../../../../index.html#matieres">Sommaire</a>
+        <span class="sn-crumb-sep" aria-hidden="true">/</span>
+        <a href="../../langages-web.html">Langages Web</a><span class="sn-crumb-sep" aria-hidden="true">/</span>
+        <span class="sn-crumb-current" aria-current="page">JavaScript</span>
+      </nav>
+    </div>
+    <nav class="sn-topnav" aria-label="Parties du cours"><a href="#cours">Cours</a><a href="#projets">Projets</a><a href="#quiz">Quiz</a></nav>
+    <div class="sn-topbar-end">
+      <button type="button" class="sn-icon-btn sn-toc-trigger" data-sn-toc-open aria-expanded="false" aria-label="Ouvrir le sommaire du cours">
+        <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h12"></path></svg>
+        <span class="sn-btn-label">Plan</span>
+      </button>
+      <button type="button" class="sn-icon-btn sn-sidebar-toggle" data-sn-sidebar-toggle aria-label="Masquer le sommaire latéral" aria-pressed="false" title="Masquer le sommaire"><svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M9 4v16"></path></svg></button>
+      <button type="button" class="sn-icon-btn" data-sn-catalogue-open aria-label="Ouvrir le catalogue des 17 cours (Ctrl+K)">
+        <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.6-3.6"></path></svg>
+        <span class="sn-btn-label">Cours</span>
+        <kbd class="sn-kbd">Ctrl K</kbd>
+      </button>
+      <button type="button" class="sn-icon-btn sn-print-btn" data-sn-print aria-label="Imprimer ce cours" title="Imprimer ce cours">
+        <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V4h12v5"></path><rect x="4" y="9" width="16" height="8" rx="1.5"></rect><path d="M7 14h10v6H7z"></path></svg>
+      </button>
+      <button type="button" class="sn-icon-btn sn-theme-btn" data-sn-theme-toggle aria-label="Activer le thème sombre" aria-pressed="false">
+        <svg class="sn-icon sn-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"></path></svg>
+        <svg class="sn-icon sn-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.5v2.2M12 19.3v2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"></path></svg>
+      </button>
+    </div>
+  </div>
 </header>
 
-<section class="hero">
-    <div class="hero-content">
-        <div class="eyebrow">Formation complète · Développement Web</div>
-        <h1>Maîtriser <span>JavaScript.</span></h1>
-        <p>
-            Apprenez JavaScript depuis les fondamentaux jusqu'aux concepts
-            avancés. Comprenez la logique, manipulez les pages HTML, contrôlez
-            les formulaires, communiquez avec les serveurs et réalisez
-            des projets complets.
-        </p>
-        <div class="hero-buttons">
-            <a href="#cours" class="btn btn-orange">Commencer le cours</a>
-            <a href="#projets" class="btn btn-outline">Voir les projets</a>
-        </div>
+
+<section class="sn-course-hero">
+  <div class="sn-course-hero-inner">
+    <p class="sn-course-kicker"><a href="../../langages-web.html" class="sn-hero-parent">Langages Web</a> · CHAPITRE 08.5 · LANGAGES WEB</p>
+    <h1>JavaScript &amp; interactivité web</h1>
+    <p class="sn-course-lead">Maîtriser la syntaxe JavaScript, manipuler le DOM, réagir aux événements, valider les formulaires, échanger des données asynchrones et construire huit projets complets.</p>
+    <div class="sn-course-meta" aria-label="Repères du cours"><span>Langage &amp; DOM</span><span>8 projets corrigés</span><span>Banque de 200 questions</span><span>Quiz interactif</span></div>
+    <div class="sn-course-actions">
+      <a href="#cours" class="sn-btn sn-btn--primary">Commencer le cours ↓</a>
+      <button type="button" class="sn-btn sn-mark-btn" data-sn-mark aria-pressed="false">
+        <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+        <span data-sn-mark-label>Marquer comme étudié</span>
+      </button>
     </div>
+  </div>
 </section>
 
 <div class="stats">
@@ -98,7 +137,7 @@
     <a href="#quiz-result">Résultats et corrections</a>
 </aside>
 
-<main class="content">
+<main id="main-content" class="content">
 
 <!-- ======================================================
      PARTIE 1 : COURS
@@ -2672,7 +2711,7 @@ const somme = premierNombre + deuxiemeNombre;</pre>
             de l'exécuter et d'observer le résultat dans la console.
         </p>
 
-        <textarea class="editor" id="codeEditor" spellcheck="false">let nom = "Mohamed";
+        <textarea class="editor" id="codeEditor" aria-label="Éditeur de code JavaScript" spellcheck="false">let nom = "Mohamed";
 let age = 20;
 
 function presenter(nom, age) {
@@ -2828,12 +2867,19 @@ console.log("Moyenne :", moyenne);</textarea>
 </main>
 </div>
 
-<footer class="sn-footer"><div class="sn-footer-inner"><a class="sn-footer-logo" href="../../../../index.html"><span class="sn-footer-badge" aria-hidden="true">S</span><span>Study<span class="sn-footer-accent">Net</span></span></a><p class="sn-footer-credit">Réalisé par <strong>Mohamed Ali Sablaoui</strong></p><p class="sn-footer-copy">© 2026 StudyNet · Tous droits réservés.</p></div></footer>
+<footer class="sn-footer">
+  <div class="sn-footer-inner">
+    <a href="../../../../index.html" class="sn-brand">
+      <svg class="sn-brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="4" y="6" width="56" height="52" rx="8" fill="#231E19"/><path d="M12 15.5C12 14.12 13.12 13 14.5 13H29.5C30.88 13 32 14.12 32 15.5V49.5C29.4 47.9 25.8 47.2 21.5 47.2H14.5C13.12 47.2 12 46.08 12 44.7V15.5Z" fill="#FAF7F1"/><path d="M52 15.5C52 14.12 50.88 13 49.5 13H34.5C33.12 13 32 14.12 32 15.5V49.5C34.6 47.9 38.2 47.2 42.5 47.2H49.5C50.88 47.2 52 46.08 52 44.7V15.5Z" fill="#F2EDE3"/><rect x="30.5" y="12" width="3" height="39" rx="1.5" fill="#A63E1C"/><path d="M40 13H45V29L42.5 26.8L40 29V13Z" fill="#A63E1C"/></svg>
+      <span class="sn-brand-name">Study<em>Net</em></span>
+    </a>
+    <p class="sn-footer-credit">Réalisé par <strong>Mohamed Ali Sablaoui</strong> · Licence 1 TI</p>
+    <p class="sn-footer-copy">© <span data-sn-year>2026</span> StudyNet · Tous droits réservés.</p>
+  </div>
+</footer>
 
 
     <script src="script.js" defer></script>
-
-
   <script src="../../../../shared/studynet-ui.js" defer></script>
 </body>
 </html>

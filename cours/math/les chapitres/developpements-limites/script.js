@@ -403,8 +403,6 @@ function generateQuestionBank(){
     addQuestion(v[0],v.slice(1),0,
       "Il s'agit d'une formule fondamentale du tableau des développements limités usuels.");
   });
-
-  console.log("Nombre de questions dans la banque :",questionBank.length);
 }
 
 /* =====================================================
@@ -770,7 +768,3 @@ generateQuestionBank();
 if(questionBank.length!==200){
   console.error("Erreur : la banque doit contenir exactement 200 questions.");
 }
-
-console.log("StudyNet : banque de questions initialisée.");
-
- 

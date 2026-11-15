@@ -1,8 +1,82 @@
-<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Cours approfondi d'architecture des ordinateurs : structure, mémoires, UCT, assembleur, exercices corrigés et quiz."><title>Architecture des ordinateurs — Study Net</title>
+<!DOCTYPE html>
+<html lang="fr" data-sn-root="../../../.." data-sn-course="fond-arch" data-sn-parent="../../fondamentaux-informatique.html" data-sn-parent-label="Fondamentaux">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chapitre 1 de fondamentaux de l'informatique L1 TI : modèle de Von Neumann, processeur, mémoires, bus, périphériques, exécution assembleur, 10 exercices corrigés et quiz.">
+  <meta name="theme-color" content="#FAF7F1">
+  <title>Architecture des ordinateurs — StudyNet</title>
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("studynet:theme");
+        var theme = (saved === "dark" || saved === "light")
+          ? saved
+          : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute("content", theme === "dark" ? "#151210" : "#FAF7F1");
+      } catch (_e) {}
+    })();
+  </script>
+  <link rel="icon" type="image/svg+xml" href="../../../../shared/favicon.svg">
+  <link rel="stylesheet" href="../../../../shared/tokens.css">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23141312'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='system-ui,sans-serif' font-size='36' font-weight='800' fill='%23f57921'%3ES%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="../../../../shared/studynet-ui.css">
-</head><body><header class="header"><div class="header-inner"><a class="logo sn-brand-link" href="../../../../index.html"><span class="logo-icon">S</span><span>Study Net<small>APPRENDRE · COMPRENDRE · RÉUSSIR</small></span></a><div class="header-actions"><a class="sn-back" href="../../fondamentaux-informatique.html"><span class="sn-back-arrow" aria-hidden="true">←</span><span>Fondamentaux</span></a><button class="header-btn" onclick="window.print()">Imprimer le cours</button></div></div></header><section class="hero"><div class="hero-inner"><span class="eyebrow">Fondamentaux de l'IT · L1 TI</span><h1>Architecture <span>des ordinateurs</span></h1><p>Du fonctionnement global d'un ordinateur à l'exécution détaillée d'un programme assembleur. Cours approfondi, méthodes de calcul, exercices progressifs et entraînement de niveau examen.</p><div class="hero-info"><span>▣ 5 grands chapitres</span><span>▣ 10 exercices corrigés</span><span>▣ Banque de 200 questions</span><span>▣ Niveau L1 TI</span></div></div></section><div class="layout"><aside class="sidebar"><div class="sidebar-title">Sommaire du cours</div><nav><a class="nav-link" href="#cours"><span class="nav-number">1</span> Cours complet</a><a class="nav-link" href="#c1">Définitions et histoire</a><a class="nav-link" href="#c2">Structure et bus</a><a class="nav-link" href="#c3">Mémoires</a><a class="nav-link" href="#c4">UCT et registres</a><a class="nav-link" href="#c5">Cycle et assembleur</a><div class="sidebar-separator"></div><a class="nav-link" href="#exercices"><span class="nav-number">2</span> Exercices corrigés</a><a class="nav-link" href="#quiz"><span class="nav-number">3</span> Quiz interactif</a></nav></aside><main class="content"><section class="section" id="cours"><div class="section-heading"><span class="section-tag">Partie 01</span><h2>Cours complet — Architecture des ordinateurs</h2><p>Notions, définitions, tableaux, méthodes de calcul et exemples expliqués.</p></div><div class="card" id="c1"><h3>1.1 — Définitions fondamentales</h3><p><b>Un ordinateur</b> est une machine de traitement de l'information : il acquiert des données, les mémorise, les traite puis restitue des résultats. Ces quatre fonctions forment le fil conducteur de toute architecture.</p><p><b>L'informatique</b> est la science du traitement automatique de l'information. Un <b>système informatique</b> associe matériel, logiciels et utilisateurs pour répondre à des besoins. L'<b>architecture</b> décrit les unités fonctionnelles, leurs connexions et leur coopération.</p><div class="grid-2"><div class="info-card"><div class="symbol">▣</div><h4>Hardware — matériel</h4><p>Processeur, carte mère, RAM, stockage, écran, clavier, réseau et autres composants physiques.</p></div><div class="info-card"><div class="symbol">▤</div><h4>Software — logiciel</h4><p>Programmes exécutés par le matériel. Logiciels de base : système d'exploitation, utilitaires, compilateurs. Applications : navigateur, bureautique, jeux, gestion.</p></div></div><div class="note"><b>À ne pas confondre :</b> l'ordinateur désigne la machine ; le système informatique est l'ensemble matériel/logiciel organisé pour les utilisateurs.</div></div>
+</head>
+<body class="sn-course-page">
+<a href="#main-content" class="sn-skip-link">Aller au contenu principal</a>
+<header class="sn-topbar">
+  <div class="sn-topbar-inner">
+    <div class="sn-topbar-start">
+      <a href="../../../../index.html" class="sn-brand" aria-label="StudyNet — Accueil">
+        <svg class="sn-brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="4" y="6" width="56" height="52" rx="8" fill="#231E19"/><path d="M12 15.5C12 14.12 13.12 13 14.5 13H29.5C30.88 13 32 14.12 32 15.5V49.5C29.4 47.9 25.8 47.2 21.5 47.2H14.5C13.12 47.2 12 46.08 12 44.7V15.5Z" fill="#FAF7F1"/><path d="M52 15.5C52 14.12 50.88 13 49.5 13H34.5C33.12 13 32 14.12 32 15.5V49.5C34.6 47.9 38.2 47.2 42.5 47.2H49.5C50.88 47.2 52 46.08 52 44.7V15.5Z" fill="#F2EDE3"/><rect x="30.5" y="12" width="3" height="39" rx="1.5" fill="#A63E1C"/><path d="M40 13H45V29L42.5 26.8L40 29V13Z" fill="#A63E1C"/></svg>
+        <span class="sn-brand-name">Study<em>Net</em></span>
+      </a>
+      <nav class="sn-crumb" aria-label="Fil d'Ariane">
+        <a href="../../../../index.html#matieres">Sommaire</a>
+        <span class="sn-crumb-sep" aria-hidden="true">/</span>
+        <a href="../../fondamentaux-informatique.html">Fondamentaux</a><span class="sn-crumb-sep" aria-hidden="true">/</span>
+        <span class="sn-crumb-current" aria-current="page">Architecture des ordinateurs</span>
+      </nav>
+    </div>
+    <nav class="sn-topnav" aria-label="Parties du cours"><a href="#cours">Cours</a><a href="#exercices">Exercices</a><a href="#quiz">Quiz</a></nav>
+    <div class="sn-topbar-end">
+      <button type="button" class="sn-icon-btn sn-toc-trigger" data-sn-toc-open aria-expanded="false" aria-label="Ouvrir le sommaire du cours">
+        <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h12"></path></svg>
+        <span class="sn-btn-label">Plan</span>
+      </button>
+      <button type="button" class="sn-icon-btn sn-sidebar-toggle" data-sn-sidebar-toggle aria-label="Masquer le sommaire latéral" aria-pressed="false" title="Masquer le sommaire"><svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M9 4v16"></path></svg></button>
+      <button type="button" class="sn-icon-btn" data-sn-catalogue-open aria-label="Ouvrir le catalogue des 17 cours (Ctrl+K)">
+        <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.6-3.6"></path></svg>
+        <span class="sn-btn-label">Cours</span>
+        <kbd class="sn-kbd">Ctrl K</kbd>
+      </button>
+      <button type="button" class="sn-icon-btn sn-print-btn" data-sn-print aria-label="Imprimer ce cours" title="Imprimer ce cours">
+        <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V4h12v5"></path><rect x="4" y="9" width="16" height="8" rx="1.5"></rect><path d="M7 14h10v6H7z"></path></svg>
+      </button>
+      <button type="button" class="sn-icon-btn sn-theme-btn" data-sn-theme-toggle aria-label="Activer le thème sombre" aria-pressed="false">
+        <svg class="sn-icon sn-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"></path></svg>
+        <svg class="sn-icon sn-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.5v2.2M12 19.3v2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"></path></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<section class="sn-course-hero">
+  <div class="sn-course-hero-inner">
+    <p class="sn-course-kicker"><a href="../../fondamentaux-informatique.html" class="sn-hero-parent">Fondamentaux</a> · CHAPITRE 06.1 · FONDAMENTAUX DE L'INFORMATIQUE</p>
+    <h1>Architecture des ordinateurs</h1>
+    <p class="sn-course-lead">Du modèle de Von Neumann à l'exécution détaillée d'un programme en langage machine : cours structuré, méthodes de calcul, exercices progressifs et préparation d'examen.</p>
+    <div class="sn-course-meta" aria-label="Repères du cours"><span>5 chapitres de cours</span><span>10 exercices corrigés</span><span>Banque de 200 questions</span><span>Niveau L1 TI</span></div>
+    <div class="sn-course-actions">
+      <a href="#cours" class="sn-btn sn-btn--primary">Commencer le cours ↓</a>
+      <button type="button" class="sn-btn sn-mark-btn" data-sn-mark aria-pressed="false">
+        <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+        <span data-sn-mark-label>Marquer comme étudié</span>
+      </button>
+    </div>
+  </div>
+</section><div class="layout"><aside class="sidebar"><div class="sidebar-title">Sommaire du cours</div><nav><a class="nav-link" href="#cours"><span class="nav-number">1</span> Cours complet</a><a class="nav-link" href="#c1">Définitions et histoire</a><a class="nav-link" href="#c2">Structure et bus</a><a class="nav-link" href="#c3">Mémoires</a><a class="nav-link" href="#c4">UCT et registres</a><a class="nav-link" href="#c5">Cycle et assembleur</a><div class="sidebar-separator"></div><a class="nav-link" href="#exercices"><span class="nav-number">2</span> Exercices corrigés</a><a class="nav-link" href="#quiz"><span class="nav-number">3</span> Quiz interactif</a></nav></aside><main id="main-content" class="content"><section class="section" id="cours"><div class="section-heading"><span class="section-tag">Partie 01</span><h2>Cours complet — Architecture des ordinateurs</h2><p>Notions, définitions, tableaux, méthodes de calcul et exemples expliqués.</p></div><div class="card" id="c1"><h3>1.1 — Définitions fondamentales</h3><p><b>Un ordinateur</b> est une machine de traitement de l'information : il acquiert des données, les mémorise, les traite puis restitue des résultats. Ces quatre fonctions forment le fil conducteur de toute architecture.</p><p><b>L'informatique</b> est la science du traitement automatique de l'information. Un <b>système informatique</b> associe matériel, logiciels et utilisateurs pour répondre à des besoins. L'<b>architecture</b> décrit les unités fonctionnelles, leurs connexions et leur coopération.</p><div class="grid-2"><div class="info-card"><div class="symbol">▣</div><h4>Hardware — matériel</h4><p>Processeur, carte mère, RAM, stockage, écran, clavier, réseau et autres composants physiques.</p></div><div class="info-card"><div class="symbol">▤</div><h4>Software — logiciel</h4><p>Programmes exécutés par le matériel. Logiciels de base : système d'exploitation, utilitaires, compilateurs. Applications : navigateur, bureautique, jeux, gestion.</p></div></div><div class="note"><b>À ne pas confondre :</b> l'ordinateur désigne la machine ; le système informatique est l'ensemble matériel/logiciel organisé pour les utilisateurs.</div></div>
 <div class="card"><h3>1.2 — Les couches d'un système informatique</h3><div class="formula">Utilisateur → Applications → Système d'exploitation → Matériel</div><p>Chaque couche utilise les services de celle qui se trouve en dessous et masque une partie de sa complexité. Exemple : lors d'un enregistrement, l'utilisateur demande à l'application de sauvegarder ; l'application demande au système d'exploitation d'écrire ; le système pilote le périphérique de stockage.</p><p>Le système d'exploitation est donc une couche logicielle essentielle entre les applications et le matériel. Il coordonne les ressources et permet d'utiliser la machine sans commander directement chaque circuit.</p></div>
 <div class="card"><h3>1.3 — Histoire et générations des ordinateurs</h3><div class="table-wrap"><table><tr><th>Génération</th><th>Période indicative</th><th>Technologie</th><th>Exemple / caractéristique</th></tr><tr><td>1re</td><td>≈ 1945–1955</td><td>Tubes à vide</td><td>ENIAC, machines volumineuses, chauffent et tombent fréquemment en panne.</td></tr><tr><td>2e</td><td>≈ 1955–1965</td><td>Transistors</td><td>IBM 7000, taille et consommation réduites, fiabilité accrue.</td></tr><tr><td>3e</td><td>≈ 1965–1971</td><td>Circuits intégrés</td><td>IBM 360, miniaturisation et développement des systèmes d'exploitation.</td></tr><tr><td>4e</td><td>1971 → aujourd'hui</td><td>Microprocesseurs</td><td>Intel 4004, Apple I, IBM PC ; l'UCT est intégrée sur une puce.</td></tr></table></div><p>La frise historique du support situe notamment la Pascaline (1642), l'algèbre de Boole, les travaux de Shannon, le transistor (1947), le circuit intégré (1958), le microprocesseur Intel 4004 (1971) et le PC IBM (1981). La loi de Moore décrit historiquement le doublement approximatif du nombre de transistors d'une puce sur une période proche de deux ans ; c'est une observation historique, pas une loi physique garantissant l'avenir.</p></div>
 <div class="card" id="c2"><h3>2.1 — Structure générale et périphériques</h3><p>L'unité centrale comprend l'<b>unité centrale de traitement (UCT/CPU)</b> et la <b>mémoire centrale (MC)</b>. Elles communiquent grâce aux bus. Les unités d'entrée/sortie relient la machine au monde extérieur.</p><div class="grid-3"><div class="info-card"><h4>Entrée</h4><p>Envoie des informations vers l'ordinateur : clavier, souris, scanner, webcam, microphone.</p></div><div class="info-card"><h4>Sortie</h4><p>Restitue les résultats : écran, imprimante, haut-parleurs, vidéoprojecteur.</p></div><div class="info-card"><h4>Entrée / sortie</h4><p>Échange dans les deux sens : disque, SSD, clé USB, modem, carte réseau, écran tactile.</p></div></div><div class="note">Un périphérique se classe selon le sens de circulation des informations, pas selon son apparence.</div></div>
@@ -54,8 +128,18 @@ LOAD T2
 GARDE2: CMP T3
 JG GARDE3
 LOAD T3
-GARDE3: STORE MAX</pre> <br><b>3.</b> LOAD T1 : ACC=28. CMP T2 : G=0,B=1 ; on charge T2=31. CMP T3 : G=1 ; on conserve 31. STORE MAX : MAX=31. <br><b>4.</b> 2¹⁶=65536 mots, adresses 0000₁₆ à FFFF₁₆. <br><b>5.</b> 2⁸=256 opcodes et 256 adresses. <br><b>6.</b> Le modèle simplifie les formats, les registres, les modes et les timings ; les codes ne sont pas ceux d'une architecture commerciale réelle.</p></div></div></article></section><section class="section" id="quiz"><div class="section-heading"><span class="section-tag">Partie 03</span><h2>Quiz d'entraînement</h2><p>Choisis 20, 30 ou 40 questions tirées au hasard d'une banque de 200 questions. Les questions sont mélangées à chaque tentative.</p></div><div class="quiz-intro"><h3>Prêt à tester tes connaissances ?</h3><p>Une seule réponse est correcte par question. Clique sur « Vérifier » pour obtenir une explication, puis passe à la suivante. À la fin, tu obtiens ta note et la correction de tes erreurs.</p><button class="primary-btn" onclick="openQuiz()">Ouvrir le quiz</button><p class="small muted" id="bankInfo">Banque en préparation…</p></div></section></main></div><footer class="sn-footer"><div class="sn-footer-inner"><a class="sn-footer-logo" href="../../../../index.html"><span class="sn-footer-badge" aria-hidden="true">S</span><span>Study<span class="sn-footer-accent">Net</span></span></a><p class="sn-footer-credit">Réalisé par <strong>Mohamed Ali Sablaoui</strong></p><p class="sn-footer-copy">© 2026 StudyNet · Tous droits réservés.</p></div></footer>
+GARDE3: STORE MAX</pre> <br><b>3.</b> LOAD T1 : ACC=28. CMP T2 : G=0,B=1 ; on charge T2=31. CMP T3 : G=1 ; on conserve 31. STORE MAX : MAX=31. <br><b>4.</b> 2¹⁶=65536 mots, adresses 0000₁₆ à FFFF₁₆. <br><b>5.</b> 2⁸=256 opcodes et 256 adresses. <br><b>6.</b> Le modèle simplifie les formats, les registres, les modes et les timings ; les codes ne sont pas ceux d'une architecture commerciale réelle.</p></div></div></article></section><section class="section" id="quiz"><div class="section-heading"><span class="section-tag">Partie 03</span><h2>Quiz d'entraînement</h2><p>Choisis 20, 30 ou 40 questions tirées au hasard d'une banque de 200 questions. Les questions sont mélangées à chaque tentative.</p></div><div class="quiz-intro"><h3>Prêt à tester tes connaissances ?</h3><p>Une seule réponse est correcte par question. Clique sur « Vérifier » pour obtenir une explication, puis passe à la suivante. À la fin, tu obtiens ta note et la correction de tes erreurs.</p><button class="primary-btn" onclick="openQuiz()">Ouvrir le quiz</button><p class="small muted" id="bankInfo">Banque en préparation…</p></div></section></main></div><footer class="sn-footer">
+  <div class="sn-footer-inner">
+    <a href="../../../../index.html" class="sn-brand">
+      <svg class="sn-brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="4" y="6" width="56" height="52" rx="8" fill="#231E19"/><path d="M12 15.5C12 14.12 13.12 13 14.5 13H29.5C30.88 13 32 14.12 32 15.5V49.5C29.4 47.9 25.8 47.2 21.5 47.2H14.5C13.12 47.2 12 46.08 12 44.7V15.5Z" fill="#FAF7F1"/><path d="M52 15.5C52 14.12 50.88 13 49.5 13H34.5C33.12 13 32 14.12 32 15.5V49.5C34.6 47.9 38.2 47.2 42.5 47.2H49.5C50.88 47.2 52 46.08 52 44.7V15.5Z" fill="#F2EDE3"/><rect x="30.5" y="12" width="3" height="39" rx="1.5" fill="#A63E1C"/><path d="M40 13H45V29L42.5 26.8L40 29V13Z" fill="#A63E1C"/></svg>
+      <span class="sn-brand-name">Study<em>Net</em></span>
+    </a>
+    <p class="sn-footer-credit">Réalisé par <strong>Mohamed Ali Sablaoui</strong> · Licence 1 TI</p>
+    <p class="sn-footer-copy">© <span data-sn-year>2026</span> StudyNet · Tous droits réservés.</p>
+  </div>
+</footer>
 <div class="quiz-modal" id="quizModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-content"><div class="modal-header"><div><h3 id="modalTitle">Quiz — Architecture des ordinateurs</h3><div class="quiz-status" id="quizStatus">Configuration</div></div><button class="close-modal" onclick="closeQuiz()" aria-label="Fermer">×</button></div><div id="quizSetup"><p>Choisis le nombre de questions pour cette session.</p><div class="quiz-config"><div class="field"><label for="questionCount">Nombre de questions</label><select id="questionCount"><option value="20">20 questions</option><option value="30">30 questions</option><option value="40">40 questions</option></select></div><button class="primary-btn" onclick="startQuiz()">Commencer</button></div></div><div id="quizPlay" hidden><div class="quiz-progress"><div class="quiz-progress-bar" id="progressBar"></div></div><div class="quiz-status" id="questionCounter"></div><div class="quiz-question" id="questionText"></div><div id="optionsList"></div><div class="feedback" id="feedback"></div><div class="quiz-footer"><span class="quiz-status" id="liveScore"></span><button class="primary-btn" id="quizAction" onclick="checkAnswer()">Vérifier</button></div></div><div class="quiz-result" id="quizResult"></div></div></div>
     <script src="script.js" defer></script>
   <script src="../../../../shared/studynet-ui.js" defer></script>
-</body></html>
+</body>
+</html>

@@ -102,7 +102,7 @@ function copierEditeur() {
     const editor = document.getElementById("codeEditor");
 
     navigator.clipboard.writeText(editor.value).then(() => {
-        alert("Code copié !");
+        (window.StudyNet?window.StudyNet.notify("Code copié !"):void 0);
     });
 }
 
@@ -1258,7 +1258,7 @@ function demarrerQuiz() {
     }
 
     if (disponibles.length < nombre) {
-        alert("Pas assez de questions dans cette sélection. Choisissez un autre filtre.");
+        (window.StudyNet?window.StudyNet.notify("Pas assez de questions dans cette sélection. Choisissez un autre filtre."):void 0);
         return;
     }
 
@@ -1578,10 +1578,6 @@ function escapeHTML(texte) {
 /* =====================================================
    VÉRIFICATION DE LA BANQUE
 ===================================================== */
-
-console.log("JavaScript chargé correctement.");
-console.log("Nombre de questions disponibles :", questions.length);
-
 if (questions.length !== 200) {
     console.error("Erreur : la banque doit contenir 200 questions.");
 }

@@ -14,7 +14,7 @@
   --muted:#69736c;
   --paper:#f5f5f0;
   --white:#fff;
-  --border:#dfe5df;
+  --border:var(--sn-rule);
   --red:#c54b43;
   --shadow:0 8px 28px rgba(25,50,38,.07);
 }
@@ -88,7 +88,7 @@ header{
   z-index:100;
   background:var(--green);
   color:white;
-  box-shadow:0 3px 15px #0002;
+  box-shadow: none;
 }
 
 .nav{
@@ -226,7 +226,7 @@ header{
   border:1px solid var(--border);
   padding:clamp(13px,1.5vw,22px);
   border-radius:12px;
-  box-shadow:var(--shadow);
+  box-shadow: none;
   display:flex;
   gap:14px;
   align-items:center;
@@ -286,7 +286,7 @@ header{
 }
 
 .kicker{
-  color:#b66a22;
+  color:var(--sn-accent);
   font-size:11px;
   font-weight:bold;
   text-transform:uppercase;
@@ -344,7 +344,7 @@ li{
   border-radius:12px;
   padding:clamp(16px,2vw,27px);
   margin:17px 0;
-  box-shadow:0 3px 13px #00000005;
+  box-shadow: none;
   min-width:0;
 }
 
@@ -373,7 +373,7 @@ li{
 ========================================= */
 
 .formula{
-  background:#f1f5f0;
+  background:var(--sn-success-soft);
   border-left:4px solid var(--orange);
   padding:13px 17px;
   margin:12px 0;
@@ -381,7 +381,7 @@ li{
   overflow-x:auto;
   font-family:Georgia,serif;
   font-size:16px;
-  color:#193c30;
+  color:var(--sn-success);
   max-width:100%;
   -webkit-overflow-scrolling:touch;
 }
@@ -401,7 +401,7 @@ li{
 }
 
 .warning{
-  background:#fff0ef;
+  background:var(--sn-danger-soft);
   border-left:4px solid var(--red);
   padding:13px 16px;
   margin:15px 0;
@@ -410,8 +410,8 @@ li{
 }
 
 .success{
-  background:#eaf5ec;
-  border-left:4px solid #43885a;
+  background:var(--sn-success-soft);
+  border-left:4px solid var(--sn-success);
   padding:13px 16px;
   margin:15px 0;
   border-radius:5px;
@@ -454,7 +454,7 @@ td{
 }
 
 tr:nth-child(even) td{
-  background:#f7f9f6;
+  background:var(--sn-success-soft);
 }
 
 .table-wrap table{
@@ -539,7 +539,7 @@ tr:nth-child(even) td{
 .toc a{
   display:block;
   padding:8px 11px;
-  background:#f4f7f3;
+  background:var(--sn-success-soft);
   border-radius:6px;
   font-size:12px;
   color:var(--green);
@@ -606,13 +606,13 @@ details .detail-body{
   font-size:11px;
   padding:4px 9px;
   border-radius:20px;
-  background:#f4e8d8;
-  color:#92551d;
+  background:var(--sn-accent-soft);
+  color:var(--sn-accent);
 }
 
 .solution{
   display:none;
-  background:#f2f6f1;
+  background:var(--sn-success-soft);
   border-radius:8px;
   padding:16px;
   margin-top:15px;
@@ -687,7 +687,7 @@ details .detail-body{
   padding:15px 19px;
   border-radius:50px;
   font-weight:bold;
-  box-shadow:0 5px 25px #0003;
+  box-shadow: none;
   max-width:calc(100vw - 30px);
 }
 
@@ -711,13 +711,13 @@ details .detail-body{
 }
 
 .quiz-window{
-  background:#f8f8f3;
+  background:var(--sn-warning-soft);
   width:min(720px,100%);
   max-height:94vh;
   max-height:94dvh;
   overflow:auto;
   border-radius:15px;
-  box-shadow:0 20px 60px #0005;
+  box-shadow: none;
   min-width:0;
   overscroll-behavior:contain;
 }
@@ -774,7 +774,7 @@ details .detail-body{
 
 .quiz-progress{
   height:7px;
-  background:#e1e7e1;
+  background:var(--sn-sunken);
   border-radius:10px;
   overflow:hidden;
   margin:14px 0 20px;
@@ -825,7 +825,7 @@ details .detail-body{
 
 .answer:hover:not(:disabled){
   border-color:var(--orange);
-  background:#fff9f1;
+  background:var(--sn-accent-soft);
 }
 
 .answer.selected{
@@ -834,13 +834,13 @@ details .detail-body{
 }
 
 .answer.correct{
-  border:2px solid #3c8954;
-  background:#e9f6ec;
+  border:2px solid var(--sn-success);
+  background:var(--sn-success-soft);
 }
 
 .answer.incorrect{
   border:2px solid var(--red);
-  background:#fff0ef;
+  background:var(--sn-danger-soft);
 }
 
 .feedback{
@@ -856,13 +856,13 @@ details .detail-body{
 }
 
 .feedback.good{
-  background:#e9f6ec;
-  color:#205b35;
+  background:var(--sn-success-soft);
+  color:var(--sn-success);
 }
 
 .feedback.bad{
-  background:#fff0ef;
-  color:#a43e37;
+  background:var(--sn-danger-soft);
+  color:var(--sn-danger);
 }
 
 .quiz-actions{
@@ -934,7 +934,7 @@ footer p{
   width:42px;
   height:42px;
   font-size:19px;
-  box-shadow:var(--shadow);
+  box-shadow: none;
 }
 
 /* =========================================
@@ -1056,7 +1056,7 @@ footer p{
     flex-direction:column;
     align-items:flex-start;
     gap:13px;
-    box-shadow:0 8px 15px #0002;
+    box-shadow: none;
   }
 
   .navlinks.open{
@@ -1554,7 +1554,7 @@ textarea:focus-visible{
   }
 
   body{
-    background:white;
+    background:var(--sn-surface);
     min-width:0;
     overflow:visible;
   }
@@ -1569,7 +1569,7 @@ textarea:focus-visible{
 
   .card,
   .exercise{
-    box-shadow:none;
+    box-shadow: none;
   }
 
   .table-wrap{

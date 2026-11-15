@@ -219,7 +219,7 @@ document.getElementById("startQuiz").addEventListener("click",()=>{
  const wanted=Number(countSelect.value);
  const level=levelSelect.value;
  const pool=level==="all"?questionBank:questionBank.filter(q=>q.level===level);
- if(pool.length<wanted){alert("Pas assez de questions pour ce niveau.");return;}
+ if(pool.length<wanted){(window.StudyNet?window.StudyNet.notify("Pas assez de questions pour ce niveau."):void 0);return;}
  quizQuestions=shuffle(pool).slice(0,wanted).map(shuffledQuestion);
  current=0;score=0;selected=null;answered=false;history=[];
  setup.classList.add("hidden");result.classList.add("hidden");play.classList.remove("hidden");
@@ -257,7 +257,7 @@ function renderQuestion(){
  document.getElementById("nextQuestion").textContent=current===quizQuestions.length-1?"Voir le résultat":"Suivant →";
 }
 document.getElementById("verifyAnswer").addEventListener("click",()=>{
- if(selected===null){alert("Choisis une réponse avant de vérifier.");return;}
+ if(selected===null){(window.StudyNet?window.StudyNet.notify("Choisis une réponse avant de vérifier."):void 0);return;}
  if(answered)return;
  answered=true;
  const q=quizQuestions[current],correct=selected===q.answer;
