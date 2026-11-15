@@ -971,7 +971,7 @@ function startQuiz(){
     }
 
     if(available.length<count){
-        alert("Pas assez de questions disponibles pour ce niveau.");
+        (window.StudyNet?window.StudyNet.notify("Pas assez de questions disponibles pour ce niveau."):void 0);
         return;
     }
 
@@ -1067,7 +1067,7 @@ function verifyAnswer(){
     if(verified) return;
 
     if(selectedAnswer===null){
-        alert("Choisis une proposition avant de vérifier.");
+        (window.StudyNet?window.StudyNet.notify("Choisis une proposition avant de vérifier."):void 0);
         return;
     }
 

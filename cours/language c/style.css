@@ -222,7 +222,7 @@ header{
     top:90px;
     width:100%;
     min-width:0;
-    background:white;
+    background:var(--sn-surface);
     border:1px solid var(--line);
     border-radius:var(--radius);
     padding:20px;
@@ -245,7 +245,7 @@ header{
     margin:3px 0;
     font-size:12px;
     text-decoration:none;
-    color:#555;
+    color:var(--sn-ink-2);
     border-radius:6px;
     overflow-wrap:anywhere;
     transition:.2s;
@@ -277,7 +277,7 @@ header{
 }
 
 .intro{
-    color:#686868;
+    color:var(--sn-mute);
     margin-bottom:30px;
     max-width:850px;
     overflow-wrap:anywhere;
@@ -290,7 +290,7 @@ header{
 .module{
     width:100%;
     min-width:0;
-    background:white;
+    background:var(--sn-surface);
     border:1px solid var(--line);
     border-radius:var(--radius);
     padding:var(--card-padding);
@@ -355,13 +355,13 @@ header{
 }
 
 .warning{
-    border-left:4px solid #c49a35;
-    background:#fff8df;
+    border-left:4px solid var(--sn-warning);
+    background:var(--sn-warning-soft);
 }
 
 .success{
     border-left:4px solid var(--green);
-    background:#eaf6ee;
+    background:var(--sn-success-soft);
 }
 
 /* =========================================================
@@ -374,7 +374,7 @@ pre{
     max-width:100%;
     min-width:0;
     background:var(--code);
-    color:#f5f5f5;
+    color:var(--sn-code-fg);
     padding:clamp(12px,2vw,19px);
     overflow-x:auto;
     overflow-y:hidden;
@@ -393,7 +393,7 @@ code{
 }
 
 .inline-code{
-    background:#eeeae4;
+    background:var(--sn-accent-soft);
     padding:2px 5px;
     border-radius:4px;
     font-family:Consolas,monospace;
@@ -419,11 +419,11 @@ th,td{
 }
 
 th{
-    background:#f1eee9;
+    background:var(--sn-accent-soft);
 }
 
 tr:nth-child(even){
-    background:#faf9f7;
+    background:var(--sn-warning-soft);
 }
 
 /* =========================================================
@@ -433,7 +433,7 @@ tr:nth-child(even){
 .exercise{
     width:100%;
     min-width:0;
-    background:#fff;
+    background:var(--sn-surface);
     border:1px solid var(--line);
     border-radius:10px;
     margin:18px 0;
@@ -441,7 +441,7 @@ tr:nth-child(even){
 }
 
 .exercise-head{
-    background:#f4f1ec;
+    background:var(--sn-accent-soft);
     padding:13px 17px;
     display:flex;
     justify-content:space-between;
@@ -461,7 +461,7 @@ tr:nth-child(even){
     font-weight:bold;
     padding:4px 9px;
     border-radius:20px;
-    background:#e9e3d9;
+    background:var(--sn-accent-soft);
     white-space:nowrap;
 }
 
@@ -474,7 +474,7 @@ tr:nth-child(even){
 .solution-btn{
     border:1px solid var(--orange);
     color:var(--orange);
-    background:white;
+    background:var(--sn-surface);
     padding:8px 13px;
     border-radius:5px;
     font-size:12px;
@@ -493,7 +493,7 @@ tr:nth-child(even){
     width:100%;
     min-width:0;
     padding:15px;
-    background:#f5f5f2;
+    background:var(--sn-sunken);
     border-top:1px solid var(--line);
     overflow-wrap:anywhere;
 }
@@ -523,7 +523,7 @@ tr:nth-child(even){
 }
 
 .part-heading p{
-    color:#777;
+    color:var(--sn-mute);
 }
 
 /* =========================================================
@@ -547,7 +547,7 @@ tr:nth-child(even){
 .quiz-box{
     width:100%;
     min-width:0;
-    background:white;
+    background:var(--sn-surface);
     color:var(--ink);
     padding:var(--card-padding);
     border-radius:12px;
@@ -568,7 +568,7 @@ tr:nth-child(even){
     padding:10px;
     border:1px solid var(--line);
     border-radius:6px;
-    background:white;
+    background:var(--sn-surface);
 }
 
 .primary-btn{
@@ -582,11 +582,11 @@ tr:nth-child(even){
 }
 
 .primary-btn:hover{
-    background:#c95e24;
+    background:var(--sn-accent);
 }
 
 .secondary-btn{
-    background:white;
+    background:var(--sn-surface);
     color:var(--ink);
     border:1px solid var(--line);
     border-radius:6px;
@@ -604,7 +604,7 @@ tr:nth-child(even){
 
 .quiz-progress{
     width:100%;
-    background:#e7e4df;
+    background:var(--sn-sunken);
     height:7px;
     border-radius:20px;
     margin:18px 0;
@@ -648,12 +648,12 @@ tr:nth-child(even){
 }
 
 .option.correct{
-    background:#e8f5ec;
+    background:var(--sn-success-soft);
     border-color:var(--green);
 }
 
 .option.wrong{
-    background:#fff0ef;
+    background:var(--sn-danger-soft);
     border-color:var(--red);
 }
 
@@ -671,13 +671,13 @@ tr:nth-child(even){
 }
 
 .feedback.good{
-    background:#e8f5ec;
-    color:#205c3d;
+    background:var(--sn-success-soft);
+    color:var(--sn-success);
 }
 
 .feedback.bad{
-    background:#fff0ef;
-    color:#982e2a;
+    background:var(--sn-danger-soft);
+    color:var(--sn-danger);
 }
 
 .quiz-actions{
@@ -704,7 +704,7 @@ tr:nth-child(even){
 
 .review-item{
     width:100%;
-    background:#f7f5f1;
+    background:var(--sn-warning-soft);
     padding:15px;
     border-radius:7px;
     margin:12px 0;

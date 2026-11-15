@@ -1,5 +1,1 @@
-@import url("../Fondamentaux/style.css");
-
-:root {
-    --hero-watermark: "</>";
-}
+/* Styles partagés centralisés dans ../../shared/tokens.css et ../../shared/hub.css */

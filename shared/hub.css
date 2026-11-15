@@ -1,0 +1,291 @@
+/* =========================================================================
+   STUDYNET — SUBJECT HUB PAGES (Fondamentaux, Mathématiques, Langages Web)
+   R3 Cahier Universitaire — Mobile-first (320px+), tokens from tokens.css.
+   ========================================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.hub-wrap {
+    width: 100%;
+    max-width: var(--sn-container);
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 3vw, 2rem);
+}
+
+.hub-hero {
+    background: var(--sn-surface);
+    border-bottom: 1px solid var(--sn-rule);
+    padding-block: clamp(2rem, 4.8vw, 3.75rem);
+}
+
+.hub-hero-inner {
+    padding-left: clamp(0.875rem, 2vw, 1.5rem);
+    border-left: 2px solid var(--sn-accent);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sn-space-5);
+}
+
+@media (min-width: 1024px) {
+    .hub-hero-inner {
+        grid-template-columns: minmax(0, 1.35fr) auto;
+        align-items: end;
+        gap: var(--sn-space-6);
+    }
+}
+
+.hub-kicker {
+    margin: 0 0 var(--sn-space-2);
+    font-family: var(--sn-font-mono);
+    font-size: var(--sn-text-xs);
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--sn-mute);
+}
+
+.hub-kicker a {
+    color: var(--sn-accent);
+    text-decoration: none;
+}
+
+.hub-kicker a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.hub-hero h1 {
+    margin: 0 0 var(--sn-space-3);
+    font-family: var(--sn-font-display);
+    font-size: var(--sn-text-display);
+    font-weight: 400;
+    line-height: var(--sn-leading-display);
+    letter-spacing: -0.02em;
+    color: var(--sn-ink);
+    max-width: 20ch;
+}
+
+.hub-lead {
+    margin: 0;
+    font-size: var(--sn-text-base);
+    line-height: var(--sn-leading-body);
+    color: var(--sn-ink-2);
+    max-width: 62ch;
+}
+
+.hub-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: var(--sn-space-4) var(--sn-space-5);
+    background: var(--sn-paper);
+    border: 1px solid var(--sn-rule);
+    border-radius: var(--sn-radius);
+    min-width: 14rem;
+}
+
+.hub-summary-label {
+    font-family: var(--sn-font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sn-mute);
+}
+
+.hub-summary-value {
+    font-family: var(--sn-font-body);
+    font-size: var(--sn-text-sm);
+    font-weight: 600;
+    color: var(--sn-ink);
+}
+
+/* Ruled chapter syllabus list */
+.hub-chapters {
+    padding-block: clamp(2.25rem, 4.5vw, 3.5rem);
+}
+
+.hub-section-head {
+    margin-bottom: var(--sn-space-5);
+}
+
+.hub-section-head h2 {
+    margin: 0 0 0.35rem;
+    font-family: var(--sn-font-display);
+    font-size: var(--sn-text-xl);
+    font-weight: 400;
+    letter-spacing: -0.016em;
+    color: var(--sn-ink);
+}
+
+.hub-section-head p {
+    margin: 0;
+    font-size: var(--sn-text-sm);
+    color: var(--sn-mute);
+    max-width: 60ch;
+}
+
+.chapter-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--sn-rule-strong);
+}
+
+.chapter-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sn-space-3);
+    padding-block: var(--sn-space-5);
+    border-bottom: 1px solid var(--sn-rule);
+    transition: background-color var(--sn-dur-fast) var(--sn-ease);
+}
+
+@media (min-width: 768px) {
+    .chapter-row {
+        grid-template-columns: 7.5rem minmax(0, 1fr);
+        column-gap: var(--sn-space-5);
+    }
+
+    .chapter-cta {
+        grid-column: 2;
+    }
+}
+
+@media (min-width: 1024px) {
+    .chapter-row {
+        grid-template-columns: 8.5rem minmax(0, 1fr) auto;
+        align-items: start;
+        column-gap: var(--sn-space-6);
+        padding-inline: var(--sn-space-3);
+    }
+
+    .chapter-row:hover {
+        background: var(--sn-surface);
+    }
+
+    .chapter-cta {
+        grid-column: 3;
+        align-self: center;
+    }
+}
+
+.chapter-index {
+    display: flex;
+    align-items: baseline;
+    gap: 0.65rem;
+}
+
+@media (min-width: 768px) {
+    .chapter-index {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+}
+
+.chapter-num {
+    font-family: var(--sn-font-display);
+    font-size: 1.85rem;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--sn-accent);
+    font-variant-numeric: tabular-nums;
+}
+
+.chapter-code {
+    font-family: var(--sn-font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sn-mute);
+}
+
+.chapter-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.chapter-title-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+}
+
+.chapter-row h3 {
+    margin: 0;
+    font-family: var(--sn-font-display);
+    font-size: var(--sn-text-lg);
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--sn-ink);
+}
+
+.chapter-row h3 a {
+    color: var(--sn-ink);
+    text-decoration: none;
+}
+
+.chapter-row h3 a:hover {
+    color: var(--sn-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.chapter-done-badge {
+    font-family: var(--sn-font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    padding: 0.16rem 0.5rem;
+    border-radius: var(--sn-radius-sm);
+    background: var(--sn-sage-soft);
+    color: var(--sn-sage);
+    border: 1px solid var(--sn-sage-rule);
+}
+
+.chapter-desc {
+    margin: 0;
+    font-size: var(--sn-text-sm);
+    line-height: 1.62;
+    color: var(--sn-ink-2);
+    max-width: 62ch;
+}
+
+.chapter-parts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 0.2rem;
+}
+
+.part-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.5rem;
+    padding: 0.25rem 0.7rem;
+    border: 1px solid var(--sn-rule-strong);
+    border-radius: var(--sn-radius-sm);
+    background: var(--sn-surface);
+    color: var(--sn-ink-2);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: border-color var(--sn-dur-fast) var(--sn-ease), color var(--sn-dur-fast) var(--sn-ease);
+}
+
+.part-link:hover {
+    border-color: var(--sn-accent);
+    color: var(--sn-accent);
+}
+
+.hub-back-row {
+    margin-top: var(--sn-space-6);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}

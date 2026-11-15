@@ -285,7 +285,7 @@ function shuffleArray(array){
 function startQuiz(){
     const count=parseInt(document.getElementById("questionCount").value,10);
     if(!Number.isInteger(count)||count<20||count>40){
-        alert("Choisissez un nombre entre 20 et 40.");
+        (window.StudyNet?window.StudyNet.notify("Choisissez un nombre entre 20 et 40."):void 0);
         return;
     }
 
@@ -365,7 +365,7 @@ function verifyAnswer(){
     if(answerVerified)return;
 
     if(selectedAnswer===null){
-        alert("Veuillez sélectionner une réponse avant de vérifier.");
+        (window.StudyNet?window.StudyNet.notify("Veuillez sélectionner une réponse avant de vérifier."):void 0);
         return;
     }
 

@@ -1,687 +1,667 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-sn-root=".">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="StudyNet : une plateforme éducative pour apprendre, réviser et progresser en informatique et mathématiques.">
-    <meta name="theme-color" content="#141312">
+    <meta name="description" content="StudyNet : cahier de cours universitaire L1 TI — 9 matières et 17 supports complets en informatique, programmation, développement web, mathématiques et électricité, avec exercices corrigés et quiz.">
+    <meta name="theme-color" content="#FAF7F1">
 
-    <title>StudyNet | Plateforme éducative</title>
+    <title>StudyNet — Cahier de cours L1 TI</title>
 
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23141312'/%3E%3Crect x='4' y='4' width='56' height='56' rx='13' fill='none' stroke='%23f57921' stroke-opacity='.35' stroke-width='2'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='system-ui,-apple-system,Segoe UI,sans-serif' font-size='36' font-weight='800' fill='%23f57921'%3ES%3C/text%3E%3C/svg%3E">
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem("studynet:theme");
+                var theme = (saved === "dark" || saved === "light")
+                    ? saved
+                    : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+                document.documentElement.setAttribute("data-theme", theme);
+                var m = document.querySelector('meta[name="theme-color"]');
+                if (m) m.setAttribute("content", theme === "dark" ? "#151210" : "#FAF7F1");
+            } catch (_e) {}
+        })();
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="shared/favicon.svg">
+    <link rel="stylesheet" href="shared/tokens.css">
+    <link rel="stylesheet" href="shared/studynet-ui.css">
     <link rel="stylesheet" href="style.css">
+    <script src="shared/studynet-ui.js" defer></script>
     <script src="script.js" defer></script>
 </head>
 
 <body>
 
-    <a href="#matieres" class="skip-link">Aller directement aux matières</a>
+    <a href="#main-content" class="sn-skip-link">Aller au contenu principal</a>
 
-    <!-- EN-TÊTE -->
-    <header class="header" id="siteHeader">
-        <div class="container nav-container">
+    <!-- BARRE D'ÉTUDE GLOBALE -->
+    <header class="sn-topbar" id="siteHeader">
+        <div class="sn-topbar-inner">
 
-            <a href="#accueil" class="logo" aria-label="StudyNet — Accueil">
-                <span class="logo-icon" aria-hidden="true">S</span>
-                <span class="logo-wordmark">Study<span class="logo-highlight">Net</span></span>
-            </a>
-
-            <nav class="navigation" id="navigation" aria-label="Navigation principale">
-                <a href="#accueil" class="nav-link active">Accueil</a>
-                <a href="#matieres" class="nav-link">Matières</a>
-                <a href="#apropos" class="nav-link">À propos</a>
-                <a href="#matieres" class="nav-button nav-button-mobile">
-                    <span>Commencer à apprendre</span>
-                    <span aria-hidden="true">↗</span>
+            <div class="sn-topbar-start">
+                <a href="#accueil" class="sn-brand" aria-label="StudyNet — Accueil">
+                    <svg class="sn-brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                        <rect x="4" y="6" width="56" height="52" rx="8" fill="#231E19"/>
+                        <path d="M12 15.5C12 14.12 13.12 13 14.5 13H29.5C30.88 13 32 14.12 32 15.5V49.5C29.4 47.9 25.8 47.2 21.5 47.2H14.5C13.12 47.2 12 46.08 12 44.7V15.5Z" fill="#FAF7F1"/>
+                        <path d="M52 15.5C52 14.12 50.88 13 49.5 13H34.5C33.12 13 32 14.12 32 15.5V49.5C34.6 47.9 38.2 47.2 42.5 47.2H49.5C50.88 47.2 52 46.08 52 44.7V15.5Z" fill="#F2EDE3"/>
+                        <rect x="30.5" y="12" width="3" height="39" rx="1.5" fill="#A63E1C"/>
+                        <path d="M40 13H45V29L42.5 26.8L40 29V13Z" fill="#A63E1C"/>
+                    </svg>
+                    <span class="sn-brand-name">Study<em>Net</em></span>
                 </a>
+
+                <span class="sn-crumb" aria-hidden="true">
+                    <span class="sn-crumb-current">Licence 1 · Technologies de l'Information</span>
+                </span>
+            </div>
+
+            <nav class="sn-topnav" aria-label="Navigation principale">
+                <a href="#matieres" class="home-nav-link" aria-current="true">Sommaire</a>
+                <a href="#methode" class="home-nav-link">Méthode</a>
             </nav>
 
-            <div class="nav-actions">
-                <a href="#matieres" class="nav-button">
-                    <span>Commencer à apprendre</span>
-                    <span class="btn-arrow" aria-hidden="true">↗</span>
-                </a>
+            <div class="sn-topbar-end" id="snTourControls">
+                <button type="button" class="sn-icon-btn" data-sn-catalogue-open aria-label="Ouvrir le catalogue rapide des 17 cours (Ctrl+K)">
+                    <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <path d="m20 20-3.6-3.6"></path>
+                    </svg>
+                    <span class="sn-btn-label">Catalogue</span>
+                    <kbd class="sn-kbd">Ctrl K</kbd>
+                </button>
 
-                <button class="menu-toggle" id="menuToggle" type="button"
-                    aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navigation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <button type="button" class="sn-icon-btn home-tour-trigger" data-sn-tour-start aria-label="Lancer la visite guidée">
+                    <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <path d="M9.5 9.5a2.5 2.5 0 0 1 4.6 1.3c0 1.7-2.1 2-2.1 3.4"></path>
+                        <circle cx="12" cy="17.3" r="0.6" fill="currentColor"></circle>
+                    </svg>
+                    <span class="sn-btn-label">Guide</span>
+                </button>
+
+                <button type="button" class="sn-icon-btn sn-theme-btn" data-sn-theme-toggle aria-label="Activer le thème sombre" aria-pressed="false">
+                    <svg class="sn-icon sn-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"></path>
+                    </svg>
+                    <svg class="sn-icon sn-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4.2"></circle>
+                        <path d="M12 2.5v2.2M12 19.3v2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"></path>
+                    </svg>
                 </button>
             </div>
 
         </div>
     </header>
 
+    <!-- BANDEAU DE PREMIÈRE VISITE (discret, non bloquant, affiché une seule fois) -->
+    <aside class="sn-onboard-bar" id="snOnboardBar" aria-label="Découverte rapide de StudyNet" hidden>
+        <div class="home-wrap sn-onboard-inner">
+            <p>
+                <strong>Première visite sur StudyNet ?</strong>
+                Découvre en 20 secondes la recherche rapide, le sommaire des 17 cours et le suivi local de tes révisions.
+            </p>
+            <div class="sn-onboard-actions">
+                <button type="button" class="sn-btn sn-btn--primary" data-sn-tour-start>Faire la visite (4 étapes)</button>
+                <button type="button" class="sn-btn sn-btn--ghost" data-sn-tour-dismiss>Ignorer</button>
+            </div>
+        </div>
+    </aside>
 
-    <main>
+    <main id="main-content">
 
-        <!-- SECTION PRINCIPALE -->
-        <section class="hero" id="accueil">
+        <!-- COUVERTURE DU CAHIER (asymétrique, papier & encre) -->
+        <section class="cover-section" id="accueil">
+            <div class="home-wrap cover-grid">
 
-            <div class="container hero-container">
+                <div class="cover-lead">
+                    <p class="cover-folio">CAHIER UNIVERSITAIRE · L1 TECHNOLOGIES DE L'INFORMATION</p>
 
-                <div class="hero-content">
+                    <h1>Tous tes cours de L1&nbsp;TI, réunis dans un seul cahier.</h1>
 
-                    <span class="hero-label">
-                        <span class="status-dot" aria-hidden="true"></span>
-                        PLATEFORME ÉDUCATIVE · L1 TI
-                    </span>
-
-                    <h1>
-                        Apprends aujourd'hui.
-                        <span>Construis ton avenir.</span>
-                    </h1>
-
-                    <p class="hero-description">
-                        Bienvenue sur StudyNet, ton espace d'apprentissage
-                        pour découvrir, comprendre et maîtriser les
-                        différentes matières de l'informatique et des
-                        mathématiques.
+                    <p class="cover-intro">
+                        Retrouve les neuf matières du programme — cours structurés, exercices et projets
+                        corrigés, ainsi que des quiz d'entraînement — dans un espace lisible, sans distraction
+                        et accessible sur téléphone comme sur ordinateur.
                     </p>
 
-                    <div class="hero-actions">
-
-                        <a href="#matieres" class="primary-button">
-                            <span>Découvrir les matières</span>
-                            <span class="btn-arrow" aria-hidden="true">→</span>
+                    <div class="cover-actions">
+                        <a href="#matieres" class="sn-btn sn-btn--primary">
+                            <span>Parcourir le sommaire</span>
+                            <span aria-hidden="true">↓</span>
                         </a>
-
-                        <a href="#apropos" class="secondary-button">
-                            En savoir plus
-                        </a>
-
-                    </div>
-
-                    <div class="hero-stats">
-
-                        <div class="stat">
-                            <strong>09</strong>
-                            <span>Matières</span>
-                        </div>
-
-                        <div class="stat-divider" aria-hidden="true"></div>
-
-                        <div class="stat">
-                            <strong>100%</strong>
-                            <span>Accessible</span>
-                        </div>
-
-                        <div class="stat-divider" aria-hidden="true"></div>
-
-                        <div class="stat">
-                            <strong>∞</strong>
-                            <span>Possibilités</span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- ILLUSTRATION -->
-                <div class="hero-visual" aria-hidden="true">
-
-                    <div class="decorative-circle"></div>
-
-                    <div class="visual-card main-visual-card">
-
-                        <div class="visual-top">
-                            <span class="visual-indicator"></span>
-                            <span>STUDYNET / ESPACE D'APPRENTISSAGE</span>
-                        </div>
-
-                        <div class="visual-symbol-wrap">
-                            <div class="visual-symbol">&lt;/&gt;</div>
-                        </div>
-
-                        <div class="visual-title">
-                            <span>APPRENDRE</span>
-                            <strong>SANS LIMITES.</strong>
-                        </div>
-
-                        <div class="visual-bottom">
-                            <span>COURS</span>
-                            <span>EXERCICES</span>
-                            <span>QUIZ</span>
-                        </div>
-
-                    </div>
-
-                    <div class="floating-cards-group">
-                        <div class="floating-card floating-top">
-                            <span class="floating-icon">⌘</span>
-                            <div>
-                                <strong>Informatique</strong>
-                                <small>Développe tes compétences</small>
-                            </div>
-                        </div>
-
-                        <div class="floating-card floating-bottom">
-                            <span class="floating-icon">∑</span>
-                            <div>
-                                <strong>Mathématiques</strong>
-                                <small>Comprendre et pratiquer</small>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- SECTION DES MATIÈRES -->
-        <section class="subjects-section" id="matieres">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <div class="section-heading-text">
-                        <span class="section-label">TON ESPACE D'ÉTUDE</span>
-
-                        <h2>
-                            Explore tes <span>matières.</span>
-                        </h2>
-
-                        <p>
-                            Tous tes domaines d'apprentissage réunis
-                            dans un seul espace clair et structuré.
-                        </p>
-                    </div>
-
-                    <div class="subjects-count">
-                        <strong>09</strong>
-                        <span>MATIÈRES DISPONIBLES</span>
-                    </div>
-
-                </div>
-
-
-                <!-- BARRE DE RECHERCHE & FILTRES -->
-                <div class="subjects-toolbar">
-
-                    <div class="search-box">
-                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <circle cx="11" cy="11" r="7.5"></circle>
-                            <path d="m20 20-3.8-3.8"></path>
-                        </svg>
-                        <input
-                            type="search"
-                            id="searchInput"
-                            placeholder="Rechercher une matière, un langage ou un thème…"
-                            aria-label="Rechercher une matière"
-                            autocomplete="off">
-                        <kbd class="search-shortcut" id="searchShortcut" title="Appuie sur / pour rechercher">/</kbd>
-                        <button type="button" class="search-clear" id="clearSearch" aria-label="Effacer la recherche" hidden>
-                            ✕
+                        <button type="button" class="sn-btn" data-sn-catalogue-open>
+                            <span>Ouvrir un cours précis</span>
                         </button>
                     </div>
 
-                    <div class="filter-bar" role="group" aria-label="Filtrer par domaine">
-                        <button type="button" class="filter-chip active" data-filter="all" aria-pressed="true">Toutes</button>
-                        <button type="button" class="filter-chip" data-filter="programmation" aria-pressed="false">Programmation</button>
-                        <button type="button" class="filter-chip" data-filter="sciences" aria-pressed="false">Sciences &amp; Maths</button>
-                        <button type="button" class="filter-chip" data-filter="systemes" aria-pressed="false">Systèmes &amp; Archi</button>
-                        <button type="button" class="filter-chip" data-filter="web" aria-pressed="false">Web</button>
+                    <dl class="cover-index-facts">
+                        <div>
+                            <dt>Matières au programme</dt>
+                            <dd class="sn-num">09</dd>
+                        </div>
+                        <div>
+                            <dt>Supports &amp; chapitres</dt>
+                            <dd class="sn-num">17</dd>
+                        </div>
+                        <div>
+                            <dt>Format par chapitre</dt>
+                            <dd>Cours · TD · Quiz</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <!-- MARQUE-PAGE D'ÉTUDE (progression locale réelle, zéro fausse donnée) -->
+                <aside class="bookmark-sheet" id="snTourBookmark" aria-labelledby="bookmarkHeading">
+                    <div class="bookmark-head">
+                        <p class="bookmark-kicker" id="bookmarkHeading">MARQUE-PAGE D'ÉTUDE</p>
+                        <span class="bookmark-count sn-num" id="progressRatio">0 / 17</span>
+                    </div>
+
+                    <div class="bookmark-meter" role="progressbar" aria-labelledby="bookmarkHeading"
+                        aria-valuemin="0" aria-valuemax="17" aria-valuenow="0" id="progressMeter">
+                        <div class="bookmark-meter-fill" id="progressFill"></div>
+                    </div>
+
+                    <p class="bookmark-caption" id="progressCaption" aria-live="polite">
+                        Aucun support marqué comme étudié pour l'instant.
+                    </p>
+
+                    <div class="bookmark-resume" id="bookmarkResume">
+                        <p class="bookmark-resume-label" id="resumeLabel">Point de départ conseillé</p>
+                        <a href="cours/algorithme/algorithmique.html" class="bookmark-resume-link" id="resumeLink">
+                            <span class="bookmark-resume-title" id="resumeTitle">03 · Algorithmique</span>
+                            <span class="bookmark-resume-cta" id="resumeCta">Ouvrir →</span>
+                        </a>
+                        <p class="bookmark-resume-meta" id="resumeMeta">
+                            Bases de la logique, pseudo-code, tableaux, tri et exercices corrigés.
+                        </p>
+                    </div>
+
+                    <div class="bookmark-foot" id="bookmarkResetWrap" hidden>
+                        <button type="button" class="bookmark-reset-link" id="resetProgressTrigger">
+                            Réinitialiser ma progression locale
+                        </button>
+                        <div class="bookmark-confirm" id="resetProgressConfirm" hidden role="group" aria-label="Confirmer la réinitialisation">
+                            <span>Effacer tous les repères « étudié » ?</span>
+                            <div class="bookmark-confirm-btns">
+                                <button type="button" class="sn-btn sn-btn--primary" id="confirmResetBtn">Effacer</button>
+                                <button type="button" class="sn-btn" id="cancelResetBtn">Conserver</button>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+            </div>
+        </section>
+
+        <!-- FILET ORGANIQUE TRACÉ À L'ENCRE (signature R3 Warm Analog) -->
+        <div class="home-wrap rule-wrap" aria-hidden="true">
+            <svg class="sn-organic-rule" viewBox="0 0 1200 12" preserveAspectRatio="none">
+                <path d="M0 6.5 Q 150 2.5, 300 6.2 T 600 6 T 900 6.4 T 1200 5.6"
+                    fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+            </svg>
+        </div>
+
+        <!-- ÉLÉMENT SIGNATURE : SOMMAIRE DU POLYCOPIÉ L1 TI -->
+        <section class="syllabus-section" id="matieres" aria-labelledby="syllabusTitle">
+            <div class="home-wrap">
+
+                <div class="syllabus-header">
+                    <div>
+                        <p class="section-folio">SOMMAIRE DU CURSUS · 01 À 09</p>
+                        <h2 id="syllabusTitle">Table des matières</h2>
+                    </div>
+                    <p class="syllabus-note">
+                        Ouvre une matière ou accède directement à l'un de ses chapitres. Ta progression reste enregistrée dans ton navigateur.
+                    </p>
+                </div>
+
+                <!-- OUTILS DE RECHERCHE, FILTRES DE DOMAINE & MODE D'AFFICHAGE -->
+                <div class="syllabus-controls" id="snTourSearch">
+
+                    <div class="search-field">
+                        <label for="searchInput" class="search-label">Filtrer le sommaire</label>
+                        <div class="search-input-wrap">
+                            <svg class="sn-icon search-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                <circle cx="11" cy="11" r="7"></circle>
+                                <path d="m20 20-3.6-3.6"></path>
+                            </svg>
+                            <input
+                                type="search"
+                                id="searchInput"
+                                placeholder="Ex. : dérivabilité, pointeurs, SQL, Linux, Octave…"
+                                autocomplete="off">
+                            <kbd class="search-kbd" id="searchShortcut" aria-hidden="true">/</kbd>
+                            <button type="button" class="search-clear" id="clearSearch" aria-label="Effacer la recherche" hidden>
+                                Effacer
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="controls-row">
+                        <div class="domain-filters" role="group" aria-label="Filtrer par domaine">
+                            <button type="button" class="filter-chip is-active" data-filter="all" aria-pressed="true">
+                                Toutes <span class="chip-count sn-num">9</span>
+                            </button>
+                            <button type="button" class="filter-chip" data-filter="programmation" aria-pressed="false">
+                                Programmation <span class="chip-count sn-num">3</span>
+                            </button>
+                            <button type="button" class="filter-chip" data-filter="sciences" aria-pressed="false">
+                                Sciences &amp; Maths <span class="chip-count sn-num">3</span>
+                            </button>
+                            <button type="button" class="filter-chip" data-filter="systemes" aria-pressed="false">
+                                Systèmes &amp; Archi <span class="chip-count sn-num">2</span>
+                            </button>
+                            <button type="button" class="filter-chip" data-filter="web" aria-pressed="false">
+                                Web <span class="chip-count sn-num">1</span>
+                            </button>
+                        </div>
+
+                        <div class="view-switch" role="group" aria-label="Disposition du sommaire">
+                            <button type="button" class="view-btn is-active" data-view="index" aria-pressed="true">
+                                <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M4 7h16M4 12h16M4 17h16"></path>
+                                </svg>
+                                <span>Sommaire</span>
+                            </button>
+                            <button type="button" class="view-btn" data-view="sheets" aria-pressed="false">
+                                <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                    <rect x="3.5" y="4" width="7" height="7" rx="1"></rect>
+                                    <rect x="13.5" y="4" width="7" height="7" rx="1"></rect>
+                                    <rect x="3.5" y="13" width="7" height="7" rx="1"></rect>
+                                    <rect x="13.5" y="13" width="7" height="7" rx="1"></rect>
+                                </svg>
+                                <span>Fiches</span>
+                            </button>
+                        </div>
                     </div>
 
                 </div>
 
                 <div class="results-bar">
-                    <p class="results-info" id="resultsInfo" aria-live="polite">
-                        9 matières disponibles
+                    <p class="results-info sn-num" id="resultsInfo" role="status" aria-live="polite">
+                        9 matières affichées · 17 supports disponibles
                     </p>
+                    <button type="button" class="results-reset" id="inlineResetFilters" hidden>
+                        Réinitialiser les filtres
+                    </button>
                 </div>
 
-
-                <!-- CARTES DES MATIÈRES -->
-                <div class="subjects-grid" id="subjectsGrid">
-
+                <!-- LISTE DES 09 MATIÈRES (mode Sommaire réglé par défaut, basculable en Fiches) -->
+                <ol class="syllabus-list" id="snTourSyllabus" data-layout="index">
 
                     <!-- 01 ÉLECTRICITÉ -->
-                    <a href="cours/electricite/electricite.html"
-                        class="subject-card"
+                    <li class="syllabus-item"
                         data-category="sciences"
-                        data-search="electricite circuits electronique physique arduino composants">
-
-                        <div class="card-top">
-                            <div class="subject-icon icon-orange" aria-hidden="true">ϟ</div>
-                            <span class="subject-number">01</span>
+                        data-courses="elec"
+                        data-search="electricite circuits electronique physique arduino uno composants capteurs led broches">
+                        <div class="item-index">
+                            <span class="item-num sn-num">01</span>
+                            <span class="item-domain">Sciences appliquées</span>
                         </div>
-
-                        <div class="card-content">
-                            <span class="card-category">SCIENCES APPLIQUÉES</span>
-
-                            <h3>Électricité</h3>
-
-                            <p>
-                                Découvre les circuits électriques,
-                                les composants, Arduino Uno et les principes
-                                fondamentaux de l'électricité.
+                        <div class="item-body">
+                            <div class="item-title-row">
+                                <h3>
+                                    <a href="cours/electricite/electricite.html" class="item-main-link">Électricité &amp; Arduino Uno</a>
+                                </h3>
+                                <span class="item-status sn-num" data-subject-status hidden></span>
+                            </div>
+                            <p class="item-desc">
+                                Circuits électriques, composants fondamentaux, câblage sûr sur carte Arduino Uno, projets guidés et quiz d'évaluation.
                             </p>
-
-                            <div class="card-tags">
-                                <span>Cours</span>
-                                <span>Projets</span>
-                                <span>Quiz</span>
+                            <div class="item-sublinks" aria-label="Accès rapides Électricité">
+                                <a href="cours/electricite/electricite.html#cours">Cours</a>
+                                <a href="cours/electricite/electricite.html#exercices">Exercices &amp; projets</a>
+                                <a href="cours/electricite/electricite.html#quiz">Quiz</a>
                             </div>
                         </div>
-
-                        <div class="card-footer">
-                            <span>Découvrir la matière</span>
-                            <span class="arrow" aria-hidden="true">↗</span>
+                        <div class="item-action">
+                            <span class="item-count sn-num">1 cours complet</span>
+                            <a href="cours/electricite/electricite.html" class="sn-btn">Ouvrir le cours →</a>
                         </div>
-
-                    </a>
-
+                    </li>
 
                     <!-- 02 MATHÉMATIQUES -->
-                    <a href="cours/math/mathematiques.html"
-                        class="subject-card"
+                    <li class="syllabus-item"
                         data-category="sciences"
-                        data-search="mathematiques algebre analyse fonctions equations limites continuite derivabilite sinusoidales developpements limites">
-
-                        <div class="card-top">
-                            <div class="subject-icon icon-purple" aria-hidden="true">∑</div>
-                            <span class="subject-number">02</span>
+                        data-courses="math-lim,math-der,math-tri,math-dl"
+                        data-search="mathematiques analyse fonctions equations limites continuite derivabilite derivee tangente trigonometriques sinusoidales sinus cosinus developpements limites taylor">
+                        <div class="item-index">
+                            <span class="item-num sn-num">02</span>
+                            <span class="item-domain">Mathématiques</span>
                         </div>
-
-                        <div class="card-content">
-                            <span class="card-category">SCIENCES</span>
-
-                            <h3>Mathématiques</h3>
-
-                            <p>
-                                Maîtrise les limites, la continuité,
-                                la dérivabilité, les fonctions sinusoïdales
-                                et les développements limités.
+                        <div class="item-body">
+                            <div class="item-title-row">
+                                <h3>
+                                    <a href="cours/math/mathematiques.html" class="item-main-link">Mathématiques — Analyse</a>
+                                </h3>
+                                <span class="item-status sn-num" data-subject-status hidden></span>
+                            </div>
+                            <p class="item-desc">
+                                Limites et continuité, dérivabilité, fonctions trigonométriques et développements limités, avec méthodes, exercices corrigés et quiz.
                             </p>
-
-                            <div class="card-tags">
-                                <span>4 chapitres</span>
-                                <span>Exercices</span>
-                                <span>Quiz</span>
+                            <div class="item-chapters" aria-label="Chapitres de Mathématiques">
+                                <a href="cours/math/les%20chapitres/limites-continuite/limites-continuite.html" data-chapter-id="math-lim"><span>02.1</span> Limites et continuité</a>
+                                <a href="cours/math/les%20chapitres/derivabilite/derivabilite.html" data-chapter-id="math-der"><span>02.2</span> Dérivabilité</a>
+                                <a href="cours/math/les%20chapitres/fonctions-sinusoidales/fonctions-sinusoidales.html" data-chapter-id="math-tri"><span>02.3</span> Fonctions trigonométriques</a>
+                                <a href="cours/math/les%20chapitres/developpements-limites/developpements-limites.html" data-chapter-id="math-dl"><span>02.4</span> Développements limités</a>
                             </div>
                         </div>
-
-                        <div class="card-footer">
-                            <span>Découvrir la matière</span>
-                            <span class="arrow" aria-hidden="true">↗</span>
+                        <div class="item-action">
+                            <span class="item-count sn-num">4 chapitres</span>
+                            <a href="cours/math/mathematiques.html" class="sn-btn">Voir les 4 chapitres →</a>
                         </div>
-
-                    </a>
-
+                    </li>
 
                     <!-- 03 ALGORITHMIQUE -->
-                    <a href="cours/algorithme/algorithmique.html"
-                        class="subject-card"
+                    <li class="syllabus-item"
                         data-category="programmation"
-                        data-search="algorithmique algorithme logique programmation structures tri tableaux boucles">
-
-                        <div class="card-top">
-                            <div class="subject-icon icon-green" aria-hidden="true">{ }</div>
-                            <span class="subject-number">03</span>
+                        data-courses="algo"
+                        data-search="algorithmique algorithme logique pseudo-code structures donnees tri recherche tableaux boucles recursivite complexite">
+                        <div class="item-index">
+                            <span class="item-num sn-num">03</span>
+                            <span class="item-domain">Programmation</span>
                         </div>
-
-                        <div class="card-content">
-                            <span class="card-category">PROGRAMMATION</span>
-
-                            <h3>Algorithmique</h3>
-
-                            <p>
-                                Apprends à analyser les problèmes,
-                                construire des algorithmes efficaces et développer
-                                ta logique de programmation.
+                        <div class="item-body">
+                            <div class="item-title-row">
+                                <h3>
+                                    <a href="cours/algorithme/algorithmique.html" class="item-main-link">Algorithmique</a>
+                                </h3>
+                                <span class="item-status sn-num" data-subject-status hidden></span>
+                            </div>
+                            <p class="item-desc">
+                                Analyse de problèmes, écriture en pseudo-code, structures conditionnelles et itératives, tableaux, tri, récursivité et évaluation de complexité.
                             </p>
-
-                            <div class="card-tags">
-                                <span>Cours</span>
-                                <span>Exercices</span>
-                                <span>Quiz</span>
+                            <div class="item-sublinks" aria-label="Accès rapides Algorithmique">
+                                <a href="cours/algorithme/algorithmique.html#cours">Cours</a>
+                                <a href="cours/algorithme/algorithmique.html#exercices">Exercices corrigés</a>
+                                <a href="cours/algorithme/algorithmique.html#quiz">Quiz</a>
                             </div>
                         </div>
-
-                        <div class="card-footer">
-                            <span>Découvrir la matière</span>
-                            <span class="arrow" aria-hidden="true">↗</span>
+                        <div class="item-action">
+                            <span class="item-count sn-num">1 cours complet</span>
+                            <a href="cours/algorithme/algorithmique.html" class="sn-btn">Ouvrir le cours →</a>
                         </div>
-
-                    </a>
-
+                    </li>
 
                     <!-- 04 SYSTÈMES D'EXPLOITATION -->
-                    <a href="cours/systeme d'exploitation/systemes-exploitation.html"
-                        class="subject-card"
+                    <li class="syllabus-item"
                         data-category="systemes"
-                        data-search="systemes exploitation linux windows os terminal bash processus fichiers">
-
-                        <div class="card-top">
-                            <div class="subject-icon icon-blue" aria-hidden="true">⌘</div>
-                            <span class="subject-number">04</span>
+                        data-courses="os"
+                        data-search="systemes exploitation linux unix os terminal bash shell commandes processus fichiers droits permissions">
+                        <div class="item-index">
+                            <span class="item-num sn-num">04</span>
+                            <span class="item-domain">Systèmes &amp; Archi</span>
                         </div>
-
-                        <div class="card-content">
-                            <span class="card-category">SYSTÈMES INFORMATIQUES</span>
-
-                            <h3>Systèmes d'exploitation</h3>
-
-                            <p>
-                                Explore Linux, les commandes système,
-                                les processus, les fichiers et la gestion
-                                des ressources matérielles.
+                        <div class="item-body">
+                            <div class="item-title-row">
+                                <h3>
+                                    <a href="cours/systeme%20d%27exploitation/systemes-exploitation.html" class="item-main-link">Systèmes d'exploitation &amp; Linux</a>
+                                </h3>
+                                <span class="item-status sn-num" data-subject-status hidden></span>
+                            </div>
+                            <p class="item-desc">
+                                Fonctionnement de Linux, arborescence de fichiers, droits d'accès, commandes shell essentielles, redirections, processus et exercices pratiques.
                             </p>
-
-                            <div class="card-tags">
-                                <span>Cours</span>
-                                <span>Exercices</span>
-                                <span>Quiz</span>
+                            <div class="item-sublinks" aria-label="Accès rapides Systèmes d'exploitation">
+                                <a href="cours/systeme%20d%27exploitation/systemes-exploitation.html#partie1">Cours</a>
+                                <a href="cours/systeme%20d%27exploitation/systemes-exploitation.html#partie2">Exercices</a>
+                                <a href="cours/systeme%20d%27exploitation/systemes-exploitation.html#partie3">Quiz</a>
                             </div>
                         </div>
-
-                        <div class="card-footer">
-                            <span>Découvrir la matière</span>
-                            <span class="arrow" aria-hidden="true">↗</span>
+                        <div class="item-action">
+                            <span class="item-count sn-num">1 cours complet</span>
+                            <a href="cours/systeme%20d%27exploitation/systemes-exploitation.html" class="sn-btn">Ouvrir le cours →</a>
                         </div>
-
-                    </a>
-
+                    </li>
 
                     <!-- 05 PYTHON -->
-                    <a href="cours/language python/python.html"
-                        class="subject-card"
+                    <li class="syllabus-item"
                         data-category="programmation"
-                        data-search="python programmation langage code scripts listes fonctions">
-
-                        <div class="card-top">
-                            <div class="subject-icon icon-yellow" aria-hidden="true">Py</div>
-                            <span class="subject-number">05</span>
+                        data-courses="python"
+                        data-search="python programmation langage code scripts listes dictionnaires tuples fonctions fichiers exceptions">
+                        <div class="item-index">
+                            <span class="item-num sn-num">05</span>
+                            <span class="item-domain">Programmation</span>
                         </div>
-
-                        <div class="card-content">
-                            <span class="card-category">PROGRAMMATION</span>
-
-                            <h3>Python</h3>
-
-                            <p>
-                                Apprends Python pas à pas avec des cours clairs,
-                                des exemples pratiques et des exercices
-                                progressifs.
+                        <div class="item-body">
+                            <div class="item-title-row">
+                                <h3>
+                                    <a href="cours/language%20python/python.html" class="item-main-link">Programmation Python</a>
+                                </h3>
+                                <span class="item-status sn-num" data-subject-status hidden></span>
+                            </div>
+                            <p class="item-desc">
+                                Syntaxe Python, types et structures de données, fonctions, chaînes, fichiers, résolution de problèmes algorithmiques et 40 exercices corrigés.
                             </p>
-
-                            <div class="card-tags">
-                                <span>Cours</span>
-                                <span>Exercices</span>
-                                <span>Quiz</span>
+                            <div class="item-sublinks" aria-label="Accès rapides Python">
+                                <a href="cours/language%20python/python.html#cours">Cours</a>
+                                <a href="cours/language%20python/python.html#exercices">Exercices corrigés</a>
+                                <a href="cours/language%20python/python.html#quiz">Quiz</a>
                             </div>
                         </div>
-
-                        <div class="card-footer">
-                            <span>Découvrir la matière</span>
-                            <span class="arrow" aria-hidden="true">↗</span>
+                        <div class="item-action">
+                            <span class="item-count sn-num">1 cours complet</span>
+                            <a href="cours/language%20python/python.html" class="sn-btn">Ouvrir le cours →</a>
                         </div>
+                    </li>
 
-                    </a>
-
-
-                    <!-- 06 FONDAMENTAUX -->
-                    <a href="cours/Fondamentaux/fondamentaux-informatique.html"
-                        class="subject-card"
+                    <!-- 06 FONDAMENTAUX DE L'INFORMATIQUE -->
+                    <li class="syllabus-item"
                         data-category="systemes"
-                        data-search="fondamentaux informatique architecture ordinateur binaire numeration cpu memoire materiel logiciel">
-
-                        <div class="card-top">
-                            <div class="subject-icon icon-red" aria-hidden="true">▦</div>
-                            <span class="subject-number">06</span>
+                        data-courses="fond-arch,fond-rep"
+                        data-search="fondamentaux informatique architecture ordinateurs von neumann cpu memoire assembleur binaire hexadecimal complement a deux ieee 754 numeration">
+                        <div class="item-index">
+                            <span class="item-num sn-num">06</span>
+                            <span class="item-domain">Systèmes &amp; Archi</span>
                         </div>
-
-                        <div class="card-content">
-                            <span class="card-category">INFORMATIQUE</span>
-
-                            <h3>Fondamentaux de l'informatique</h3>
-
-                            <p>
-                                Comprends l'architecture de l'ordinateur,
-                                ses composants et la représentation binaire
-                                de l'information en machine.
+                        <div class="item-body">
+                            <div class="item-title-row">
+                                <h3>
+                                    <a href="cours/Fondamentaux/fondamentaux-informatique.html" class="item-main-link">Fondamentaux de l'informatique</a>
+                                </h3>
+                                <span class="item-status sn-num" data-subject-status hidden></span>
+                            </div>
+                            <p class="item-desc">
+                                Organisation matérielle d'un ordinateur (processeur, mémoire, bus, exécution) et codage binaire de l'information jusqu'à la norme IEEE&nbsp;754.
                             </p>
-
-                            <div class="card-tags">
-                                <span>2 chapitres</span>
-                                <span>Exercices</span>
-                                <span>Quiz</span>
+                            <div class="item-chapters" aria-label="Chapitres de Fondamentaux de l'informatique">
+                                <a href="cours/Fondamentaux/les%20chapitres/Architecture-des-ordinateurs-L1TI/Architecture-des-ordinateurs-L1TI.html" data-chapter-id="fond-arch"><span>06.1</span> Architecture des ordinateurs</a>
+                                <a href="cours/Fondamentaux/les%20chapitres/Representation-information-machine-L1TI/Representation-information-machine-L1TI.html" data-chapter-id="fond-rep"><span>06.2</span> Représentation de l'information</a>
                             </div>
                         </div>
-
-                        <div class="card-footer">
-                            <span>Découvrir la matière</span>
-                            <span class="arrow" aria-hidden="true">↗</span>
+                        <div class="item-action">
+                            <span class="item-count sn-num">2 chapitres</span>
+                            <a href="cours/Fondamentaux/fondamentaux-informatique.html" class="sn-btn">Voir les 2 chapitres →</a>
                         </div>
-
-                    </a>
-
+                    </li>
 
                     <!-- 07 TP MATHÉMATIQUES -->
-                    <a href="cours/tp math/tp-mathematiques.html"
-                        class="subject-card"
+                    <li class="syllabus-item"
                         data-category="sciences"
-                        data-search="tp mathematiques octave matlab travaux pratiques calcul numerique matrices">
-
-                        <div class="card-top">
-                            <div class="subject-icon icon-pink" aria-hidden="true">ƒ(x)</div>
-                            <span class="subject-number">07</span>
+                        data-courses="tp-math"
+                        data-search="tp mathematiques gnu octave matlab travaux pratiques calcul numerique vecteurs matrices courbes scripts">
+                        <div class="item-index">
+                            <span class="item-num sn-num">07</span>
+                            <span class="item-domain">Travaux pratiques</span>
                         </div>
-
-                        <div class="card-content">
-                            <span class="card-category">TRAVAUX PRATIQUES</span>
-
-                            <h3>TP Mathématiques</h3>
-
-                            <p>
-                                Applique tes connaissances mathématiques
-                                avec des travaux pratiques guidés sous
-                                GNU Octave.
+                        <div class="item-body">
+                            <div class="item-title-row">
+                                <h3>
+                                    <a href="cours/tp%20math/tp-mathematiques.html" class="item-main-link">TP Mathématiques — GNU Octave</a>
+                                </h3>
+                                <span class="item-status sn-num" data-subject-status hidden></span>
+                            </div>
+                            <p class="item-desc">
+                                Prise en main de GNU Octave, calculs matriciels et vectoriels, tracé de courbes, écriture de scripts numériques et travaux pratiques corrigés.
                             </p>
-
-                            <div class="card-tags">
-                                <span>GNU Octave</span>
-                                <span>TP guidés</span>
-                                <span>Quiz</span>
+                            <div class="item-sublinks" aria-label="Accès rapides TP Mathématiques">
+                                <a href="cours/tp%20math/tp-mathematiques.html#introduction">Cours Octave</a>
+                                <a href="cours/tp%20math/tp-mathematiques.html#exercices">TP corrigés</a>
+                                <a href="cours/tp%20math/tp-mathematiques.html#quiz">Quiz</a>
                             </div>
                         </div>
-
-                        <div class="card-footer">
-                            <span>Découvrir la matière</span>
-                            <span class="arrow" aria-hidden="true">↗</span>
+                        <div class="item-action">
+                            <span class="item-count sn-num">1 cours complet</span>
+                            <a href="cours/tp%20math/tp-mathematiques.html" class="sn-btn">Ouvrir le cours →</a>
                         </div>
-
-                    </a>
-
+                    </li>
 
                     <!-- 08 LANGAGES WEB -->
-                    <a href="cours/web/langages-web.html"
-                        class="subject-card"
+                    <li class="syllabus-item"
                         data-category="web"
-                        data-search="langages web html css javascript php sql base de donnees developpement">
-
-                        <div class="card-top">
-                            <div class="subject-icon icon-cyan" aria-hidden="true">&lt;/&gt;</div>
-                            <span class="subject-number">08</span>
+                        data-courses="web-gen,web-html,web-php,web-sql,web-js"
+                        data-search="langages web developpement internet http html css flexbox grid javascript dom php mysqli crud sql bases de donnees">
+                        <div class="item-index">
+                            <span class="item-num sn-num">08</span>
+                            <span class="item-domain">Développement Web</span>
                         </div>
-
-                        <div class="card-content">
-                            <span class="card-category">DÉVELOPPEMENT WEB</span>
-
-                            <h3>Langages Web</h3>
-
-                            <p>
-                                Maîtrise HTML, CSS, JavaScript, PHP et SQL
-                                pour concevoir des sites et applications web
-                                modernes et interactifs.
+                        <div class="item-body">
+                            <div class="item-title-row">
+                                <h3>
+                                    <a href="cours/web/langages-web.html" class="item-main-link">Langages &amp; Développement Web</a>
+                                </h3>
+                                <span class="item-status sn-num" data-subject-status hidden></span>
+                            </div>
+                            <p class="item-desc">
+                                Parcours complet en cinq chapitres : architecture du Web, HTML5 &amp; CSS3 avec atelier interactif, PHP &amp; MySQLi, bases de données SQL et JavaScript.
                             </p>
-
-                            <div class="card-tags">
-                                <span>5 chapitres</span>
-                                <span>Projets</span>
-                                <span>Quiz</span>
+                            <div class="item-chapters" aria-label="Chapitres de Langages Web">
+                                <a href="cours/web/les%20chapitres/Generalites-et-notions-de-base/Generalites-et-notions-de-base.htm" data-chapter-id="web-gen"><span>08.1</span> Généralités du Web</a>
+                                <a href="cours/web/les%20chapitres/html_css/html_css.html" data-chapter-id="web-html"><span>08.2</span> HTML &amp; CSS</a>
+                                <a href="cours/web/les%20chapitres/php/PHP.html" data-chapter-id="web-php"><span>08.3</span> PHP</a>
+                                <a href="cours/web/les%20chapitres/SQL-bases-de-donnees/SQL-bases-de-donnees.html" data-chapter-id="web-sql"><span>08.4</span> SQL &amp; BDD</a>
+                                <a href="cours/web/les%20chapitres/JavaScript/JavaScript.html" data-chapter-id="web-js"><span>08.5</span> JavaScript</a>
                             </div>
                         </div>
-
-                        <div class="card-footer">
-                            <span>Découvrir la matière</span>
-                            <span class="arrow" aria-hidden="true">↗</span>
+                        <div class="item-action">
+                            <span class="item-count sn-num">5 chapitres</span>
+                            <a href="cours/web/langages-web.html" class="sn-btn">Voir les 5 chapitres →</a>
                         </div>
-
-                    </a>
-
+                    </li>
 
                     <!-- 09 LANGAGE C -->
-                    <a href="cours/language c/langage-c.html"
-                        class="subject-card"
+                    <li class="syllabus-item"
                         data-category="programmation"
-                        data-search="langage c programmation pointeurs memoire tableaux structures fonctions">
-
-                        <div class="card-top">
-                            <div class="subject-icon icon-dark" aria-hidden="true">C</div>
-                            <span class="subject-number">09</span>
+                        data-courses="lang-c"
+                        data-search="langage c programmation compilation variables fonctions tableaux chaines pointeurs allocation dynamique memoire structures fichiers">
+                        <div class="item-index">
+                            <span class="item-num sn-num">09</span>
+                            <span class="item-domain">Programmation</span>
                         </div>
-
-                        <div class="card-content">
-                            <span class="card-category">PROGRAMMATION</span>
-
-                            <h3>Langage C</h3>
-
-                            <p>
-                                Maîtrise les variables, les fonctions,
-                                les tableaux, les pointeurs et la gestion
-                                de la mémoire en C.
+                        <div class="item-body">
+                            <div class="item-title-row">
+                                <h3>
+                                    <a href="cours/language%20c/langage-c.html" class="item-main-link">Langage C</a>
+                                </h3>
+                                <span class="item-status sn-num" data-subject-status hidden></span>
+                            </div>
+                            <p class="item-desc">
+                                Des premiers programmes compilés jusqu'aux pointeurs, à l'allocation dynamique de mémoire, aux structures de données et aux 30 exercices corrigés.
                             </p>
-
-                            <div class="card-tags">
-                                <span>Cours</span>
-                                <span>Exercices</span>
-                                <span>Quiz</span>
+                            <div class="item-sublinks" aria-label="Accès rapides Langage C">
+                                <a href="cours/language%20c/langage-c.html#cours">Cours</a>
+                                <a href="cours/language%20c/langage-c.html#exercices">Exercices corrigés</a>
+                                <a href="cours/language%20c/langage-c.html#quiz">Quiz</a>
                             </div>
                         </div>
-
-                        <div class="card-footer">
-                            <span>Découvrir la matière</span>
-                            <span class="arrow" aria-hidden="true">↗</span>
+                        <div class="item-action">
+                            <span class="item-count sn-num">1 cours complet</span>
+                            <a href="cours/language%20c/langage-c.html" class="sn-btn">Ouvrir le cours →</a>
                         </div>
+                    </li>
 
-                    </a>
+                </ol>
 
-                </div>
-
-
-                <!-- AUCUN RÉSULTAT -->
+                <!-- ÉTAT VIDE (explication claire + terme exact + action directe) -->
                 <div class="empty-state" id="emptyState" hidden>
-
-                    <span class="empty-icon" aria-hidden="true">⌕</span>
-
-                    <h3>Aucune matière trouvée</h3>
-
-                    <p>
-                        Aucun cours ne correspond à ta recherche. Essaie un autre mot-clé ou réinitialise les filtres.
+                    <h3 id="emptyTitle">Aucune matière ne correspond à ta recherche</h3>
+                    <p id="emptyBody">
+                        Vérifie l'orthographe du mot-clé ou réinitialise les filtres pour réafficher les 9 matières du programme.
                     </p>
-
-                    <button type="button" class="reset-button" id="resetFilters">
-                        Afficher toutes les matières
-                    </button>
-
+                    <div class="empty-actions">
+                        <button type="button" class="sn-btn sn-btn--primary" id="resetFilters">
+                            Afficher les 9 matières
+                        </button>
+                        <button type="button" class="sn-btn" data-sn-catalogue-open>
+                            Chercher dans les 17 chapitres
+                        </button>
+                    </div>
                 </div>
 
             </div>
-
         </section>
 
+        <!-- MÉTHODE DE RÉVISION & COLOPHON (grille asymétrique à rail gauche) -->
+        <section class="method-section" id="methode" aria-labelledby="methodTitle">
+            <div class="home-wrap method-grid">
 
-        <!-- À PROPOS -->
-        <section class="about-section" id="apropos">
-
-            <div class="container about-container">
-
-                <div class="about-decoration" aria-hidden="true">
-                    <div class="about-monogram">
-                        <span class="about-badge">L1 TI · CURSUS COMPLET</span>
-                        <span class="about-symbol">S<em>.</em></span>
-                    </div>
-                    <ul class="about-pillars">
-                        <li>
-                            <span class="pillar-num">01</span>
-                            <span>Cours structurés &amp; progressifs</span>
-                        </li>
-                        <li>
-                            <span class="pillar-num">02</span>
-                            <span>Exercices &amp; projets corrigés</span>
-                        </li>
-                        <li>
-                            <span class="pillar-num">03</span>
-                            <span>Quiz interactifs d'évaluation</span>
-                        </li>
-                    </ul>
+                <div class="method-rail">
+                    <p class="section-folio">MÉTHODE D'ÉTUDE</p>
+                    <h2 id="methodTitle">Comment travailler chaque chapitre</h2>
+                    <p class="method-aside">
+                        Chaque support suit le même découpage en trois temps pour passer de la compréhension du cours à la préparation d'examen.
+                    </p>
                 </div>
 
-                <div class="about-content">
-
-                    <span class="section-label">À PROPOS DE STUDYNET</span>
-
-                    <h2>
-                        Un seul espace.
-                        <span>Plusieurs possibilités.</span>
-                    </h2>
-
-                    <p>
-                        StudyNet est une plateforme éducative conçue
-                        pour faciliter l'apprentissage et accompagner
-                        les étudiants dans leur parcours universitaire.
-                    </p>
-
-                    <p>
-                        Retrouve tes cours, exercices, corrections, projets
-                        et quiz d'auto-évaluation réunis dans un environnement
-                        clair, rapide et accessible sur tous tes écrans.
-                    </p>
-
-                    <a href="#matieres" class="primary-button">
-                        <span>Explorer les matières</span>
-                        <span class="btn-arrow" aria-hidden="true">→</span>
-                    </a>
-
-                </div>
+                <ol class="method-steps">
+                    <li>
+                        <span class="method-num sn-num">01</span>
+                        <div>
+                            <h3>Lire le cours et tester les exemples</h3>
+                            <p>
+                                Les définitions, théorèmes, tableaux récapitulatifs et extraits de code commentés posent les bases sans jargon inutile. Chaque bloc de code se copie en un clic et les cours s'impriment proprement.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="method-num sn-num">02</span>
+                        <div>
+                            <h3>Chercher les exercices avant d'ouvrir le corrigé</h3>
+                            <p>
+                                Les solutions et projets d'application sont masqués par défaut pour te laisser raisonner au brouillon, puis dévoiler la démarche étape par étape.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="method-num sn-num">03</span>
+                        <div>
+                            <h3>Vérifier les acquis avec le quiz et cocher le chapitre</h3>
+                            <p>
+                                Chaque cours se termine par un quiz interactif tiré d'une banque de questions avec explication immédiate. Une fois maîtrisé, marque le support comme étudié pour suivre ton avancement.
+                            </p>
+                        </div>
+                    </li>
+                </ol>
 
             </div>
-
         </section>
 
     </main>
 
-
-    <!-- PIED DE PAGE -->
-    <footer class="footer">
-
-        <div class="container footer-container">
-
-            <a href="#accueil" class="logo footer-logo">
-                <span class="logo-icon" aria-hidden="true">S</span>
-                <span class="logo-wordmark">Study<span class="logo-highlight">Net</span></span>
+    <!-- PIED DE PAGE UNIFIÉ -->
+    <footer class="sn-footer">
+        <div class="sn-footer-inner">
+            <a href="#accueil" class="sn-brand">
+                <svg class="sn-brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                    <rect x="4" y="6" width="56" height="52" rx="8" fill="#231E19"/>
+                    <path d="M12 15.5C12 14.12 13.12 13 14.5 13H29.5C30.88 13 32 14.12 32 15.5V49.5C29.4 47.9 25.8 47.2 21.5 47.2H14.5C13.12 47.2 12 46.08 12 44.7V15.5Z" fill="#FAF7F1"/>
+                    <path d="M52 15.5C52 14.12 50.88 13 49.5 13H34.5C33.12 13 32 14.12 32 15.5V49.5C34.6 47.9 38.2 47.2 42.5 47.2H49.5C50.88 47.2 52 46.08 52 44.7V15.5Z" fill="#F2EDE3"/>
+                    <rect x="30.5" y="12" width="3" height="39" rx="1.5" fill="#A63E1C"/>
+                    <path d="M40 13H45V29L42.5 26.8L40 29V13Z" fill="#A63E1C"/>
+                </svg>
+                <span class="sn-brand-name">Study<em>Net</em></span>
             </a>
 
-            <p class="footer-credit">
-                Réalisé par <strong>Mohamed Ali Sablaoui</strong>
+            <p class="sn-footer-credit">
+                Réalisé par <strong>Mohamed Ali Sablaoui</strong> · Licence 1 TI
             </p>
 
-            <span class="copyright">
-                © <span id="currentYear">2026</span> StudyNet · Tous droits réservés.
-            </span>
-
+            <p class="sn-footer-copy">
+                © <span id="currentYear" data-sn-year>2026</span> StudyNet · Tous droits réservés.
+            </p>
         </div>
-
     </footer>
 
 </body>

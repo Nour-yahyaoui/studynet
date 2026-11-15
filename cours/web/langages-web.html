@@ -1,215 +1,284 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-sn-root="../..">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Espace d'apprentissage de développement web : cours, exercices et quiz HTML, CSS, PHP, SQL et JavaScript.">
-    <meta name="theme-color" content="#141312">
+    <meta name="description" content="Cours de développement web L1 TI : généralités du Web, HTML & CSS, PHP, bases de données SQL et JavaScript, avec projets corrigés et quiz.">
+    <meta name="theme-color" content="#FAF7F1">
 
-    <title>Développement Web | StudyNet</title>
+    <title>Langages &amp; Développement Web — StudyNet</title>
 
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23141312'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='system-ui,sans-serif' font-size='36' font-weight='800' fill='%23f57921'%3ES%3C/text%3E%3C/svg%3E">
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem("studynet:theme");
+                var theme = (saved === "dark" || saved === "light")
+                    ? saved
+                    : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+                document.documentElement.setAttribute("data-theme", theme);
+                var m = document.querySelector('meta[name="theme-color"]');
+                if (m) m.setAttribute("content", theme === "dark" ? "#151210" : "#FAF7F1");
+            } catch (_e) {}
+        })();
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg">
+    <link rel="stylesheet" href="../../shared/tokens.css">
+    <link rel="stylesheet" href="../../shared/studynet-ui.css">
+    <link rel="stylesheet" href="../../shared/hub.css">
     <link rel="stylesheet" href="style.css">
+    <script src="../../shared/studynet-ui.js" defer></script>
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <header>
-        <div class="container navbar">
+    <a href="#main-content" class="sn-skip-link">Aller au contenu principal</a>
 
-            <a href="../../index.html" class="logo" aria-label="StudyNet — Accueil">
-                <span class="logo-icon" aria-hidden="true">S</span>
-                Study<span class="logo-highlight">Net</span>
-            </a>
+    <header class="sn-topbar">
+        <div class="sn-topbar-inner">
+            <div class="sn-topbar-start">
+                <a href="../../index.html" class="sn-brand" aria-label="StudyNet — Accueil">
+                    <svg class="sn-brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                        <rect x="4" y="6" width="56" height="52" rx="8" fill="#231E19"/>
+                        <path d="M12 15.5C12 14.12 13.12 13 14.5 13H29.5C30.88 13 32 14.12 32 15.5V49.5C29.4 47.9 25.8 47.2 21.5 47.2H14.5C13.12 47.2 12 46.08 12 44.7V15.5Z" fill="#FAF7F1"/>
+                        <path d="M52 15.5C52 14.12 50.88 13 49.5 13H34.5C33.12 13 32 14.12 32 15.5V49.5C34.6 47.9 38.2 47.2 42.5 47.2H49.5C50.88 47.2 52 46.08 52 44.7V15.5Z" fill="#F2EDE3"/>
+                        <rect x="30.5" y="12" width="3" height="39" rx="1.5" fill="#A63E1C"/>
+                        <path d="M40 13H45V29L42.5 26.8L40 29V13Z" fill="#A63E1C"/>
+                    </svg>
+                    <span class="sn-brand-name">Study<em>Net</em></span>
+                </a>
 
-            <a href="../../index.html#matieres" class="back-link">
-                <span aria-hidden="true">←</span>
-                <span>Matières</span>
-            </a>
+                <nav class="sn-crumb" aria-label="Fil d'Ariane">
+                    <a href="../../index.html#matieres">Sommaire</a>
+                    <span class="sn-crumb-sep" aria-hidden="true">/</span>
+                    <span class="sn-crumb-current" aria-current="page">Langages Web</span>
+                </nav>
+            </div>
 
+            <div class="sn-topbar-end">
+                <a href="../../index.html#matieres" class="sn-icon-btn">
+                    <span aria-hidden="true">←</span>
+                    <span class="sn-btn-label">Matières</span>
+                </a>
+                <button type="button" class="sn-icon-btn" data-sn-catalogue-open aria-label="Ouvrir le catalogue des 17 cours (Ctrl+K)">
+                    <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <path d="m20 20-3.6-3.6"></path>
+                    </svg>
+                    <span class="sn-btn-label">Catalogue</span>
+                    <kbd class="sn-kbd">Ctrl K</kbd>
+                </button>
+                <button type="button" class="sn-icon-btn sn-theme-btn" data-sn-theme-toggle aria-label="Activer le thème sombre" aria-pressed="false">
+                    <svg class="sn-icon sn-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"></path>
+                    </svg>
+                    <svg class="sn-icon sn-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4.2"></circle>
+                        <path d="M12 2.5v2.2M12 19.3v2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"></path>
+                    </svg>
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- HERO -->
-    <main>
+    <main id="main-content">
 
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-
-                    <span class="hero-label">ESPACE D'APPRENTISSAGE · DÉVELOPPEMENT WEB</span>
-
-                    <h1>Développement <span>Web.</span></h1>
-
-                    <p>
-                        Explore les bases du développement web à travers cinq chapitres complets.
-                        Pour chaque chapitre, retrouve le cours, les exercices ou projets d'application
-                        et un quiz interactif pour vérifier tes connaissances.
-                    </p>
-
-                    <div class="hero-info">
-                        <div class="info-item">
-                            <strong>05</strong>
-                            <span>Chapitres</span>
-                        </div>
-                        <div class="info-item">
-                            <strong>03</strong>
-                            <span>Parties par chapitre</span>
-                        </div>
-                        <div class="info-item">
-                            <strong>L1 TI</strong>
-                            <span>Niveau universitaire</span>
-                        </div>
+        <section class="hub-hero">
+            <div class="hub-wrap">
+                <div class="hub-hero-inner">
+                    <div>
+                        <p class="hub-kicker">
+                            <a href="../../index.html#matieres">MATIÈRE 08</a> · DÉVELOPPEMENT WEB · L1 TI
+                        </p>
+                        <h1>Langages &amp; Développement Web</h1>
+                        <p class="hub-lead">
+                            Cinq chapitres complémentaires pour comprendre le fonctionnement du Web,
+                            structurer et mettre en page en HTML &amp; CSS, programmer côté serveur en PHP,
+                            interroger une base SQL et dynamiser l'interface en JavaScript.
+                        </p>
                     </div>
 
+                    <div class="hub-summary">
+                        <span class="hub-summary-label">Avancement local</span>
+                        <span class="hub-summary-value sn-num" data-sn-hub-progress>0 sur 5 chapitres étudiés</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- CHAPITRES -->
-        <section class="chapters">
-            <div class="container">
+        <section class="hub-chapters" aria-labelledby="chaptersTitle">
+            <div class="hub-wrap">
 
-                <div class="section-heading">
-                    <span class="section-label">PROGRAMME DE DÉVELOPPEMENT WEB</span>
-                    <h2>Explore les chapitres.</h2>
-                    <p>Ouvre un chapitre complet ou accède directement au cours, aux exercices ou au quiz.</p>
+                <div class="hub-section-head">
+                    <h2 id="chaptersTitle">Chapitres du programme</h2>
+                    <p>Ouvre un chapitre complet ou accède directement au cours, aux projets pratiques ou au quiz.</p>
                 </div>
 
-                <div class="chapters-grid">
+                <ol class="chapter-list">
 
-                    <!-- CHAPITRE 01 -->
-                    <article class="chapter-card">
-                        <div class="chapter-top">
-                            <div class="chapter-icon">WEB</div>
-                            <span class="chapter-number">01</span>
+                    <li class="chapter-row" data-sn-course-item="web-gen">
+                        <div class="chapter-index">
+                            <span class="chapter-num">01</span>
+                            <span class="chapter-code">HTTP · Web</span>
                         </div>
-                        <h3>Généralités et notions de base</h3>
-                        <p>
-                            Découvre les notions fondamentales du Web, son fonctionnement,
-                            les protocoles et l'architecture des applications web.
-                        </p>
-                        <a href="les chapitres/Generalites-et-notions-de-base/Generalites-et-notions-de-base.htm"
-                           class="chapter-main-link">
-                            <span>Ouvrir le chapitre complet</span>
-                            <span aria-hidden="true">↗</span>
-                        </a>
-                        <div class="chapter-parts">
-                            <a href="les chapitres/Generalites-et-notions-de-base/Generalites-et-notions-de-base.htm#cours"
-                               class="part-link">Cours</a>
-                            <a href="les chapitres/Generalites-et-notions-de-base/Generalites-et-notions-de-base.htm#exercices"
-                               class="part-link">Exercices</a>
-                            <a href="les chapitres/Generalites-et-notions-de-base/Generalites-et-notions-de-base.htm#quiz"
-                               class="part-link">Quiz</a>
+                        <div class="chapter-body">
+                            <div class="chapter-title-line">
+                                <h3>
+                                    <a href="les%20chapitres/Generalites-et-notions-de-base/Generalites-et-notions-de-base.htm">
+                                        Généralités et notions de base
+                                    </a>
+                                </h3>
+                                <span class="chapter-done-badge" data-sn-status hidden></span>
+                            </div>
+                            <p class="chapter-desc">
+                                Internet et le Web, modèle client-serveur, protocole HTTP/HTTPS, DNS, URL
+                                et architecture des applications web statiques et dynamiques.
+                            </p>
+                            <div class="chapter-parts">
+                                <a href="les%20chapitres/Generalites-et-notions-de-base/Generalites-et-notions-de-base.htm#cours" class="part-link">01 · Cours</a>
+                                <a href="les%20chapitres/Generalites-et-notions-de-base/Generalites-et-notions-de-base.htm#exercices" class="part-link">02 · Exercices</a>
+                                <a href="les%20chapitres/Generalites-et-notions-de-base/Generalites-et-notions-de-base.htm#quiz" class="part-link">03 · Quiz</a>
+                            </div>
                         </div>
-                    </article>
+                        <div class="chapter-cta">
+                            <a href="les%20chapitres/Generalites-et-notions-de-base/Generalites-et-notions-de-base.htm" class="sn-btn sn-btn--primary">
+                                Ouvrir le chapitre →
+                            </a>
+                        </div>
+                    </li>
 
-                    <!-- CHAPITRE 02 -->
-                    <article class="chapter-card">
-                        <div class="chapter-top">
-                            <div class="chapter-icon">&lt;/&gt;</div>
-                            <span class="chapter-number">02</span>
+                    <li class="chapter-row" data-sn-course-item="web-html">
+                        <div class="chapter-index">
+                            <span class="chapter-num">02</span>
+                            <span class="chapter-code">HTML5 · CSS3</span>
                         </div>
-                        <h3>HTML &amp; CSS</h3>
-                        <p>
-                            Apprends à structurer une page web avec les balises HTML5
-                            et à concevoir des interfaces modernes et responsives avec CSS3.
-                        </p>
-                        <a href="les chapitres/html_css/html_css.html"
-                           class="chapter-main-link">
-                            <span>Ouvrir le chapitre complet</span>
-                            <span aria-hidden="true">↗</span>
-                        </a>
-                        <div class="chapter-parts">
-                            <a href="les chapitres/html_css/html_css.html#course"
-                               class="part-link">Cours</a>
-                            <a href="les chapitres/html_css/html_css.html#projects"
-                               class="part-link">Projets</a>
-                            <a href="les chapitres/html_css/html_css.html#quiz"
-                               class="part-link">Quiz</a>
+                        <div class="chapter-body">
+                            <div class="chapter-title-line">
+                                <h3>
+                                    <a href="les%20chapitres/html_css/html_css.html">
+                                        HTML &amp; CSS
+                                    </a>
+                                </h3>
+                                <span class="chapter-done-badge" data-sn-status hidden></span>
+                            </div>
+                            <p class="chapter-desc">
+                                Structure sémantique HTML5, formulaires, tableaux, sélecteurs CSS, modèle de boîte,
+                                Flexbox, Grid et mise en page responsive, avec éditeurs interactifs intégrés.
+                            </p>
+                            <div class="chapter-parts">
+                                <a href="les%20chapitres/html_css/html_css.html#course" class="part-link">01 · Cours</a>
+                                <a href="les%20chapitres/html_css/html_css.html#projects" class="part-link">02 · Projets</a>
+                                <a href="les%20chapitres/html_css/html_css.html#quiz" class="part-link">03 · Quiz</a>
+                            </div>
                         </div>
-                    </article>
+                        <div class="chapter-cta">
+                            <a href="les%20chapitres/html_css/html_css.html" class="sn-btn sn-btn--primary">
+                                Ouvrir le chapitre →
+                            </a>
+                        </div>
+                    </li>
 
-                    <!-- CHAPITRE 03 -->
-                    <article class="chapter-card">
-                        <div class="chapter-top">
-                            <div class="chapter-icon">PHP</div>
-                            <span class="chapter-number">03</span>
+                    <li class="chapter-row" data-sn-course-item="web-php">
+                        <div class="chapter-index">
+                            <span class="chapter-num">03</span>
+                            <span class="chapter-code">PHP · MySQLi</span>
                         </div>
-                        <h3>PHP</h3>
-                        <p>
-                            Découvre la programmation côté serveur, les variables, les conditions,
-                            les boucles, les fonctions et le traitement de formulaires en PHP.
-                        </p>
-                        <a href="les chapitres/php/PHP.html"
-                           class="chapter-main-link">
-                            <span>Ouvrir le chapitre complet</span>
-                            <span aria-hidden="true">↗</span>
-                        </a>
-                        <div class="chapter-parts">
-                            <a href="les chapitres/php/PHP.html#course"
-                               class="part-link">Cours</a>
-                            <a href="les chapitres/php/PHP.html#projects"
-                               class="part-link">Projets</a>
-                            <a href="les chapitres/php/PHP.html#quiz"
-                               class="part-link">Quiz</a>
+                        <div class="chapter-body">
+                            <div class="chapter-title-line">
+                                <h3>
+                                    <a href="les%20chapitres/php/PHP.html">
+                                        PHP &amp; programmation serveur
+                                    </a>
+                                </h3>
+                                <span class="chapter-done-badge" data-sn-status hidden></span>
+                            </div>
+                            <p class="chapter-desc">
+                                Variables, tableaux, conditions, boucles, fonctions, traitement et validation
+                                de formulaires HTML, connexion MySQLi et opérations CRUD complètes.
+                            </p>
+                            <div class="chapter-parts">
+                                <a href="les%20chapitres/php/PHP.html#course" class="part-link">01 · Cours</a>
+                                <a href="les%20chapitres/php/PHP.html#projects" class="part-link">02 · Projets</a>
+                                <a href="les%20chapitres/php/PHP.html#quiz" class="part-link">03 · Quiz</a>
+                            </div>
                         </div>
-                    </article>
+                        <div class="chapter-cta">
+                            <a href="les%20chapitres/php/PHP.html" class="sn-btn sn-btn--primary">
+                                Ouvrir le chapitre →
+                            </a>
+                        </div>
+                    </li>
 
-                    <!-- CHAPITRE 04 -->
-                    <article class="chapter-card">
-                        <div class="chapter-top">
-                            <div class="chapter-icon">SQL</div>
-                            <span class="chapter-number">04</span>
+                    <li class="chapter-row" data-sn-course-item="web-sql">
+                        <div class="chapter-index">
+                            <span class="chapter-num">04</span>
+                            <span class="chapter-code">SQL · SGBD</span>
                         </div>
-                        <h3>SQL et bases de données</h3>
-                        <p>
-                            Apprends à modéliser les données relationnelles et à utiliser SQL
-                            pour créer, interroger, modifier et supprimer des enregistrements.
-                        </p>
-                        <a href="les chapitres/SQL-bases-de-donnees/SQL-bases-de-donnees.html"
-                           class="chapter-main-link">
-                            <span>Ouvrir le chapitre complet</span>
-                            <span aria-hidden="true">↗</span>
-                        </a>
-                        <div class="chapter-parts">
-                            <a href="les chapitres/SQL-bases-de-donnees/SQL-bases-de-donnees.html#cours"
-                               class="part-link">Cours</a>
-                            <a href="les chapitres/SQL-bases-de-donnees/SQL-bases-de-donnees.html#projets"
-                               class="part-link">Projets</a>
-                            <a href="les chapitres/SQL-bases-de-donnees/SQL-bases-de-donnees.html#quiz"
-                               class="part-link">Quiz</a>
+                        <div class="chapter-body">
+                            <div class="chapter-title-line">
+                                <h3>
+                                    <a href="les%20chapitres/SQL-bases-de-donnees/SQL-bases-de-donnees.html">
+                                        Bases de données &amp; SQL
+                                    </a>
+                                </h3>
+                                <span class="chapter-done-badge" data-sn-status hidden></span>
+                            </div>
+                            <p class="chapter-desc">
+                                Modèle relationnel, clés primaires et étrangères, création de tables, requêtes
+                                SELECT, jointures, agrégations, mises à jour et projets de bases de données.
+                            </p>
+                            <div class="chapter-parts">
+                                <a href="les%20chapitres/SQL-bases-de-donnees/SQL-bases-de-donnees.html#cours" class="part-link">01 · Cours</a>
+                                <a href="les%20chapitres/SQL-bases-de-donnees/SQL-bases-de-donnees.html#projets" class="part-link">02 · Projets</a>
+                                <a href="les%20chapitres/SQL-bases-de-donnees/SQL-bases-de-donnees.html#quiz" class="part-link">03 · Quiz</a>
+                            </div>
                         </div>
-                    </article>
+                        <div class="chapter-cta">
+                            <a href="les%20chapitres/SQL-bases-de-donnees/SQL-bases-de-donnees.html" class="sn-btn sn-btn--primary">
+                                Ouvrir le chapitre →
+                            </a>
+                        </div>
+                    </li>
 
-                    <!-- CHAPITRE 05 -->
-                    <article class="chapter-card">
-                        <div class="chapter-top">
-                            <div class="chapter-icon">JS</div>
-                            <span class="chapter-number">05</span>
+                    <li class="chapter-row" data-sn-course-item="web-js">
+                        <div class="chapter-index">
+                            <span class="chapter-num">05</span>
+                            <span class="chapter-code">JS · DOM</span>
                         </div>
-                        <h3>JavaScript</h3>
-                        <p>
-                            Rends tes pages web interactives avec les variables, les conditions,
-                            les fonctions, les événements et la manipulation du DOM.
-                        </p>
-                        <a href="les chapitres/JavaScript/JavaScript.html"
-                           class="chapter-main-link">
-                            <span>Ouvrir le chapitre complet</span>
-                            <span aria-hidden="true">↗</span>
-                        </a>
-                        <div class="chapter-parts">
-                            <a href="les chapitres/JavaScript/JavaScript.html#cours"
-                               class="part-link">Cours</a>
-                            <a href="les chapitres/JavaScript/JavaScript.html#projets"
-                               class="part-link">Projets</a>
-                            <a href="les chapitres/JavaScript/JavaScript.html#quiz"
-                               class="part-link">Quiz</a>
+                        <div class="chapter-body">
+                            <div class="chapter-title-line">
+                                <h3>
+                                    <a href="les%20chapitres/JavaScript/JavaScript.html">
+                                        JavaScript
+                                    </a>
+                                </h3>
+                                <span class="chapter-done-badge" data-sn-status hidden></span>
+                            </div>
+                            <p class="chapter-desc">
+                                Variables, fonctions, tableaux et objets, manipulation du DOM, gestion des événements,
+                                validation de formulaires, requêtes asynchrones et projets interactifs.
+                            </p>
+                            <div class="chapter-parts">
+                                <a href="les%20chapitres/JavaScript/JavaScript.html#cours" class="part-link">01 · Cours</a>
+                                <a href="les%20chapitres/JavaScript/JavaScript.html#projets" class="part-link">02 · Projets</a>
+                                <a href="les%20chapitres/JavaScript/JavaScript.html#quiz" class="part-link">03 · Quiz</a>
+                            </div>
                         </div>
-                    </article>
+                        <div class="chapter-cta">
+                            <a href="les%20chapitres/JavaScript/JavaScript.html" class="sn-btn sn-btn--primary">
+                                Ouvrir le chapitre →
+                            </a>
+                        </div>
+                    </li>
 
+                </ol>
+
+                <div class="hub-back-row">
+                    <a href="../../index.html#matieres" class="sn-btn">← Retour aux 9 matières</a>
+                    <a href="../language%20python/python.html" class="sn-btn sn-btn--ghost">
+                        Matière associée : Programmation Python →
+                    </a>
                 </div>
 
             </div>
@@ -217,15 +286,20 @@
 
     </main>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="container footer-content">
-            <a class="footer-logo" href="../../index.html">
-                <span class="logo-icon" aria-hidden="true">S</span>
-                Study<span class="logo-highlight">Net</span>
+    <footer class="sn-footer">
+        <div class="sn-footer-inner">
+            <a href="../../index.html" class="sn-brand">
+                <svg class="sn-brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                    <rect x="4" y="6" width="56" height="52" rx="8" fill="#231E19"/>
+                    <path d="M12 15.5C12 14.12 13.12 13 14.5 13H29.5C30.88 13 32 14.12 32 15.5V49.5C29.4 47.9 25.8 47.2 21.5 47.2H14.5C13.12 47.2 12 46.08 12 44.7V15.5Z" fill="#FAF7F1"/>
+                    <path d="M52 15.5C52 14.12 50.88 13 49.5 13H34.5C33.12 13 32 14.12 32 15.5V49.5C34.6 47.9 38.2 47.2 42.5 47.2H49.5C50.88 47.2 52 46.08 52 44.7V15.5Z" fill="#F2EDE3"/>
+                    <rect x="30.5" y="12" width="3" height="39" rx="1.5" fill="#A63E1C"/>
+                    <path d="M40 13H45V29L42.5 26.8L40 29V13Z" fill="#A63E1C"/>
+                </svg>
+                <span class="sn-brand-name">Study<em>Net</em></span>
             </a>
-            <p class="footer-credit">Réalisé par <strong>Mohamed Ali Sablaoui</strong></p>
-            <p class="copyright">© 2026 StudyNet · Tous droits réservés.</p>
+            <p class="sn-footer-credit">Réalisé par <strong>Mohamed Ali Sablaoui</strong> · Licence 1 TI</p>
+            <p class="sn-footer-copy">© <span data-sn-year>2026</span> StudyNet · Tous droits réservés.</p>
         </div>
     </footer>
 

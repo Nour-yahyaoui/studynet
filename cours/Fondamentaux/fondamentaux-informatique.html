@@ -1,202 +1,212 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-sn-root="../..">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cours de fondamentaux de l'informatique : architecture des ordinateurs et représentation de l'information en machine.">
-    <meta name="theme-color" content="#141312">
+    <meta name="description" content="Cours de fondamentaux de l'informatique (L1 TI) : architecture des ordinateurs et représentation binaire de l'information en machine, avec exercices corrigés et quiz.">
+    <meta name="theme-color" content="#FAF7F1">
 
-    <title>Fondamentaux de l'informatique | StudyNet</title>
+    <title>Fondamentaux de l'informatique — StudyNet</title>
 
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23141312'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='system-ui,sans-serif' font-size='36' font-weight='800' fill='%23f57921'%3ES%3C/text%3E%3C/svg%3E">
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem("studynet:theme");
+                var theme = (saved === "dark" || saved === "light")
+                    ? saved
+                    : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+                document.documentElement.setAttribute("data-theme", theme);
+                var m = document.querySelector('meta[name="theme-color"]');
+                if (m) m.setAttribute("content", theme === "dark" ? "#151210" : "#FAF7F1");
+            } catch (_e) {}
+        })();
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg">
+    <link rel="stylesheet" href="../../shared/tokens.css">
+    <link rel="stylesheet" href="../../shared/studynet-ui.css">
+    <link rel="stylesheet" href="../../shared/hub.css">
     <link rel="stylesheet" href="style.css">
+    <script src="../../shared/studynet-ui.js" defer></script>
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <header>
-        <div class="container navbar">
+    <a href="#main-content" class="sn-skip-link">Aller au contenu principal</a>
 
-            <a href="../../index.html" class="logo" aria-label="StudyNet — Accueil">
-                <span class="logo-icon" aria-hidden="true">S</span>
-                Study<span class="logo-highlight">Net</span>
-            </a>
+    <header class="sn-topbar">
+        <div class="sn-topbar-inner">
+            <div class="sn-topbar-start">
+                <a href="../../index.html" class="sn-brand" aria-label="StudyNet — Accueil">
+                    <svg class="sn-brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                        <rect x="4" y="6" width="56" height="52" rx="8" fill="#231E19"/>
+                        <path d="M12 15.5C12 14.12 13.12 13 14.5 13H29.5C30.88 13 32 14.12 32 15.5V49.5C29.4 47.9 25.8 47.2 21.5 47.2H14.5C13.12 47.2 12 46.08 12 44.7V15.5Z" fill="#FAF7F1"/>
+                        <path d="M52 15.5C52 14.12 50.88 13 49.5 13H34.5C33.12 13 32 14.12 32 15.5V49.5C34.6 47.9 38.2 47.2 42.5 47.2H49.5C50.88 47.2 52 46.08 52 44.7V15.5Z" fill="#F2EDE3"/>
+                        <rect x="30.5" y="12" width="3" height="39" rx="1.5" fill="#A63E1C"/>
+                        <path d="M40 13H45V29L42.5 26.8L40 29V13Z" fill="#A63E1C"/>
+                    </svg>
+                    <span class="sn-brand-name">Study<em>Net</em></span>
+                </a>
 
-            <a href="../../index.html#matieres" class="back-link">
-                <span aria-hidden="true">←</span>
-                <span>Matières</span>
-            </a>
+                <nav class="sn-crumb" aria-label="Fil d'Ariane">
+                    <a href="../../index.html#matieres">Sommaire</a>
+                    <span class="sn-crumb-sep" aria-hidden="true">/</span>
+                    <span class="sn-crumb-current" aria-current="page">Fondamentaux de l'informatique</span>
+                </nav>
+            </div>
 
+            <div class="sn-topbar-end">
+                <a href="../../index.html#matieres" class="sn-icon-btn">
+                    <span aria-hidden="true">←</span>
+                    <span class="sn-btn-label">Matières</span>
+                </a>
+                <button type="button" class="sn-icon-btn" data-sn-catalogue-open aria-label="Ouvrir le catalogue des 17 cours (Ctrl+K)">
+                    <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <path d="m20 20-3.6-3.6"></path>
+                    </svg>
+                    <span class="sn-btn-label">Catalogue</span>
+                    <kbd class="sn-kbd">Ctrl K</kbd>
+                </button>
+                <button type="button" class="sn-icon-btn sn-theme-btn" data-sn-theme-toggle aria-label="Activer le thème sombre" aria-pressed="false">
+                    <svg class="sn-icon sn-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"></path>
+                    </svg>
+                    <svg class="sn-icon sn-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4.2"></circle>
+                        <path d="M12 2.5v2.2M12 19.3v2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"></path>
+                    </svg>
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- HERO -->
-    <main>
+    <main id="main-content">
 
-        <section class="hero">
-
-            <div class="container">
-
-                <div class="hero-content">
-
-                    <span class="hero-label">
-                        ESPACE D'APPRENTISSAGE · L1 TI
-                    </span>
-
-                    <h1>
-                        Fondamentaux de <span>l'informatique.</span>
-                    </h1>
-
-                    <p>
-                        Découvre les notions fondamentales de l'informatique.
-                        Comprends le fonctionnement des ordinateurs,
-                        leur architecture, les composants matériels
-                        et la manière dont les informations sont
-                        représentées et traitées en machine.
-                    </p>
-
-                    <div class="hero-info">
-
-                        <div class="info-item">
-                            <strong>02</strong>
-                            <span>Chapitres</span>
-                        </div>
-
-                        <div class="info-item">
-                            <strong>03</strong>
-                            <span>Parties par chapitre</span>
-                        </div>
-
-                        <div class="info-item">
-                            <strong>L1 TI</strong>
-                            <span>Niveau universitaire</span>
-                        </div>
-
+        <section class="hub-hero">
+            <div class="hub-wrap">
+                <div class="hub-hero-inner">
+                    <div>
+                        <p class="hub-kicker">
+                            <a href="../../index.html#matieres">MATIÈRE 06</a> · SYSTÈMES &amp; ARCHITECTURE · L1 TI
+                        </p>
+                        <h1>Fondamentaux de l'informatique</h1>
+                        <p class="hub-lead">
+                            Comprends l'organisation matérielle d'un ordinateur — processeur, mémoire, bus,
+                            périphériques et cycle d'exécution — ainsi que la représentation binaire des nombres
+                            et de l'information en machine.
+                        </p>
                     </div>
 
+                    <div class="hub-summary">
+                        <span class="hub-summary-label">Avancement local</span>
+                        <span class="hub-summary-value sn-num" data-sn-hub-progress>0 sur 2 chapitres étudiés</span>
+                    </div>
                 </div>
-
             </div>
-
         </section>
 
-        <!-- CHAPITRES -->
-        <section class="chapters">
+        <section class="hub-chapters" aria-labelledby="chaptersTitle">
+            <div class="hub-wrap">
 
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <span class="section-label">
-                        PROGRAMME DE FONDAMENTAUX DE L'INFORMATIQUE
-                    </span>
-
-                    <h2>Explore les chapitres.</h2>
-
-                    <p>
-                        Accède au chapitre complet ou choisis directement
-                        le cours, les exercices ou le quiz.
-                    </p>
-
+                <div class="hub-section-head">
+                    <h2 id="chaptersTitle">Chapitres du programme</h2>
+                    <p>Ouvre un chapitre complet ou accède directement au cours, aux exercices corrigés ou au quiz.</p>
                 </div>
 
-                <div class="chapters-grid">
+                <ol class="chapter-list">
 
-                    <!-- CHAPITRE 01 -->
-                    <article class="chapter-card">
-
-                        <div class="chapter-top">
-                            <div class="chapter-icon">CPU</div>
-                            <span class="chapter-number">01</span>
+                    <li class="chapter-row" data-sn-course-item="fond-arch">
+                        <div class="chapter-index">
+                            <span class="chapter-num">01</span>
+                            <span class="chapter-code">Archi · CPU</span>
                         </div>
-
-                        <h3>Architecture des ordinateurs</h3>
-
-                        <p>
-                            Découvre l'organisation interne d'un ordinateur,
-                            les composants matériels, le processeur,
-                            la mémoire, les périphériques et le fonctionnement
-                            général d'un système informatique.
-                        </p>
-
-                        <a href="les chapitres/Architecture-des-ordinateurs-L1TI/Architecture-des-ordinateurs-L1TI.html"
-                           class="chapter-main-link">
-                            <span>Ouvrir le chapitre complet</span>
-                            <span aria-hidden="true">↗</span>
-                        </a>
-
-                        <div class="chapter-parts">
-
-                            <a href="les chapitres/Architecture-des-ordinateurs-L1TI/Architecture-des-ordinateurs-L1TI.html#cours"
-                               class="part-link">Cours</a>
-
-                            <a href="les chapitres/Architecture-des-ordinateurs-L1TI/Architecture-des-ordinateurs-L1TI.html#exercices"
-                               class="part-link">Exercices</a>
-
-                            <a href="les chapitres/Architecture-des-ordinateurs-L1TI/Architecture-des-ordinateurs-L1TI.html#quiz"
-                               class="part-link">Quiz</a>
-
+                        <div class="chapter-body">
+                            <div class="chapter-title-line">
+                                <h3>
+                                    <a href="les%20chapitres/Architecture-des-ordinateurs-L1TI/Architecture-des-ordinateurs-L1TI.html">
+                                        Architecture des ordinateurs
+                                    </a>
+                                </h3>
+                                <span class="chapter-done-badge" data-sn-status hidden></span>
+                            </div>
+                            <p class="chapter-desc">
+                                Modèle de Von Neumann, unité centrale, mémoires, bus système, périphériques
+                                et exécution détaillée d'un programme en langage machine (10 exercices corrigés, banque de 200 questions).
+                            </p>
+                            <div class="chapter-parts">
+                                <a href="les%20chapitres/Architecture-des-ordinateurs-L1TI/Architecture-des-ordinateurs-L1TI.html#cours" class="part-link">01 · Cours</a>
+                                <a href="les%20chapitres/Architecture-des-ordinateurs-L1TI/Architecture-des-ordinateurs-L1TI.html#exercices" class="part-link">02 · Exercices</a>
+                                <a href="les%20chapitres/Architecture-des-ordinateurs-L1TI/Architecture-des-ordinateurs-L1TI.html#quiz" class="part-link">03 · Quiz</a>
+                            </div>
                         </div>
-
-                    </article>
-
-                    <!-- CHAPITRE 02 -->
-                    <article class="chapter-card">
-
-                        <div class="chapter-top">
-                            <div class="chapter-icon">0101</div>
-                            <span class="chapter-number">02</span>
+                        <div class="chapter-cta">
+                            <a href="les%20chapitres/Architecture-des-ordinateurs-L1TI/Architecture-des-ordinateurs-L1TI.html" class="sn-btn sn-btn--primary">
+                                Ouvrir le chapitre →
+                            </a>
                         </div>
+                    </li>
 
-                        <h3>Représentation de l'information en machine</h3>
-
-                        <p>
-                            Apprends comment l'ordinateur représente
-                            les données en binaire, les systèmes
-                            de numération, les conversions, les nombres
-                            signés et les opérations arithmétiques.
-                        </p>
-
-                        <a href="les chapitres/Representation-information-machine-L1TI/Representation-information-machine-L1TI.html"
-                           class="chapter-main-link">
-                            <span>Ouvrir le chapitre complet</span>
-                            <span aria-hidden="true">↗</span>
-                        </a>
-
-                        <div class="chapter-parts">
-
-                            <a href="les chapitres/Representation-information-machine-L1TI/Representation-information-machine-L1TI.html#cours"
-                               class="part-link">Cours</a>
-
-                            <a href="les chapitres/Representation-information-machine-L1TI/Representation-information-machine-L1TI.html#exercices"
-                               class="part-link">Exercices</a>
-
-                            <a href="les chapitres/Representation-information-machine-L1TI/Representation-information-machine-L1TI.html#quiz"
-                               class="part-link">Quiz</a>
-
+                    <li class="chapter-row" data-sn-course-item="fond-rep">
+                        <div class="chapter-index">
+                            <span class="chapter-num">02</span>
+                            <span class="chapter-code">Binaire · IEEE 754</span>
                         </div>
+                        <div class="chapter-body">
+                            <div class="chapter-title-line">
+                                <h3>
+                                    <a href="les%20chapitres/Representation-information-machine-L1TI/Representation-information-machine-L1TI.html">
+                                        Représentation de l'information en machine
+                                    </a>
+                                </h3>
+                                <span class="chapter-done-badge" data-sn-status hidden></span>
+                            </div>
+                            <p class="chapter-desc">
+                                Systèmes de numération (bases 2, 8, 10, 16), conversions, entiers signés, complément à deux,
+                                virgule flottante IEEE&nbsp;754 et détection des débordements (12 exercices corrigés, banque de 200 questions).
+                            </p>
+                            <div class="chapter-parts">
+                                <a href="les%20chapitres/Representation-information-machine-L1TI/Representation-information-machine-L1TI.html#cours" class="part-link">01 · Cours</a>
+                                <a href="les%20chapitres/Representation-information-machine-L1TI/Representation-information-machine-L1TI.html#exercices" class="part-link">02 · Exercices</a>
+                                <a href="les%20chapitres/Representation-information-machine-L1TI/Representation-information-machine-L1TI.html#quiz" class="part-link">03 · Quiz</a>
+                            </div>
+                        </div>
+                        <div class="chapter-cta">
+                            <a href="les%20chapitres/Representation-information-machine-L1TI/Representation-information-machine-L1TI.html" class="sn-btn sn-btn--primary">
+                                Ouvrir le chapitre →
+                            </a>
+                        </div>
+                    </li>
 
-                    </article>
+                </ol>
 
+                <div class="hub-back-row">
+                    <a href="../../index.html#matieres" class="sn-btn">← Retour aux 9 matières</a>
+                    <a href="../systeme%20d%27exploitation/systemes-exploitation.html" class="sn-btn sn-btn--ghost">
+                        Matière associée : Systèmes d'exploitation &amp; Linux →
+                    </a>
                 </div>
 
             </div>
-
         </section>
 
     </main>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="container footer-content">
-            <a class="footer-logo" href="../../index.html">
-                <span class="logo-icon" aria-hidden="true">S</span>
-                Study<span class="logo-highlight">Net</span>
+    <footer class="sn-footer">
+        <div class="sn-footer-inner">
+            <a href="../../index.html" class="sn-brand">
+                <svg class="sn-brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                    <rect x="4" y="6" width="56" height="52" rx="8" fill="#231E19"/>
+                    <path d="M12 15.5C12 14.12 13.12 13 14.5 13H29.5C30.88 13 32 14.12 32 15.5V49.5C29.4 47.9 25.8 47.2 21.5 47.2H14.5C13.12 47.2 12 46.08 12 44.7V15.5Z" fill="#FAF7F1"/>
+                    <path d="M52 15.5C52 14.12 50.88 13 49.5 13H34.5C33.12 13 32 14.12 32 15.5V49.5C34.6 47.9 38.2 47.2 42.5 47.2H49.5C50.88 47.2 52 46.08 52 44.7V15.5Z" fill="#F2EDE3"/>
+                    <rect x="30.5" y="12" width="3" height="39" rx="1.5" fill="#A63E1C"/>
+                    <path d="M40 13H45V29L42.5 26.8L40 29V13Z" fill="#A63E1C"/>
+                </svg>
+                <span class="sn-brand-name">Study<em>Net</em></span>
             </a>
-            <p class="footer-credit">Réalisé par <strong>Mohamed Ali Sablaoui</strong></p>
-            <p class="copyright">© 2026 StudyNet · Tous droits réservés.</p>
+            <p class="sn-footer-credit">Réalisé par <strong>Mohamed Ali Sablaoui</strong> · Licence 1 TI</p>
+            <p class="sn-footer-copy">© <span data-sn-year>2026</span> StudyNet · Tous droits réservés.</p>
         </div>
     </footer>
 

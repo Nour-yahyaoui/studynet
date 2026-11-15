@@ -87,7 +87,7 @@ a{
 header{
     width:100%;
     max-width:100%;
-    background:rgba(255,255,255,.96);
+    background:var(--sn-surface);
     border-bottom:1px solid var(--line);
     position:sticky;
     top:0;
@@ -158,9 +158,7 @@ header{
     top:-180px;
     border:1px solid rgba(255,255,255,.12);
     border-radius:50%;
-    box-shadow:
-        0 0 0 45px rgba(255,255,255,.025),
-        0 0 0 90px rgba(255,255,255,.025);
+    box-shadow: none;
     pointer-events:none;
 }
 
@@ -254,7 +252,7 @@ header{
     max-height:calc(100vh - 110px);
     overflow-y:auto;
     overflow-x:hidden;
-    box-shadow:0 8px 28px rgba(0,0,0,.06);
+    box-shadow: none;
     scrollbar-width:thin;
     scrollbar-color:#ccc transparent;
 }
@@ -269,7 +267,7 @@ header{
     padding:8px 10px;
     margin:3px 0;
     font-size:13px;
-    color:#666;
+    color:var(--sn-mute);
     border-radius:7px;
     transition:.2s;
     overflow-wrap:anywhere;
@@ -277,7 +275,7 @@ header{
 
 .sidebar a:hover{
     background:var(--orange-light);
-    color:#b95017;
+    color:var(--sn-accent);
     font-weight:700;
 }
 
@@ -302,7 +300,7 @@ header{
 }
 
 .intro{
-    color:#686868;
+    color:var(--sn-mute);
     margin-bottom:30px;
     max-width:900px;
     overflow-wrap:anywhere;
@@ -321,12 +319,12 @@ header{
     padding:var(--card-padding);
     margin-bottom:25px;
     scroll-margin-top:95px;
-    box-shadow:0 5px 22px rgba(0,0,0,.035);
+    box-shadow: none;
     transition:box-shadow .2s,border-color .2s;
 }
 
 .module:hover{
-    box-shadow:0 8px 28px rgba(0,0,0,.06);
+    box-shadow: none;
 }
 
 .module-number{
@@ -356,7 +354,7 @@ header{
 }
 
 .module p{
-    color:#555;
+    color:var(--sn-ink-2);
     margin:10px 0 13px;
     overflow-wrap:anywhere;
 }
@@ -365,7 +363,7 @@ header{
 .module ol{
     padding-left:25px;
     margin:12px 0 17px;
-    color:#555;
+    color:var(--sn-ink-2);
 }
 
 .module li{
@@ -395,13 +393,13 @@ header{
 }
 
 .warning{
-    border-left:4px solid #c49a35;
-    background:#fff8df;
+    border-left:4px solid var(--sn-warning);
+    background:var(--sn-warning-soft);
 }
 
 .success{
     border-left:4px solid var(--green);
-    background:#eaf6ee;
+    background:var(--sn-success-soft);
 }
 
 /* =========================================================
@@ -414,7 +412,7 @@ pre{
     max-width:100%;
     min-width:0;
     background:var(--code);
-    color:#f5f5f5;
+    color:var(--sn-code-fg);
     padding:clamp(12px,2vw,20px);
     overflow-x:auto;
     overflow-y:hidden;
@@ -434,7 +432,7 @@ code{
 }
 
 .inline-code{
-    background:#eeeae4;
+    background:var(--sn-accent-soft);
     padding:3px 6px;
     border-radius:4px;
     font-family:Consolas,monospace;
@@ -462,16 +460,16 @@ th,td{
 }
 
 th{
-    background:#f2f0ec;
+    background:var(--sn-warning-soft);
     font-weight:750;
 }
 
 td{
-    color:#555;
+    color:var(--sn-ink-2);
 }
 
 tr:nth-child(even){
-    background:#faf9f7;
+    background:var(--sn-warning-soft);
 }
 
 /* Wrapper automatique pour les tableaux */
@@ -488,7 +486,7 @@ tr:nth-child(even){
 .formula{
     width:100%;
     max-width:100%;
-    background:#f4f1ec;
+    background:var(--sn-accent-soft);
     padding:17px;
     border-radius:8px;
     margin:15px 0;
@@ -515,11 +513,11 @@ tr:nth-child(even){
 }
 
 .exercise:hover{
-    box-shadow:0 6px 20px rgba(0,0,0,.05);
+    box-shadow: none;
 }
 
 .exercise-head{
-    background:#f4f1ec;
+    background:var(--sn-accent-soft);
     padding:15px 19px;
     display:flex;
     justify-content:space-between;
@@ -540,7 +538,7 @@ tr:nth-child(even){
     font-weight:800;
     padding:5px 11px;
     border-radius:20px;
-    background:#e9e3d9;
+    background:var(--sn-accent-soft);
     white-space:nowrap;
 }
 
@@ -552,7 +550,7 @@ tr:nth-child(even){
 .solution-btn{
     border:1px solid var(--orange);
     color:var(--orange);
-    background:white;
+    background:var(--sn-surface);
     padding:9px 15px;
     border-radius:6px;
     font-size:12px;
@@ -571,7 +569,7 @@ tr:nth-child(even){
     width:100%;
     min-width:0;
     padding:18px;
-    background:#f8f7f4;
+    background:var(--sn-warning-soft);
     border-top:1px solid var(--line);
 }
 
@@ -625,12 +623,12 @@ tr:nth-child(even){
 .quiz-box{
     width:100%;
     min-width:0;
-    background:white;
+    background:var(--sn-surface);
     color:var(--ink);
     padding:var(--card-padding);
     border-radius:var(--radius);
     margin-top:28px;
-    box-shadow:0 8px 28px rgba(0,0,0,.12);
+    box-shadow: none;
 }
 
 .quiz-config{
@@ -651,7 +649,7 @@ tr:nth-child(even){
     padding:11px 13px;
     border:1px solid var(--line);
     border-radius:7px;
-    background:white;
+    background:var(--sn-surface);
     min-width:min(150px,100%);
     color:var(--ink);
     max-width:100%;
@@ -668,12 +666,12 @@ tr:nth-child(even){
 }
 
 .primary-btn:hover{
-    background:#c95e24;
+    background:var(--sn-accent);
     transform:translateY(-1px);
 }
 
 .secondary-btn{
-    background:white;
+    background:var(--sn-surface);
     color:var(--ink);
     border:1px solid var(--line);
     border-radius:7px;
@@ -696,7 +694,7 @@ tr:nth-child(even){
 }
 
 .quiz-progress{
-    background:#e7e4df;
+    background:var(--sn-sunken);
     height:8px;
     border-radius:20px;
     margin:20px 0;
@@ -732,7 +730,7 @@ tr:nth-child(even){
 
 .option:hover{
     border-color:var(--orange);
-    background:#fffaf6;
+    background:var(--sn-accent-soft);
 }
 
 .option.selected{
@@ -741,12 +739,12 @@ tr:nth-child(even){
 }
 
 .option.correct{
-    background:#eaf5ee;
+    background:var(--sn-success-soft);
     border-color:var(--green);
 }
 
 .option.wrong{
-    background:#fff0ef;
+    background:var(--sn-danger-soft);
     border-color:var(--red);
 }
 
@@ -768,13 +766,13 @@ tr:nth-child(even){
 }
 
 .feedback.good{
-    background:#eaf5ee;
-    color:#205c3d;
+    background:var(--sn-success-soft);
+    color:var(--sn-success);
 }
 
 .feedback.bad{
-    background:#fff0ef;
-    color:#982e2a;
+    background:var(--sn-danger-soft);
+    color:var(--sn-danger);
 }
 
 .quiz-actions{
@@ -801,7 +799,7 @@ tr:nth-child(even){
 
 .review-item{
     width:100%;
-    background:#f7f5f1;
+    background:var(--sn-warning-soft);
     padding:17px;
     border-radius:8px;
     margin:13px 0;

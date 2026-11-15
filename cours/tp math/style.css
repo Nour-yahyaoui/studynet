@@ -64,7 +64,7 @@ h1,h2,h3,h4,p,li,td,th{
     position:fixed;
     inset:0 0 auto 0;
     z-index:1000;
-    background:rgba(255,255,255,.97);
+    background:var(--sn-surface);
     border-bottom:1px solid var(--line);
     display:flex;
     align-items:center;
@@ -110,7 +110,7 @@ h1,h2,h3,h4,p,li,td,th{
 
 .top-actions button{
     border:1px solid var(--line);
-    background:white;
+    background:var(--sn-surface);
     padding:8px 13px;
     border-radius:7px;
     font-size:13px;
@@ -160,7 +160,7 @@ h1,h2,h3,h4,p,li,td,th{
     gap:11px;
     padding:9px 11px;
     border-radius:7px;
-    color:#57534f;
+    color:var(--sn-ink-2);
     font-size:13px;
     margin-bottom:3px;
     transition:.2s;
@@ -289,7 +289,7 @@ h1,h2,h3,h4,p,li,td,th{
     border-radius:11px;
     padding:28px;
     margin-bottom:23px;
-    box-shadow:var(--shadow);
+    box-shadow: none;
     min-width:0;
     width:100%;
 }
@@ -362,29 +362,29 @@ strong{font-weight:700}
 }
 
 .info{
-    background:#f2f5f8;
+    background:var(--sn-sunken);
     border-color:#748da6;
 }
 
 .warning{
-    background:#fff6e9;
+    background:var(--sn-accent-soft);
     border-color:var(--orange);
 }
 
 .success{
-    background:#eef7f1;
+    background:var(--sn-success-soft);
     border-color:var(--green);
 }
 
 .danger{
-    background:#fff0ef;
+    background:var(--sn-danger-soft);
     border-color:var(--red);
 }
 
 /* FORMULAS */
 
 .formula{
-    background:#faf9f7;
+    background:var(--sn-warning-soft);
     border:1px solid var(--line);
     border-radius:8px;
     padding:16px;
@@ -420,17 +420,17 @@ th,td{
 }
 
 th{
-    background:#f7f5f1;
+    background:var(--sn-warning-soft);
     font-weight:700;
 }
 
-tr:hover td{background:#fffaf6}
+tr:hover td{background:var(--sn-accent-soft)}
 
 /* CODE */
 
 .codebox{
-    border:1px solid #343434;
-    background:#202020;
+    border:1px solid var(--sn-code-rule);
+    background:var(--sn-code-bg);
     border-radius:8px;
     margin:15px 0;
     overflow:hidden;
@@ -439,14 +439,14 @@ tr:hover td{background:#fffaf6}
 }
 
 .code-header{
-    background:#2c2c2c;
+    background:var(--sn-code-bg);
     padding:9px 14px;
     display:flex;
     justify-content:space-between;
     align-items:center;
     flex-wrap:wrap;
     gap:10px;
-    color:#d4d0ca;
+    color:var(--sn-code-fg);
     font-size:11px;
 }
 
@@ -473,10 +473,10 @@ tr:hover td{background:#fffaf6}
 }
 
 .code-output{
-    background:#f6f5f2;
+    background:var(--sn-warning-soft);
     padding:12px 16px;
     font-size:12px;
-    border-top:1px solid #454545;
+    border-top:1px solid var(--sn-code-rule);
     color:#25845b;
     overflow-wrap:anywhere;
 }
@@ -521,7 +521,7 @@ tr:hover td{background:#fffaf6}
 .tag{
     display:inline-block;
     background:var(--orange-light);
-    color:#b85b25;
+    color:var(--sn-accent);
     font-size:10px;
     font-weight:bold;
     padding:3px 8px;
@@ -540,7 +540,7 @@ details{
 
 summary{
     padding:13px 16px;
-    background:#faf9f7;
+    background:var(--sn-warning-soft);
     font-weight:bold;
     font-size:13px;
     cursor:pointer;
@@ -572,10 +572,10 @@ details[open] summary{
     color:white;
 }
 
-.btn-primary:hover{background:#d76625}
+.btn-primary:hover{background:var(--sn-accent)}
 
 .btn-secondary{
-    background:#f0eeea;
+    background:var(--sn-sunken);
     color:var(--ink);
     border:1px solid var(--line);
 }
@@ -599,7 +599,7 @@ details[open] summary{
     border-radius:9px;
     padding:20px;
     margin:18px 0;
-    background:#fff;
+    background:var(--sn-surface);
     min-width:0;
 }
 
@@ -618,18 +618,18 @@ details[open] summary{
 }
 
 .level{
-    background:#f2f1ee;
+    background:var(--sn-sunken);
     padding:4px 9px;
     border-radius:4px;
-    color:#716c66;
+    color:var(--sn-mute);
     font-size:10px;
     font-weight:bold;
 }
 
 .solution{
     display:none;
-    background:#f5faf6;
-    border:1px solid #d6e9dc;
+    background:var(--sn-success-soft);
+    border:1px solid var(--sn-success-rule);
     border-radius:7px;
     padding:15px;
     margin-top:15px;
@@ -642,8 +642,8 @@ details[open] summary{
 .solution pre{
     overflow-x:auto;
     max-width:100%;
-    background:#202020;
-    color:#eee;
+    background:var(--sn-code-bg);
+    color:var(--sn-code-fg);
     padding:13px;
     border-radius:6px;
     margin:10px 0;
@@ -657,7 +657,7 @@ details[open] summary{
     background:var(--white);
     border:1px solid var(--line);
     border-radius:11px;
-    box-shadow:var(--shadow);
+    box-shadow: none;
     overflow:hidden;
     margin-bottom:23px;
     min-width:0;
@@ -694,7 +694,7 @@ details[open] summary{
     padding:12px;
     border:1px solid var(--line);
     border-radius:7px;
-    background:white;
+    background:var(--sn-surface);
     margin-bottom:18px;
 }
 
@@ -706,7 +706,7 @@ details[open] summary{
 
 .quiz-progress{
     height:7px;
-    background:#eeeae5;
+    background:var(--sn-accent-soft);
     border-radius:10px;
     overflow:hidden;
     margin:13px 0 22px;
@@ -757,7 +757,7 @@ details[open] summary{
 
 .answer:hover{
     border-color:var(--orange);
-    background:#fffaf6;
+    background:var(--sn-accent-soft);
 }
 
 .answer.selected{
@@ -767,12 +767,12 @@ details[open] summary{
 
 .answer.correct{
     border:2px solid var(--green);
-    background:#edf7f0;
+    background:var(--sn-success-soft);
 }
 
 .answer.wrong{
     border:2px solid var(--red);
-    background:#fff0ef;
+    background:var(--sn-danger-soft);
 }
 
 .answer input{
@@ -791,8 +791,8 @@ details[open] summary{
 }
 
 .feedback.show{display:block}
-.feedback.good{background:#edf7f0;color:#176b43}
-.feedback.bad{background:#fff0ef;color:#a52d2d}
+.feedback.good{background:var(--sn-success-soft);color:var(--sn-success)}
+.feedback.bad{background:var(--sn-danger-soft);color:var(--sn-danger)}
 
 .quiz-controls{
     display:flex;
@@ -835,7 +835,7 @@ details[open] summary{
 /* CHARTS */
 
 .chart-container{
-    background:#fff;
+    background:var(--sn-surface);
     border:1px solid var(--line);
     padding:15px;
     border-radius:8px;
@@ -884,7 +884,7 @@ details[open] summary{
     border:0;
     border-radius:50%;
     font-size:19px;
-    box-shadow:var(--shadow);
+    box-shadow: none;
     z-index:500;
 }
 
@@ -1147,7 +1147,7 @@ details[open] summary{
     }
 
     .section-card{
-        box-shadow:none;
+        box-shadow: none;
         break-inside:avoid;
     }
 
@@ -1156,7 +1156,7 @@ details[open] summary{
     }
 
     body{
-        background:white;
+        background:var(--sn-surface);
         min-width:0;
     }
 }
