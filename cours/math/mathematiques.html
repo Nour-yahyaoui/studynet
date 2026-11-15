@@ -1,17 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta name="description" content="Cours de mathématiques : limites, continuité, dérivabilité, fonctions sinusoïdales et développements limités.">
+    <meta name="theme-color" content="#141312">
 
     <title>Mathématiques | StudyNet</title>
-  <link rel="stylesheet" href="style.css">
 
-    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23141312'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='system-ui,sans-serif' font-size='36' font-weight='800' fill='%23f57921'%3ES%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -20,11 +19,15 @@
     <header>
         <div class="container navbar">
 
-            <a href="#" class="logo">
-                Study<span>Net</span>
+            <a href="../../index.html" class="logo" aria-label="StudyNet — Accueil">
+                <span class="logo-icon" aria-hidden="true">S</span>
+                Study<span class="logo-highlight">Net</span>
             </a>
 
-            
+            <a href="../../index.html#matieres" class="back-link">
+                <span aria-hidden="true">←</span>
+                <span>Matières</span>
+            </a>
 
         </div>
     </header>
@@ -39,7 +42,7 @@
                 <div class="hero-content">
 
                     <span class="hero-label">
-                        ESPACE D'APPRENTISSAGE
+                        ESPACE D'APPRENTISSAGE · L1 TI
                     </span>
 
                     <h1>
@@ -50,7 +53,7 @@
                         Découvre les principaux chapitres du cours
                         de mathématiques. Apprends les notions
                         fondamentales, comprends les méthodes
-                        et entraîne-toi avec des exercices.
+                        et entraîne-toi avec des exercices corrigés et des quiz.
                     </p>
 
                     <div class="hero-info">
@@ -63,6 +66,11 @@
                         <div class="info-item">
                             <strong>03</strong>
                             <span>Parties par chapitre</span>
+                        </div>
+
+                        <div class="info-item">
+                            <strong>L1 TI</strong>
+                            <span>Niveau universitaire</span>
                         </div>
 
                     </div>
@@ -107,14 +115,14 @@
 
                         <p>
                             Étudie les limites des fonctions,
-                            les opérations sur les limites
-                            et les propriétés de continuité.
+                            les opérations sur les limites, les formes
+                            indéterminées et les propriétés de continuité.
                         </p>
 
                         <a href="les chapitres/limites-continuite/limites-continuite.html"
                            class="chapter-main-link">
                             <span>Ouvrir le chapitre complet</span>
-                            <span>↗</span>
+                            <span aria-hidden="true">↗</span>
                         </a>
 
                         <div class="chapter-parts">
@@ -142,14 +150,14 @@
 
                         <p>
                             Découvre la dérivée d'une fonction,
-                            les règles de dérivation et leurs
-                            applications.
+                            les règles de dérivation, les théorèmes
+                            fondamentaux et leurs applications.
                         </p>
 
                         <a href="les chapitres/derivabilite/derivabilite.html"
                            class="chapter-main-link">
                             <span>Ouvrir le chapitre complet</span>
-                            <span>↗</span>
+                            <span aria-hidden="true">↗</span>
                         </a>
 
                         <div class="chapter-parts">
@@ -184,7 +192,7 @@
                         <a href="les chapitres/fonctions-sinusoidales/fonctions-sinusoidales.html"
                            class="chapter-main-link">
                             <span>Ouvrir le chapitre complet</span>
-                            <span>↗</span>
+                            <span aria-hidden="true">↗</span>
                         </a>
 
                         <div class="chapter-parts">
@@ -212,14 +220,14 @@
 
                         <p>
                             Apprends les formules usuelles,
-                            les développements limités et
-                            leurs applications dans les limites.
+                            les opérations sur les développements limités
+                            et leurs applications aux calculs de limites.
                         </p>
 
                         <a href="les chapitres/developpements-limites/developpements-limites.html"
                            class="chapter-main-link">
                             <span>Ouvrir le chapitre complet</span>
-                            <span>↗</span>
+                            <span aria-hidden="true">↗</span>
                         </a>
 
                         <div class="chapter-parts">
@@ -244,8 +252,16 @@
     </main>
 
     <!-- FOOTER -->
-    <footer><div class="container footer-content"><a class="logo" href="#">Study<span>Net</span></a><h4><u> Réalisé par le développeur Mohamed Ali Sablaoui.</u></h4><p>© 2026 StudyNet. Tous droits réservés.</p></div></footer>
-
+    <footer>
+        <div class="container footer-content">
+            <a class="footer-logo" href="../../index.html">
+                <span class="logo-icon" aria-hidden="true">S</span>
+                Study<span class="logo-highlight">Net</span>
+            </a>
+            <p class="footer-credit">Réalisé par <strong>Mohamed Ali Sablaoui</strong></p>
+            <p class="copyright">© 2026 StudyNet · Tous droits réservés.</p>
+        </div>
+    </footer>
 
 </body>
 </html>

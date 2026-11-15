@@ -1,17 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta name="description" content="Cours de fondamentaux de l'informatique : architecture des ordinateurs et représentation de l'information en machine.">
+    <meta name="theme-color" content="#141312">
 
     <title>Fondamentaux de l'informatique | StudyNet</title>
-  <link rel="stylesheet" href="style.css">
 
-   
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23141312'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='system-ui,sans-serif' font-size='36' font-weight='800' fill='%23f57921'%3ES%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -20,11 +19,15 @@
     <header>
         <div class="container navbar">
 
-            <div class="logo">
-                Study<span>Net</span>
-            </div>
+            <a href="../../index.html" class="logo" aria-label="StudyNet — Accueil">
+                <span class="logo-icon" aria-hidden="true">S</span>
+                Study<span class="logo-highlight">Net</span>
+            </a>
 
-            
+            <a href="../../index.html#matieres" class="back-link">
+                <span aria-hidden="true">←</span>
+                <span>Matières</span>
+            </a>
 
         </div>
     </header>
@@ -121,7 +124,7 @@
                         <a href="les chapitres/Architecture-des-ordinateurs-L1TI/Architecture-des-ordinateurs-L1TI.html"
                            class="chapter-main-link">
                             <span>Ouvrir le chapitre complet</span>
-                            <span>↗</span>
+                            <span aria-hidden="true">↗</span>
                         </a>
 
                         <div class="chapter-parts">
@@ -143,7 +146,7 @@
                     <article class="chapter-card">
 
                         <div class="chapter-top">
-                            <div class="chapter-icon">1001</div>
+                            <div class="chapter-icon">0101</div>
                             <span class="chapter-number">02</span>
                         </div>
 
@@ -159,7 +162,7 @@
                         <a href="les chapitres/Representation-information-machine-L1TI/Representation-information-machine-L1TI.html"
                            class="chapter-main-link">
                             <span>Ouvrir le chapitre complet</span>
-                            <span>↗</span>
+                            <span aria-hidden="true">↗</span>
                         </a>
 
                         <div class="chapter-parts">
@@ -186,10 +189,16 @@
     </main>
 
     <!-- FOOTER -->
-
-        <footer><div class="container footer-contentr"><a class="footer-logo" href="#">Study<span>Net</span></a><h4><u> Réalisé par le développeur Mohamed Ali Sablaoui.</u></h4><p>© 2026 StudyNet. Tous droits réservés.</p></div></footer>
-
-
+    <footer>
+        <div class="container footer-content">
+            <a class="footer-logo" href="../../index.html">
+                <span class="logo-icon" aria-hidden="true">S</span>
+                Study<span class="logo-highlight">Net</span>
+            </a>
+            <p class="footer-credit">Réalisé par <strong>Mohamed Ali Sablaoui</strong></p>
+            <p class="copyright">© 2026 StudyNet · Tous droits réservés.</p>
+        </div>
+    </footer>
 
 </body>
 </html>

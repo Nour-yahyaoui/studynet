@@ -8,13 +8,15 @@
 <title>Électricité & Arduino Uno | StudyNet</title>
   <link rel="stylesheet" href="style.css">
 
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23141312'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='system-ui,sans-serif' font-size='36' font-weight='800' fill='%23f57921'%3ES%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../../shared/studynet-ui.css">
 </head>
 <body>
 <header>
   <div class="wrap nav">
-    <a class="logo" href="#">Study<span>Net</span></a>
+    <a class="logo sn-brand-link" href="../../index.html">Study<span>Net</span></a>
     <nav class="navlinks" aria-label="Navigation principale">
-      <a href="#cours">Cours</a><a href="#exercices">Exercices & projets</a><a href="#quiz">Quiz</a>
+      <a class="sn-back" href="../../index.html#matieres"><span class="sn-back-arrow" aria-hidden="true">←</span><span>Matières</span></a><a href="#cours">Cours</a><a href="#exercices">Exercices & projets</a><a href="#quiz">Quiz</a>
     </nav>
   </div>
 </header>
@@ -833,7 +835,7 @@ void loop() {
 </section>
 </main>
 
-<footer><div class="wrap footer"><a class="logo" href="#">Study<span>Net</span></a><h4><u> Réalisé par le développeur Mohamed Ali Sablaoui.</u></h4><p>© 2026 StudyNet. Tous droits réservés.</p></div></footer>
+<footer class="sn-footer"><div class="sn-footer-inner"><a class="sn-footer-logo" href="../../index.html"><span class="sn-footer-badge" aria-hidden="true">S</span><span>Study<span class="sn-footer-accent">Net</span></span></a><p class="sn-footer-credit">Réalisé par <strong>Mohamed Ali Sablaoui</strong></p><p class="sn-footer-copy">© 2026 StudyNet · Tous droits réservés.</p></div></footer>
 
 <div class="modal" id="quizModal" role="dialog" aria-modal="true" aria-labelledby="quizTitle">
  <div class="quiz-window">
@@ -870,5 +872,6 @@ void loop() {
     <script src="script.js" defer></script>
 
 
+  <script src="../../shared/studynet-ui.js" defer></script>
 </body>
 </html>
