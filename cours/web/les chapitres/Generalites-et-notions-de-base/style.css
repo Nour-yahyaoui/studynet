@@ -31,7 +31,7 @@ table{width:100%;border-collapse:collapse;margin:14px 0;background:#fff}th,td{bo
 .exercise-actions{display:flex;gap:9px;flex-wrap:wrap}
 .quiz-intro{background:#292820;color:white;border-radius:10px;padding:24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .quiz-intro p{color:#ded9cf;margin:4px 0}.quiz-intro select{padding:10px;border-radius:5px;border:1px solid #aaa;font:inherit}
-.modal{display:none;position:fixed;inset:0;z-index:10;background:#171713d9;align-items:flex-start;justify-content:center;padding:3vh 14px;overflow:auto}
+.modal{display:none;position:fixed;inset:0;z-index:600;background:#171713d9;align-items:flex-start;justify-content:center;padding:3vh 14px;overflow:auto}
 .modal.open{display:flex}.dialog{background:var(--paper);width:min(820px,100%);max-height:94vh;overflow:auto;border-radius:10px;border-top:7px solid var(--orange);padding:22px;box-shadow:0 25px 90px #0005}
 .qtop{display:flex;align-items:center;justify-content:space-between;gap:12px}.qtop h2{margin:0;font:700 1.4rem Georgia,serif}
 .progress{height:8px;background:#e5ddcf;border-radius:10px;overflow:hidden;margin:18px 0}.progress span{height:100%;display:block;background:var(--orange);width:0;transition:width .2s}
@@ -39,5 +39,5 @@ table{width:100%;border-collapse:collapse;margin:14px 0;background:#fff}th,td{bo
 .feedback{display:none;padding:14px;border-radius:6px;margin:12px 0}.feedback.show{display:block}.feedback.good{background:#e7f4ea;color:#205b39}.feedback.bad{background:#fff0ee;color:#842d28}
 #result{display:none}.score{font:700 3rem Georgia,serif;color:var(--orange);margin:8px 0}.review-item{border-top:1px solid var(--line);padding:13px 0}.review-item p{margin:5px 0}
 footer{border-top:1px solid var(--line);padding:24px;text-align:center;color:var(--muted);font-size:.9rem}
-@media(max-width:650px){header.hero{padding:30px 20px}.topline{align-items:flex-start;flex-direction:column;margin-bottom:22px}nav.tabs{position:static}.lesson summary{padding:14px}.lesson-body{padding:0 15px 16px}.dialog{padding:16px}}
+@media(max-width:650px){header.hero{padding:30px 20px}.topline{margin-bottom:22px}nav.tabs{position:static}.lesson summary{padding:14px}.lesson-body{padding:0 15px 16px}.dialog{padding:16px}}
  
