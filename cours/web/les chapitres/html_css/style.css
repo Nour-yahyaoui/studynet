@@ -274,9 +274,9 @@ main {
     width:100%;
     min-height:200px;
     resize:vertical;
-    background:#1e1e1e;
-    color:#e8e8e8;
-    border:1px solid #454545;
+    background:var(--sn-code-bg);
+    color:var(--sn-code-fg);
+    border:1px solid var(--sn-code-rule);
     border-radius:7px;
     padding:14px;
     font-family:Consolas,Monaco,monospace;
@@ -344,7 +344,7 @@ main {
 .property-table {
     width:100%;
     border-collapse:collapse;
-    background:white;
+    background:var(--sn-surface);
     font-size:13px;
 }
 
@@ -392,7 +392,7 @@ main {
     border:1px solid var(--line);
     border-radius:8px;
     margin-bottom:20px;
-    background:white;
+    background:var(--sn-surface);
 }
 
 .project-grid {
@@ -402,7 +402,7 @@ main {
 }
 
 .project-card {
-    background:white;
+    background:var(--sn-surface);
     border:1px solid var(--line);
     border-radius:var(--radius);
     overflow:hidden;
@@ -410,7 +410,7 @@ main {
 
 .project-image {
     height:230px;
-    background:#e8e5df;
+    background:var(--sn-sunken);
     overflow:hidden;
 }
 
@@ -442,8 +442,8 @@ main {
 
 .project-correction {
     display:none;
-    background:#f0f8f2;
-    border-top:1px solid #c8e2d0;
+    background:var(--sn-success-soft);
+    border-top:1px solid var(--sn-success-rule);
     padding:20px;
 }
 
@@ -462,7 +462,7 @@ main {
 }
 
 .quiz-config {
-    background:white;
+    background:var(--sn-surface);
     padding:25px;
     border:1px solid var(--line);
     border-radius:var(--radius);
@@ -481,12 +481,12 @@ main {
     padding:12px;
     border:1px solid var(--line);
     border-radius:7px;
-    background:white;
+    background:var(--sn-surface);
 }
 
 .quiz-window {
     display:none;
-    background:white;
+    background:var(--sn-surface);
     border:1px solid var(--line);
     border-radius:var(--radius);
     margin-top:25px;
@@ -554,7 +554,7 @@ main {
     display:flex;
     gap:12px;
     align-items:flex-start;
-    background:white;
+    background:var(--sn-surface);
 }
 
 .answer-option:hover {
@@ -568,12 +568,12 @@ main {
 
 .answer-option.correct {
     border-color:var(--green);
-    background:#eaf6ee;
+    background:var(--sn-success-soft);
 }
 
 .answer-option.incorrect {
     border-color:var(--red);
-    background:#fff0ef;
+    background:var(--sn-danger-soft);
 }
 
 .answer-option input {
@@ -593,12 +593,12 @@ main {
 }
 
 .feedback.correct {
-    background:#eaf6ee;
+    background:var(--sn-success-soft);
     color:var(--green);
 }
 
 .feedback.incorrect {
-    background:#fff0ef;
+    background:var(--sn-danger-soft);
     color:var(--red);
 }
 
@@ -613,7 +613,7 @@ main {
 
 .quiz-result {
     display:none;
-    background:white;
+    background:var(--sn-surface);
     border:1px solid var(--line);
     border-radius:var(--radius);
     padding:25px;

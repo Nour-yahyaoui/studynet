@@ -1,29 +1,83 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-sn-root="../../../.." data-sn-course="web-html" data-sn-parent="../../langages-web.html" data-sn-parent-label="Langages Web">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HTML & CSS — Atelier de développement web</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chapitre 2 de développement web L1 TI : structure HTML5, formulaires, sélecteurs CSS3, modèle de boîte, Flexbox, Grid, éditeurs interactifs, projets et quiz.">
+  <meta name="theme-color" content="#FAF7F1">
+  <title>HTML & CSS — StudyNet</title>
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("studynet:theme");
+        var theme = (saved === "dark" || saved === "light")
+          ? saved
+          : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute("content", theme === "dark" ? "#151210" : "#FAF7F1");
+      } catch (_e) {}
+    })();
+  </script>
+  <link rel="icon" type="image/svg+xml" href="../../../../shared/favicon.svg">
+  <link rel="stylesheet" href="../../../../shared/tokens.css">
   <link rel="stylesheet" href="style.css">
-
+  <link rel="stylesheet" href="../../../../shared/studynet-ui.css">
 </head>
-
-<body>
-
-<header class="topbar">
-    <div class="logo">Study<span>Net</span> </div>
-    <p>HTML & CSS — Atelier d'apprentissage et de pratique</p>
+<body class="sn-course-page">
+<a href="#main-content" class="sn-skip-link">Aller au contenu principal</a>
+<header class="sn-topbar">
+  <div class="sn-topbar-inner">
+    <div class="sn-topbar-start">
+      <a href="../../../../index.html" class="sn-brand" aria-label="StudyNet — Accueil">
+        <svg class="sn-brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="4" y="6" width="56" height="52" rx="8" fill="#231E19"/><path d="M12 15.5C12 14.12 13.12 13 14.5 13H29.5C30.88 13 32 14.12 32 15.5V49.5C29.4 47.9 25.8 47.2 21.5 47.2H14.5C13.12 47.2 12 46.08 12 44.7V15.5Z" fill="#FAF7F1"/><path d="M52 15.5C52 14.12 50.88 13 49.5 13H34.5C33.12 13 32 14.12 32 15.5V49.5C34.6 47.9 38.2 47.2 42.5 47.2H49.5C50.88 47.2 52 46.08 52 44.7V15.5Z" fill="#F2EDE3"/><rect x="30.5" y="12" width="3" height="39" rx="1.5" fill="#A63E1C"/><path d="M40 13H45V29L42.5 26.8L40 29V13Z" fill="#A63E1C"/></svg>
+        <span class="sn-brand-name">Study<em>Net</em></span>
+      </a>
+      <nav class="sn-crumb" aria-label="Fil d'Ariane">
+        <a href="../../../../index.html#matieres">Sommaire</a>
+        <span class="sn-crumb-sep" aria-hidden="true">/</span>
+        <a href="../../langages-web.html">Langages Web</a><span class="sn-crumb-sep" aria-hidden="true">/</span>
+        <span class="sn-crumb-current" aria-current="page">HTML &amp; CSS</span>
+      </nav>
+    </div>
+    <nav class="sn-topnav" aria-label="Parties du cours"><a href="#course">Cours</a><a href="#projects">Projets</a><a href="#quiz">Quiz</a></nav>
+    <div class="sn-topbar-end">
+      <button type="button" class="sn-icon-btn sn-toc-trigger" data-sn-toc-open aria-expanded="false" aria-label="Ouvrir le sommaire du cours">
+        <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h12"></path></svg>
+        <span class="sn-btn-label">Plan</span>
+      </button>
+      
+      <button type="button" class="sn-icon-btn" data-sn-catalogue-open aria-label="Ouvrir le catalogue des 17 cours (Ctrl+K)">
+        <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.6-3.6"></path></svg>
+        <span class="sn-btn-label">Cours</span>
+        <kbd class="sn-kbd">Ctrl K</kbd>
+      </button>
+      <button type="button" class="sn-icon-btn sn-print-btn" data-sn-print aria-label="Imprimer ce cours" title="Imprimer ce cours">
+        <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V4h12v5"></path><rect x="4" y="9" width="16" height="8" rx="1.5"></rect><path d="M7 14h10v6H7z"></path></svg>
+      </button>
+      <button type="button" class="sn-icon-btn sn-theme-btn" data-sn-theme-toggle aria-label="Activer le thème sombre" aria-pressed="false">
+        <svg class="sn-icon sn-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"></path></svg>
+        <svg class="sn-icon sn-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.5v2.2M12 19.3v2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"></path></svg>
+      </button>
+    </div>
+  </div>
 </header>
 
-<section class="hero">
-    <div class="hero-label">Formation développement web</div>
-    <h1>Apprendre à construire<br>le <span>Web.</span></h1>
-    <p>
-        Un espace pédagogique pour comprendre HTML et CSS,
-        pratiquer avec des exemples interactifs, réaliser des projets
-        et évaluer ses connaissances.
-    </p>
+
+<section class="sn-course-hero">
+  <div class="sn-course-hero-inner">
+    <p class="sn-course-kicker"><a href="../../langages-web.html" class="sn-hero-parent">Langages Web</a> · CHAPITRE 08.2 · LANGAGES WEB</p>
+    <h1>HTML &amp; CSS — Construire pour le Web</h1>
+    <p class="sn-course-lead">Structurer des pages sémantiques en HTML5, maîtriser la mise en page en CSS3, tester chaque notion dans les éditeurs interactifs intégrés et réaliser des projets complets.</p>
+    <div class="sn-course-meta" aria-label="Repères du cours"><span>HTML5 &amp; CSS3</span><span>Éditeurs interactifs</span><span>Projets guidés</span><span>Quiz d'évaluation</span></div>
+    <div class="sn-course-actions">
+      <a href="#course" class="sn-btn sn-btn--primary">Commencer le cours ↓</a>
+      <button type="button" class="sn-btn sn-mark-btn" data-sn-mark aria-pressed="false">
+        <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+        <span data-sn-mark-label>Marquer comme étudié</span>
+      </button>
+    </div>
+  </div>
 </section>
 
 <div class="progress-container">
@@ -42,7 +96,7 @@
     </button>
 </nav>
 
-<main>
+<main id="main-content">
 
 <!-- =====================================================
      PARTIE 1 : COURS
@@ -122,9 +176,9 @@
                     </ul>
 
                     <div class="example-box">
-                        <label>EXEMPLE INTERACTIF</label>
+                        <label for="liveCodeEditor1">EXEMPLE INTERACTIF</label>
 
-                        <textarea class="code-editor" spellcheck="false"><!DOCTYPE html>
+                        <textarea id="liveCodeEditor1" class="code-editor" spellcheck="false"><!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -241,9 +295,9 @@
                     </table>
 
                     <div class="example-box">
-                        <label>EXEMPLE</label>
+                        <label for="liveCodeEditor2">EXEMPLE</label>
 
-                        <textarea class="code-editor" spellcheck="false"><h1>HTML</h1>
+                        <textarea id="liveCodeEditor2" class="code-editor" spellcheck="false"><h1>HTML</h1>
 <h2>Les paragraphes</h2>
 <p>Apprendre HTML.</p>
 <p>Apprendre CSS.</p>
@@ -298,9 +352,9 @@
                     </table>
 
                     <div class="example-box">
-                        <label>EXEMPLE</label>
+                        <label for="liveCodeEditor3">EXEMPLE</label>
 
-                        <textarea class="code-editor" spellcheck="false"><p><strong>Important</strong></p>
+                        <textarea id="liveCodeEditor3" class="code-editor" spellcheck="false"><p><strong>Important</strong></p>
 <p><em>Texte en italique</em></p>
 <p><mark>Texte surligné</mark></p>
 <p>H<sub>2</sub>O</p>
@@ -354,9 +408,9 @@
                     </table>
 
                     <div class="example-box">
-                        <label>EXEMPLE</label>
+                        <label for="liveCodeEditor4">EXEMPLE</label>
 
-                        <textarea class="code-editor" spellcheck="false"><a href="https://www.google.com"
+                        <textarea id="liveCodeEditor4" class="code-editor" spellcheck="false"><a href="https://www.google.com"
    target="_blank"
    rel="noopener">
   Visiter Google
@@ -403,10 +457,10 @@
                     </table>
 
                     <div class="example-box">
-                        <label>EXEMPLE</label>
+                        <label for="liveCodeEditor5">EXEMPLE</label>
 
-                        <textarea class="code-editor" spellcheck="false"><img
-  src="https://picsum.photos/300/180"
+                        <textarea id="liveCodeEditor5" class="code-editor" spellcheck="false"><img
+  src="../../../../shared/demo-paysage.svg"
   alt="Une image"
   width="300"
   height="180"
@@ -464,9 +518,9 @@
                     </ul>
 
                     <div class="example-box">
-                        <label>EXEMPLE</label>
+                        <label for="liveCodeEditor6">EXEMPLE</label>
 
-                        <textarea class="code-editor" spellcheck="false"><h2>Langages</h2>
+                        <textarea id="liveCodeEditor6" class="code-editor" spellcheck="false"><h2>Langages</h2>
 
 <ul>
   <li>HTML</li>
@@ -536,9 +590,9 @@
                     </ul>
 
                     <div class="example-box">
-                        <label>EXEMPLE</label>
+                        <label for="liveCodeEditor7">EXEMPLE</label>
 
-                        <textarea class="code-editor" spellcheck="false"><table border="1">
+                        <textarea id="liveCodeEditor7" class="code-editor" spellcheck="false"><table border="1">
   <caption>Liste des étudiants</caption>
   <thead>
     <tr>
@@ -623,9 +677,9 @@
                     </ul>
 
                     <div class="example-box">
-                        <label>EXEMPLE</label>
+                        <label for="liveCodeEditor8">EXEMPLE</label>
 
-                        <textarea class="code-editor" spellcheck="false"><form>
+                        <textarea id="liveCodeEditor8" class="code-editor" spellcheck="false"><form>
   <fieldset>
     <legend>Inscription</legend>
 
@@ -704,9 +758,9 @@
                     </table>
 
                     <div class="example-box">
-                        <label>EXEMPLE</label>
+                        <label for="liveCodeEditor9">EXEMPLE</label>
 
-                        <textarea class="code-editor" spellcheck="false"><header>
+                        <textarea id="liveCodeEditor9" class="code-editor" spellcheck="false"><header>
   <h1>Mon site</h1>
 </header>
 
@@ -783,9 +837,9 @@
                     </p>
 
                     <div class="example-box">
-                        <label>EXEMPLE</label>
+                        <label for="liveCodeEditor10">EXEMPLE</label>
 
-                        <textarea class="code-editor" spellcheck="false"><video controls width="320"
+                        <textarea id="liveCodeEditor10" class="code-editor" spellcheck="false"><video controls width="320"
        poster="image.jpg">
   <source src="video.mp4" type="video/mp4">
   Votre navigateur ne supporte pas la vidéo.
@@ -934,9 +988,9 @@
                     </table>
 
                     <div class="example-box">
-                        <label>EXEMPLE INTERACTIF</label>
+                        <label for="liveCodeEditor11">EXEMPLE INTERACTIF</label>
 
-                        <textarea class="code-editor" spellcheck="false"><h1 class="titre">HTML & CSS</h1>
+                        <textarea id="liveCodeEditor11" class="code-editor" spellcheck="false"><h1 class="titre">HTML & CSS</h1>
 <p class="texte">
   Apprendre le développement web.
 </p>
@@ -1005,9 +1059,9 @@
                     </table>
 
                     <div class="example-box">
-                        <label>EXEMPLE</label>
+                        <label for="liveCodeEditor12">EXEMPLE</label>
 
-                        <textarea class="code-editor" spellcheck="false"><div class="carte">
+                        <textarea id="liveCodeEditor12" class="code-editor" spellcheck="false"><div class="carte">
   <h2>Bienvenue</h2>
   <p>Ma carte personnalisée.</p>
 </div>
@@ -1080,9 +1134,9 @@
                     </p>
 
                     <div class="example-box">
-                        <label>EXEMPLE</label>
+                        <label for="liveCodeEditor13">EXEMPLE</label>
 
-                        <textarea class="code-editor" spellcheck="false"><div class="box">
+                        <textarea id="liveCodeEditor13" class="code-editor" spellcheck="false"><div class="box">
   Ma boîte CSS
 </div>
 
@@ -1147,9 +1201,9 @@
                     </table>
 
                     <div class="example-box">
-                        <label>EXEMPLE</label>
+                        <label for="liveCodeEditor14">EXEMPLE</label>
 
-                        <textarea class="code-editor" spellcheck="false"><div class="carte">
+                        <textarea id="liveCodeEditor14" class="code-editor" spellcheck="false"><div class="carte">
   <h2>Ma carte</h2>
   <p>Une carte élégante.</p>
 </div>
@@ -1213,9 +1267,9 @@
                     </table>
 
                     <div class="example-box">
-                        <label>EXEMPLE</label>
+                        <label for="liveCodeEditor15">EXEMPLE</label>
 
-                        <textarea class="code-editor" spellcheck="false"><ul class="liste">
+                        <textarea id="liveCodeEditor15" class="code-editor" spellcheck="false"><ul class="liste">
   <li>HTML</li>
   <li>CSS</li>
 </ul>
@@ -1302,9 +1356,9 @@
                     </table>
 
                     <div class="example-box">
-                        <label>EXEMPLE</label>
+                        <label for="liveCodeEditor16">EXEMPLE</label>
 
-                        <textarea class="code-editor" spellcheck="false"><div class="conteneur">
+                        <textarea id="liveCodeEditor16" class="code-editor" spellcheck="false"><div class="conteneur">
   <div>HTML</div>
   <div>CSS</div>
   <div>Web</div>
@@ -1381,9 +1435,9 @@
                     </table>
 
                     <div class="example-box">
-                        <label>EXEMPLE</label>
+                        <label for="liveCodeEditor17">EXEMPLE</label>
 
-                        <textarea class="code-editor" spellcheck="false"><div class="grille">
+                        <textarea id="liveCodeEditor17" class="code-editor" spellcheck="false"><div class="grille">
   <div>HTML</div>
   <div>CSS</div>
   <div>Web</div>
@@ -1484,9 +1538,9 @@
                 <div class="lesson-content">
 
                     <div class="example-box">
-                        <label>EXEMPLE INTERACTIF</label>
+                        <label for="liveCodeEditor18">EXEMPLE INTERACTIF</label>
 
-                        <textarea class="code-editor" spellcheck="false"><h1>Les sélecteurs CSS</h1>
+                        <textarea id="liveCodeEditor18" class="code-editor" spellcheck="false"><h1>Les sélecteurs CSS</h1>
 
 <p class="important">Paragraphe important.</p>
 <p>Paragraphe normal.</p>
@@ -1586,9 +1640,9 @@ p:first-child {
                 <div class="lesson-content">
 
                     <div class="example-box">
-                        <label>EXEMPLE</label>
+                        <label for="liveCodeEditor19">EXEMPLE</label>
 
-                        <textarea class="code-editor" spellcheck="false"><div class="parent">
+                        <textarea id="liveCodeEditor19" class="code-editor" spellcheck="false"><div class="parent">
   <div class="enfant">
     Position absolute
   </div>
@@ -1678,9 +1732,9 @@ p:first-child {
                 <div class="lesson-content">
 
                     <div class="example-box">
-                        <label>EXEMPLE</label>
+                        <label for="liveCodeEditor20">EXEMPLE</label>
 
-                        <textarea class="code-editor" spellcheck="false"><div class="grille">
+                        <textarea id="liveCodeEditor20" class="code-editor" spellcheck="false"><div class="grille">
   <div>Carte 1</div>
   <div>Carte 2</div>
   <div>Carte 3</div>
@@ -1748,7 +1802,7 @@ p:first-child {
             <div class="project-image">
                 <iframe title="Maquette projet portfolio"
                 sandbox="allow-scripts"
-                srcdoc="<!DOCTYPE html><html><body style='font-family:Arial;margin:0;background:#f5f5f5'><header style='background:#242321;color:white;padding:20px;text-align:center'><h2>MON PORTFOLIO</h2><p>Développeur web</p></header><nav style='padding:15px;text-align:center;background:#fff'><a href='#'>Accueil</a> | <a href='#'>Projets</a> | <a href='#'>Contact</a></nav><main style='padding:20px;text-align:center'><h2>Bienvenue</h2><p>Je suis étudiant en développement web.</p><div style='background:#e87532;color:white;padding:20px;margin:10px'>Mon projet HTML</div><div style='background:#ddd;padding:20px;margin:10px'>Mon projet CSS</div></main><footer style='background:#242321;color:white;padding:15px;text-align:center'>© 2026</footer></body></html>"></iframe>
+                srcdoc="<!DOCTYPE html><html><body style='font-family:Arial;margin:0;background:#f5f5f5'><header style='background:#242321;color:white;padding:20px;text-align:center'><h2>MON PORTFOLIO</h2><p>Développeur web</p></header><nav style='padding:15px;text-align:center;background:#fff'><a href='#accueil'>Accueil</a> | <a href='#projets'>Projets</a> | <a href='#contact'>Contact</a></nav><main style='padding:20px;text-align:center'><h2>Bienvenue</h2><p>Je suis étudiant en développement web.</p><div style='background:#e87532;color:white;padding:20px;margin:10px'>Mon projet HTML</div><div style='background:#ddd;padding:20px;margin:10px'>Mon projet CSS</div></main><footer style='background:#242321;color:white;padding:15px;text-align:center'>© 2026</footer></body></html>"></iframe>
             </div>
 
             <div class="project-details">
@@ -2421,11 +2475,19 @@ article {
 
 </main>
 
-<footer><div class="container footer-content"><div class="logo" href="../index.html">Study<span>Net</span></div><h4><u> Réalisé par le développeur Mohamed Ali Sablaoui.</u></h4><p>© 2026 StudyNet. Tous droits réservés.</p></div></footer>
+<footer class="sn-footer">
+  <div class="sn-footer-inner">
+    <a href="../../../../index.html" class="sn-brand">
+      <svg class="sn-brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="4" y="6" width="56" height="52" rx="8" fill="#231E19"/><path d="M12 15.5C12 14.12 13.12 13 14.5 13H29.5C30.88 13 32 14.12 32 15.5V49.5C29.4 47.9 25.8 47.2 21.5 47.2H14.5C13.12 47.2 12 46.08 12 44.7V15.5Z" fill="#FAF7F1"/><path d="M52 15.5C52 14.12 50.88 13 49.5 13H34.5C33.12 13 32 14.12 32 15.5V49.5C34.6 47.9 38.2 47.2 42.5 47.2H49.5C50.88 47.2 52 46.08 52 44.7V15.5Z" fill="#F2EDE3"/><rect x="30.5" y="12" width="3" height="39" rx="1.5" fill="#A63E1C"/><path d="M40 13H45V29L42.5 26.8L40 29V13Z" fill="#A63E1C"/></svg>
+      <span class="sn-brand-name">Study<em>Net</em></span>
+    </a>
+    <p class="sn-footer-credit">Réalisé par <strong>Mohamed Ali Sablaoui</strong> · Licence 1 TI</p>
+    <p class="sn-footer-copy">© <span data-sn-year>2026</span> StudyNet · Tous droits réservés.</p>
+  </div>
+</footer>
 
 
     <script src="script.js" defer></script>
-
-
+  <script src="../../../../shared/studynet-ui.js" defer></script>
 </body>
 </html>

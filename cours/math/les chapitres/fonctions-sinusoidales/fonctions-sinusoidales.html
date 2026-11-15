@@ -1,47 +1,81 @@
-
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-sn-root="../../../.." data-sn-course="math-tri" data-sn-parent="../../mathematiques.html" data-sn-parent-label="Mathématiques">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Cours complet sur les fonctions trigonométriques et leurs fonctions réciproques : sinus, cosinus, tangente, cotangente, arcsinus, arccosinus, arctangente, limites, dérivées et exercices corrigés.">
-<title>Fonctions trigonométriques | StudyNet</title>
-
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chapitre 3 de mathématiques L1 TI : fonctions sinus, cosinus, tangente et fonctions réciproques (arcsin, arccos, arctan), courbes, dérivées, exercices corrigés et quiz.">
+  <meta name="theme-color" content="#FAF7F1">
+  <title>Fonctions trigonométriques — StudyNet</title>
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("studynet:theme");
+        var theme = (saved === "dark" || saved === "light")
+          ? saved
+          : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute("content", theme === "dark" ? "#151210" : "#FAF7F1");
+      } catch (_e) {}
+    })();
+  </script>
+  <link rel="icon" type="image/svg+xml" href="../../../../shared/favicon.svg">
+  <link rel="stylesheet" href="../../../../shared/tokens.css">
   <link rel="stylesheet" href="style.css">
-
-
-
-
+  <link rel="stylesheet" href="../../../../shared/studynet-ui.css">
 </head>
-
-<body>
-
-<header>
-  <nav class="nav">
-    <a href="#" class="logo">Study<span>Net.</span></a>
-    <div class="navlinks" id="navlinks">
-      <a href="#cours">Cours complet</a>
-      <a href="#exercices">Exercices</a>
-      <a href="#quiz">Quiz</a>
+<body class="sn-course-page">
+<a href="#main-content" class="sn-skip-link">Aller au contenu principal</a>
+<header class="sn-topbar">
+  <div class="sn-topbar-inner">
+    <div class="sn-topbar-start">
+      <a href="../../../../index.html" class="sn-brand" aria-label="StudyNet — Accueil">
+        <svg class="sn-brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="4" y="6" width="56" height="52" rx="8" fill="#231E19"/><path d="M12 15.5C12 14.12 13.12 13 14.5 13H29.5C30.88 13 32 14.12 32 15.5V49.5C29.4 47.9 25.8 47.2 21.5 47.2H14.5C13.12 47.2 12 46.08 12 44.7V15.5Z" fill="#FAF7F1"/><path d="M52 15.5C52 14.12 50.88 13 49.5 13H34.5C33.12 13 32 14.12 32 15.5V49.5C34.6 47.9 38.2 47.2 42.5 47.2H49.5C50.88 47.2 52 46.08 52 44.7V15.5Z" fill="#F2EDE3"/><rect x="30.5" y="12" width="3" height="39" rx="1.5" fill="#A63E1C"/><path d="M40 13H45V29L42.5 26.8L40 29V13Z" fill="#A63E1C"/></svg>
+        <span class="sn-brand-name">Study<em>Net</em></span>
+      </a>
+      <nav class="sn-crumb" aria-label="Fil d'Ariane">
+        <a href="../../../../index.html#matieres">Sommaire</a>
+        <span class="sn-crumb-sep" aria-hidden="true">/</span>
+        <a href="../../mathematiques.html">Mathématiques</a><span class="sn-crumb-sep" aria-hidden="true">/</span>
+        <span class="sn-crumb-current" aria-current="page">Fonctions trigonométriques</span>
+      </nav>
     </div>
-    <button class="menu-btn" onclick="document.getElementById('navlinks').classList.toggle('open')">Menu ☰</button>
-  </nav>
+    <nav class="sn-topnav" aria-label="Parties du cours"><a href="#cours">Cours</a><a href="#exercices">Exercices</a><a href="#quiz">Quiz</a></nav>
+    <div class="sn-topbar-end">
+      <button type="button" class="sn-icon-btn sn-toc-trigger" data-sn-toc-open aria-expanded="false" aria-label="Ouvrir le sommaire du cours">
+        <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h12"></path></svg>
+        <span class="sn-btn-label">Plan</span>
+      </button>
+      
+      <button type="button" class="sn-icon-btn" data-sn-catalogue-open aria-label="Ouvrir le catalogue des 17 cours (Ctrl+K)">
+        <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.6-3.6"></path></svg>
+        <span class="sn-btn-label">Cours</span>
+        <kbd class="sn-kbd">Ctrl K</kbd>
+      </button>
+      <button type="button" class="sn-icon-btn sn-print-btn" data-sn-print aria-label="Imprimer ce cours" title="Imprimer ce cours">
+        <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V4h12v5"></path><rect x="4" y="9" width="16" height="8" rx="1.5"></rect><path d="M7 14h10v6H7z"></path></svg>
+      </button>
+      <button type="button" class="sn-icon-btn sn-theme-btn" data-sn-theme-toggle aria-label="Activer le thème sombre" aria-pressed="false">
+        <svg class="sn-icon sn-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"></path></svg>
+        <svg class="sn-icon sn-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.5v2.2M12 19.3v2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"></path></svg>
+      </button>
+    </div>
+  </div>
 </header>
 
-<section class="hero">
-  <div class="hero-inner">
-    <div class="eyebrow">Mathématiques · Chapitre 03</div>
-    <h1>Les fonctions <span>trigonométriques</span></h1>
-    <p>
-      Un cours approfondi pour comprendre, calculer et étudier les fonctions
-      trigonométriques et leurs fonctions réciproques : domaines, images,
-      courbes, limites, asymptotes, dérivées, variations et fonctions inverses.
-    </p>
-    <div class="hero-meta">
-      <span>📚 Cours détaillé</span>
-      <span>✏️ Exercices corrigés</span>
-      <span>🎯 200 questions de quiz</span>
+
+<section class="sn-course-hero">
+  <div class="sn-course-hero-inner">
+    <p class="sn-course-kicker"><a href="../../mathematiques.html" class="sn-hero-parent">Mathématiques</a> · CHAPITRE 02.3 · MATHÉMATIQUES</p>
+    <h1>Les fonctions trigonométriques</h1>
+    <p class="sn-course-lead">Étude complète des fonctions circulaires et de leurs réciproques : domaines de définition, parité, périodicité, limites, dérivées, courbes représentatives et exercices corrigés.</p>
+    <div class="sn-course-meta" aria-label="Repères du cours"><span>Analyse L1 TI</span><span>Fonctions &amp; réciproques</span><span>Exercices corrigés</span><span>Banque de 200 questions</span></div>
+    <div class="sn-course-actions">
+      <a href="#cours" class="sn-btn sn-btn--primary">Commencer le cours ↓</a>
+      <button type="button" class="sn-btn sn-mark-btn" data-sn-mark aria-pressed="false">
+        <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+        <span data-sn-mark-label>Marquer comme étudié</span>
+      </button>
     </div>
   </div>
 </section>
@@ -61,7 +95,7 @@
   </a>
 </div>
 
-<main class="container">
+<main id="main-content" class="container">
 
 <!-- =====================================================
      PARTIE 1 : COURS
@@ -1566,11 +1600,20 @@
 
 </main>
 
-<footer><div class="container footer-content"><a class="logo" href="#">Study<span>Net</span></a><h4><u> Réalisé par le développeur Mohamed Ali Sablaoui.</u></h4><p>© 2026 StudyNet. Tous droits réservés.</p></div></footer>
+<footer class="sn-footer">
+  <div class="sn-footer-inner">
+    <a href="../../../../index.html" class="sn-brand">
+      <svg class="sn-brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="4" y="6" width="56" height="52" rx="8" fill="#231E19"/><path d="M12 15.5C12 14.12 13.12 13 14.5 13H29.5C30.88 13 32 14.12 32 15.5V49.5C29.4 47.9 25.8 47.2 21.5 47.2H14.5C13.12 47.2 12 46.08 12 44.7V15.5Z" fill="#FAF7F1"/><path d="M52 15.5C52 14.12 50.88 13 49.5 13H34.5C33.12 13 32 14.12 32 15.5V49.5C34.6 47.9 38.2 47.2 42.5 47.2H49.5C50.88 47.2 52 46.08 52 44.7V15.5Z" fill="#F2EDE3"/><rect x="30.5" y="12" width="3" height="39" rx="1.5" fill="#A63E1C"/><path d="M40 13H45V29L42.5 26.8L40 29V13Z" fill="#A63E1C"/></svg>
+      <span class="sn-brand-name">Study<em>Net</em></span>
+    </a>
+    <p class="sn-footer-credit">Réalisé par <strong>Mohamed Ali Sablaoui</strong> · Licence 1 TI</p>
+    <p class="sn-footer-copy">© <span data-sn-year>2026</span> StudyNet · Tous droits réservés.</p>
+  </div>
+</footer>
 
 
 <button class="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut">↑</button>
-<button id="quiz-launcher" onclick="openQuiz()">🎯 Lancer le quiz</button>
+<button id="quiz-launcher" onclick="openQuiz()">Lancer le quiz</button>
 
 <!-- FENÊTRE QUIZ -->
 
@@ -1629,6 +1672,6 @@
 </div>
 
     <script src="script.js" defer></script>
-
+  <script src="../../../../shared/studynet-ui.js" defer></script>
 </body>
 </html>

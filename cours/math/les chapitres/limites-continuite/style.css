@@ -85,11 +85,11 @@ header{
 }
 .tab{
   border:1px solid var(--line);
-  background:white;
+  background:var(--sn-surface);
   padding:12px 19px;
   border-radius:9px;
   font-weight:bold;
-  color:#555;
+  color:var(--sn-ink-2);
   transition:.2s;
 }
 .tab.active,.tab:hover{
@@ -109,7 +109,7 @@ header{
 .section-heading h2{font-size:32px;line-height:1.25;margin:7px 0}
 .section-heading p{color:var(--gray);font-size:14px}
 .card{
-  background:white;
+  background:var(--sn-surface);
   border:1px solid var(--line);
   border-radius:var(--radius);
   padding:24px;
@@ -131,7 +131,7 @@ header{
   margin-bottom:10px;
 }
 .formula{
-  background:#f7f6f3;
+  background:var(--sn-warning-soft);
   border-left:4px solid var(--orange);
   padding:14px 17px;
   margin:13px 0;
@@ -141,21 +141,21 @@ header{
   overflow-x:auto;
 }
 .note{
-  background:#fff5e9;
-  border:1px solid #f4d5bb;
+  background:var(--sn-accent-soft);
+  border:1px solid var(--sn-accent-rule);
   border-radius:9px;
   padding:15px;
   margin:15px 0;
 }
-.note strong{color:#b95d28}
+.note strong{color:var(--sn-accent)}
 .success-note{
-  background:#edf8f1;
+  background:var(--sn-success-soft);
   border-left:4px solid var(--green);
   padding:13px;
   margin:12px 0;
 }
 .danger-note{
-  background:#fff0f0;
+  background:var(--sn-danger-soft);
   border-left:4px solid var(--red);
   padding:13px;
   margin:12px 0;
@@ -168,9 +168,9 @@ table{
 }
 th,td{border:1px solid var(--line);padding:11px;text-align:center}
 th{background:#292929;color:white}
-tr:nth-child(even){background:#f8f7f4}
+tr:nth-child(even){background:var(--sn-warning-soft)}
 .graph{
-  background:#fff;
+  background:var(--sn-surface);
   border:1px solid var(--line);
   border-radius:10px;
   padding:12px;
@@ -191,7 +191,7 @@ tr:nth-child(even){background:#f8f7f4}
   gap:14px;
 }
 .mini-card{
-  background:#faf9f6;
+  background:var(--sn-warning-soft);
   border:1px solid var(--line);
   border-radius:10px;
   padding:17px;
@@ -201,7 +201,7 @@ tr:nth-child(even){background:#f8f7f4}
 .step{
   position:relative;
   padding:5px 0 15px 45px;
-  border-left:2px solid #f0d3c1;
+  border-left:2px solid var(--sn-accent-rule);
   margin-left:15px;
 }
 .step:before{
@@ -220,7 +220,7 @@ tr:nth-child(even){background:#f8f7f4}
   font-weight:bold;
 }
 .exercise{
-  background:white;
+  background:var(--sn-surface);
   border:1px solid var(--line);
   border-radius:12px;
   margin-bottom:16px;
@@ -228,10 +228,10 @@ tr:nth-child(even){background:#f8f7f4}
 }
 .exercise-head{padding:19px 21px}
 .exercise-head h3{font-size:17px}
-.exercise-head p{font-size:14px;color:#555;margin-top:7px}
+.exercise-head p{font-size:14px;color:var(--sn-ink-2);margin-top:7px}
 .exercise-footer{
   padding:12px 20px;
-  background:#faf9f6;
+  background:var(--sn-warning-soft);
   border-top:1px solid var(--line);
 }
 .btn{
@@ -243,25 +243,25 @@ tr:nth-child(even){background:#f8f7f4}
   font-weight:bold;
   transition:.2s;
 }
-.btn:hover{background:#c75e25}
+.btn:hover{background:var(--sn-accent)}
 .btn-dark{background:#252525}
 .btn-dark:hover{background:#444}
 .btn-outline{
-  background:white;
+  background:var(--sn-surface);
   color:var(--ink);
   border:1px solid var(--line);
 }
-.btn-outline:hover{background:#eee;color:var(--ink)}
+.btn-outline:hover{background:var(--sn-sunken);color:var(--ink)}
 .solution{
   display:none;
   padding:20px;
   border-top:1px solid var(--line);
-  background:#fffdf9;
+  background:var(--sn-warning-soft);
 }
 .solution.show{display:block}
 .solution p{margin:7px 0}
 .quiz-window{
-  background:white;
+  background:var(--sn-surface);
   border:1px solid var(--line);
   border-radius:15px;
   overflow:hidden;
@@ -284,13 +284,13 @@ tr:nth-child(even){background:#f8f7f4}
   max-width:250px;
   border:1px solid var(--line);
   border-radius:7px;
-  background:white;
+  background:var(--sn-surface);
   font-size:15px;
 }
 .quiz-area{padding:25px;display:none}
 .quiz-progress{
   height:7px;
-  background:#eee;
+  background:var(--sn-sunken);
   border-radius:10px;
   overflow:hidden;
   margin:12px 0 22px;
@@ -304,7 +304,7 @@ tr:nth-child(even){background:#f8f7f4}
 .quiz-info{
   display:flex;
   justify-content:space-between;
-  color:#777;
+  color:var(--sn-mute);
   font-size:13px;
   gap:10px;
 }
@@ -320,16 +320,16 @@ tr:nth-child(even){background:#f8f7f4}
   gap:12px;
   align-items:center;
 }
-.option:hover{border-color:var(--orange);background:#fffaf6}
-.option.selected{border:2px solid var(--orange);background:#fff4eb}
-.option.correct{border:2px solid var(--green);background:#edf8f1}
-.option.wrong{border:2px solid var(--red);background:#fff0f0}
+.option:hover{border-color:var(--orange);background:var(--sn-accent-soft)}
+.option.selected{border:2px solid var(--orange);background:var(--sn-accent-soft)}
+.option.correct{border:2px solid var(--green);background:var(--sn-success-soft)}
+.option.wrong{border:2px solid var(--red);background:var(--sn-danger-soft)}
 .option.disabled{cursor:default}
 .option-letter{
   width:28px;height:28px;
   display:grid;place-items:center;
   border-radius:50%;
-  background:#eee;
+  background:var(--sn-sunken);
   font-weight:bold;
   flex-shrink:0;
 }
@@ -340,8 +340,8 @@ tr:nth-child(even){background:#f8f7f4}
   margin-top:18px;
 }
 .feedback.show{display:block}
-.feedback.good{background:#edf8f1;border:1px solid #b6dfc5}
-.feedback.bad{background:#fff0f0;border:1px solid #efc1c1}
+.feedback.good{background:var(--sn-success-soft);border:1px solid var(--sn-success-rule)}
+.feedback.bad{background:var(--sn-danger-soft);border:1px solid var(--sn-danger-rule)}
 .quiz-actions{display:flex;justify-content:space-between;margin-top:22px;gap:10px}
 .quiz-result{display:none;padding:25px}
 .score-circle{
@@ -353,7 +353,7 @@ tr:nth-child(even){background:#f8f7f4}
   text-align:center;
 }
 .score-circle strong{font-size:30px;display:block;line-height:1.2}
-.score-circle span{font-size:12px;color:#777}
+.score-circle span{font-size:12px;color:var(--sn-mute)}
 .review-item{
   padding:15px;
   border:1px solid var(--line);
@@ -388,6 +388,6 @@ footer p{font-size:13px;color:#aaa;margin-top:8px}
   header,.tabs,footer,.btn{display:none!important}
   .section{display:block!important}
   .solution{display:block!important}
-  body{background:white}
+  body{background:var(--sn-surface)}
 }
  

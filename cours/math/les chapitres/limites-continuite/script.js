@@ -294,7 +294,7 @@ function startQuiz(){
   const count=Number(document.getElementById('question-count').value);
 
   if(count<20 || count>40){
-    alert('Choisis entre 20 et 40 questions.');
+    (window.StudyNet?window.StudyNet.notify('Choisis entre 20 et 40 questions.'):void 0);
     return;
   }
 

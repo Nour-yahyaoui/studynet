@@ -1879,7 +1879,7 @@ document.getElementById("startQuiz").addEventListener("click", () => {
 
     if (availableQuestions.length < count) {
 
-        alert("Pas assez de questions dans cette catégorie.");
+        (window.StudyNet?window.StudyNet.notify("Pas assez de questions dans cette catégorie."):void 0);
 
         return;
 
@@ -1989,7 +1989,7 @@ document.getElementById("verifyAnswer").addEventListener("click", () => {
 
     if (selectedAnswer === null) {
 
-        alert("Choisissez une réponse avant de vérifier.");
+        (window.StudyNet?window.StudyNet.notify("Choisissez une réponse avant de vérifier."):void 0);
 
         return;
 

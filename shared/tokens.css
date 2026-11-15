@@ -1,0 +1,317 @@
+/* =========================================================================
+   STUDYNET — DESIGN TOKENS (R3 : CAHIER UNIVERSITAIRE / WARM ANALOG)
+   Ancestor: Tunisian L1 TI university polycopié & stitched Seyès notebook.
+   Full rationale & WCAG 2.2 AA contrast audit in docs/STYLE.md.
+   ========================================================================= */
+
+:root,
+[data-theme="light"] {
+    color-scheme: light;
+
+    /* Surfaces — unbleached chalk paper & warm notebook leaf (no pure #fff) */
+    --sn-paper: #FAF7F1;
+    --sn-surface: #FFFDF9;
+    --sn-surface-raised: #FFFDF9;
+    --sn-sunken: #F2EDE3;
+    --sn-skeleton: #EAE3D6;
+    --sn-backdrop: rgba(35, 30, 25, 0.52);
+
+    /* Ink — fountain-pen sepia charcoal (no pure #000, >= 5.38:1 AA) */
+    --sn-ink: #231E19;
+    --sn-ink-2: #4A433B;
+    --sn-mute: #675F55;
+    --sn-on-accent: #FFFDF9;
+    --sn-on-ink: #FAF7F1;
+
+    /* Rules & interactive borders (ui-border >= 3.5:1 AA) */
+    --sn-rule: #DFD8CA;
+    --sn-rule-soft: #EAE4D8;
+    --sn-rule-strong: #C6BCAE;
+    --sn-ui-border: #8E8478;
+    --sn-margin-line: rgba(166, 62, 28, 0.22);
+    --sn-paper-dot: rgba(35, 30, 25, 0.032);
+
+    /* Single brand accent — kiln terracotta (~5% of surface) */
+    --sn-accent: #A63E1C;
+    --sn-accent-hover: #8C3214;
+    --sn-accent-soft: #F8ECE6;
+    --sn-accent-rule: #E4BCA9;
+
+    /* Supporting notebook olive-sage (completed progress) */
+    --sn-sage: #4E6347;
+    --sn-sage-soft: #EDF2EA;
+    --sn-sage-rule: #C6D5BF;
+
+    /* Semantic feedback (always paired with text/icon, >= 5.5:1 AA) */
+    --sn-success: #27633F;
+    --sn-success-soft: #E9F3EC;
+    --sn-success-rule: #B7D7C2;
+
+    --sn-warning: #8A5610;
+    --sn-warning-soft: #FBF2E1;
+    --sn-warning-rule: #E6CB99;
+
+    --sn-danger: #A32929;
+    --sn-danger-soft: #FBEBEB;
+    --sn-danger-rule: #E4B7B7;
+
+    /* Code inkwell */
+    --sn-code-bg: #1E1A16;
+    --sn-code-header: #28231E;
+    --sn-code-fg: #F2ECE2;
+    --sn-code-mute: #B5ACA0;
+    --sn-code-rule: #38312A;
+    --sn-inline-code-bg: #EFE9DD;
+    --sn-inline-code-fg: #6E2811;
+
+    /* Floating elevation only (never used on flat cards) */
+    --sn-shadow-float: 0 18px 44px rgba(35, 30, 25, 0.14), 0 2px 8px rgba(35, 30, 25, 0.06);
+
+    /* Typography — optical serif display + humanist sans working + mono data */
+    --sn-font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    --sn-font-body: "Avenir Next", Avenir, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --sn-font-mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+    /* Type scale (6 levels, fluid, real >= 1.5x hierarchy) */
+    --sn-text-xs: 0.75rem;                                  /* 12px — tracked labels */
+    --sn-text-sm: 0.875rem;                                 /* 14px — secondary UI & tables */
+    --sn-text-base: clamp(0.96875rem, 0.28vw + 0.9rem, 1.0625rem); /* 15.5–17px — body */
+    --sn-text-lg: clamp(1.1875rem, 1.4vw + 0.9rem, 1.375rem);      /* 19–22px — h3 */
+    --sn-text-xl: clamp(1.625rem, 2.6vw + 1rem, 2.1875rem);        /* 26–35px — h2 */
+    --sn-text-display: clamp(2.15rem, 4.6vw + 1.1rem, 3.5rem);     /* 34.4–56px — h1 */
+
+    --sn-leading-display: 1.08;
+    --sn-leading-tight: 1.22;
+    --sn-leading-body: 1.65;
+    --sn-measure: 68ch;
+
+    /* 4px-based spacing scale */
+    --sn-space-1: 0.25rem;   /* 4px */
+    --sn-space-2: 0.5rem;    /* 8px */
+    --sn-space-3: 0.75rem;   /* 12px */
+    --sn-space-4: 1rem;      /* 16px */
+    --sn-space-5: 1.5rem;    /* 24px */
+    --sn-space-6: 2rem;      /* 32px */
+    --sn-space-7: 3rem;      /* 48px */
+    --sn-space-8: 4.5rem;    /* 72px */
+
+    /* Layout dimensions */
+    --sn-container: 76rem;   /* 1216px */
+    --sn-topbar-h: 3.75rem;  /* 60px */
+    --sn-sidebar-w: 17rem;   /* 272px */
+
+    /* Warm Analog radii — soft, never pill cards */
+    --sn-radius-sm: 4px;
+    --sn-radius: 6px;
+    --sn-radius-md: 8px;
+
+    /* Restrained motion */
+    --sn-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --sn-dur-fast: 120ms;
+    --sn-dur-base: 200ms;
+    --sn-dur-slow: 300ms;
+}
+
+/* Automatic system dark preference when no explicit choice was made */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        color-scheme: dark;
+
+        --sn-paper: #151210;
+        --sn-surface: #1D1916;
+        --sn-surface-raised: #241F1B;
+        --sn-sunken: #100E0C;
+        --sn-skeleton: #29231E;
+        --sn-backdrop: rgba(8, 7, 6, 0.72);
+
+        --sn-ink: #F1ECE2;
+        --sn-ink-2: #CEC6B9;
+        --sn-mute: #A69D90;
+        --sn-on-accent: #151210;
+        --sn-on-ink: #151210;
+
+        --sn-rule: #2F2924;
+        --sn-rule-soft: #26211D;
+        --sn-rule-strong: #433B34;
+        --sn-ui-border: #786E63;
+        --sn-margin-line: rgba(229, 133, 96, 0.24);
+        --sn-paper-dot: rgba(241, 236, 226, 0.025);
+
+        --sn-accent: #E58560;
+        --sn-accent-hover: #F09A78;
+        --sn-accent-soft: #2A1C16;
+        --sn-accent-rule: #5B3526;
+
+        --sn-sage: #96B58B;
+        --sn-sage-soft: #1B2319;
+        --sn-sage-rule: #344630;
+
+        --sn-success: #6EC491;
+        --sn-success-soft: #15251C;
+        --sn-success-rule: #28523A;
+
+        --sn-warning: #E5AE5C;
+        --sn-warning-soft: #271E11;
+        --sn-warning-rule: #57401E;
+
+        --sn-danger: #EE8484;
+        --sn-danger-soft: #2A1616;
+        --sn-danger-rule: #5E2B2B;
+
+        --sn-code-bg: #0F0D0B;
+        --sn-code-header: #181411;
+        --sn-code-fg: #F1ECE2;
+        --sn-code-mute: #A69D90;
+        --sn-code-rule: #2F2924;
+        --sn-inline-code-bg: #29221D;
+        --sn-inline-code-fg: #F0A182;
+
+        --sn-shadow-float: 0 22px 52px rgba(0, 0, 0, 0.56), 0 2px 10px rgba(0, 0, 0, 0.36);
+    }
+}
+
+[data-theme="dark"] {
+    color-scheme: dark;
+
+    --sn-paper: #151210;
+    --sn-surface: #1D1916;
+    --sn-surface-raised: #241F1B;
+    --sn-sunken: #100E0C;
+    --sn-skeleton: #29231E;
+    --sn-backdrop: rgba(8, 7, 6, 0.72);
+
+    --sn-ink: #F1ECE2;
+    --sn-ink-2: #CEC6B9;
+    --sn-mute: #A69D90;
+    --sn-on-accent: #151210;
+    --sn-on-ink: #151210;
+
+    --sn-rule: #2F2924;
+    --sn-rule-soft: #26211D;
+    --sn-rule-strong: #433B34;
+    --sn-ui-border: #786E63;
+    --sn-margin-line: rgba(229, 133, 96, 0.24);
+    --sn-paper-dot: rgba(241, 236, 226, 0.025);
+
+    --sn-accent: #E58560;
+    --sn-accent-hover: #F09A78;
+    --sn-accent-soft: #2A1C16;
+    --sn-accent-rule: #5B3526;
+
+    --sn-sage: #96B58B;
+    --sn-sage-soft: #1B2319;
+    --sn-sage-rule: #344630;
+
+    --sn-success: #6EC491;
+    --sn-success-soft: #15251C;
+    --sn-success-rule: #28523A;
+
+    --sn-warning: #E5AE5C;
+    --sn-warning-soft: #271E11;
+    --sn-warning-rule: #57401E;
+
+    --sn-danger: #EE8484;
+    --sn-danger-soft: #2A1616;
+    --sn-danger-rule: #5E2B2B;
+
+    --sn-code-bg: #0F0D0B;
+    --sn-code-header: #181411;
+    --sn-code-fg: #F1ECE2;
+    --sn-code-mute: #A69D90;
+    --sn-code-rule: #2F2924;
+    --sn-inline-code-bg: #29221D;
+    --sn-inline-code-fg: #F0A182;
+
+    --sn-shadow-float: 0 22px 52px rgba(0, 0, 0, 0.56), 0 2px 10px rgba(0, 0, 0, 0.36);
+}
+
+/* Universal craft defaults */
+[hidden] {
+    display: none !important;
+}
+
+::selection {
+    background: var(--sn-ink);
+    color: var(--sn-paper);
+}
+
+:focus-visible {
+    outline: 2px solid var(--sn-accent) !important;
+    outline-offset: 2px !important;
+}
+
+table,
+.sn-num,
+.stat,
+.subject-number,
+.chapter-number,
+.nav-number {
+    font-variant-numeric: tabular-nums;
+}
+
+.sn-sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* Reduced motion — honored globally across every page and component */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Print stylesheet — clean polycopié printouts on every page */
+@media print {
+    :root,
+    [data-theme="dark"] {
+        color-scheme: light;
+        --sn-paper: #ffffff;
+        --sn-surface: #ffffff;
+        --sn-sunken: #f5f5f5;
+        --sn-ink: #111111;
+        --sn-ink-2: #222222;
+        --sn-mute: #555555;
+        --sn-rule: #cccccc;
+        --sn-accent: #111111;
+    }
+
+    body {
+        background: #ffffff !important;
+        color: #111111 !important;
+        background-image: none !important;
+    }
+
+    .sn-topbar,
+    .sn-progress,
+    .sn-top-btn,
+    .sn-offline-banner,
+    .sn-toast-region,
+    .sn-palette,
+    .sn-coach-layer,
+    .sn-onboard-bar,
+    .sn-drawer,
+    .sn-drawer-backdrop,
+    .sn-pager,
+    .sn-mark-btn,
+    .no-print,
+    aside.sidebar {
+        display: none !important;
+    }
+}

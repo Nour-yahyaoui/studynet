@@ -1088,7 +1088,7 @@ function verifyAnswer(){
 
     if(selectedAnswer === null){
 
-        alert("Choisis une réponse avant de vérifier.");
+        (window.StudyNet?window.StudyNet.notify("Choisis une réponse avant de vérifier."):void 0);
 
         return;
 

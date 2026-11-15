@@ -1,45 +1,83 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-sn-root="../.." data-sn-course="python" data-sn-parent="../../index.html#matieres" data-sn-parent-label="Sommaire">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Formation complète Python : cours détaillé, programmation, algorithmique, exercices universitaires et quiz interactif.">
-<title>Python Programming | StudyNet</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cours complet de programmation Python L1 TI : variables, conditions, boucles, fonctions, listes, dictionnaires, fichiers, 40 exercices corrigés et banque de 200 questions.">
+  <meta name="theme-color" content="#FAF7F1">
+  <title>Programmation Python — StudyNet</title>
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("studynet:theme");
+        var theme = (saved === "dark" || saved === "light")
+          ? saved
+          : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute("content", theme === "dark" ? "#151210" : "#FAF7F1");
+      } catch (_e) {}
+    })();
+  </script>
+  <link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg">
+  <link rel="stylesheet" href="../../shared/tokens.css">
   <link rel="stylesheet" href="style.css">
-
+  <link rel="stylesheet" href="../../shared/studynet-ui.css">
 </head>
-
-<body>
-
-<header>
-    <nav class="nav">
-        <div class="logo">Study<span>Net</span>.</div>
-        <div class="nav-links">
-            <a href="#cours">COURS</a>
-            <a href="#exercices">EXERCICES</a>
-            <a href="#quiz">QUIZ</a>
-        </div>
-    </nav>
+<body class="sn-course-page">
+<a href="#main-content" class="sn-skip-link">Aller au contenu principal</a>
+<header class="sn-topbar">
+  <div class="sn-topbar-inner">
+    <div class="sn-topbar-start">
+      <a href="../../index.html" class="sn-brand" aria-label="StudyNet — Accueil">
+        <svg class="sn-brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="4" y="6" width="56" height="52" rx="8" fill="#231E19"/><path d="M12 15.5C12 14.12 13.12 13 14.5 13H29.5C30.88 13 32 14.12 32 15.5V49.5C29.4 47.9 25.8 47.2 21.5 47.2H14.5C13.12 47.2 12 46.08 12 44.7V15.5Z" fill="#FAF7F1"/><path d="M52 15.5C52 14.12 50.88 13 49.5 13H34.5C33.12 13 32 14.12 32 15.5V49.5C34.6 47.9 38.2 47.2 42.5 47.2H49.5C50.88 47.2 52 46.08 52 44.7V15.5Z" fill="#F2EDE3"/><rect x="30.5" y="12" width="3" height="39" rx="1.5" fill="#A63E1C"/><path d="M40 13H45V29L42.5 26.8L40 29V13Z" fill="#A63E1C"/></svg>
+        <span class="sn-brand-name">Study<em>Net</em></span>
+      </a>
+      <nav class="sn-crumb" aria-label="Fil d'Ariane">
+        <a href="../../index.html#matieres">Sommaire</a>
+        <span class="sn-crumb-sep" aria-hidden="true">/</span>
+        
+        <span class="sn-crumb-current" aria-current="page">Programmation Python</span>
+      </nav>
+    </div>
+    <nav class="sn-topnav" aria-label="Parties du cours"><a href="#cours">Cours</a><a href="#exercices">Exercices</a><a href="#quiz">Quiz</a></nav>
+    <div class="sn-topbar-end">
+      <button type="button" class="sn-icon-btn sn-toc-trigger" data-sn-toc-open aria-expanded="false" aria-label="Ouvrir le sommaire du cours">
+        <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h12"></path></svg>
+        <span class="sn-btn-label">Plan</span>
+      </button>
+      <button type="button" class="sn-icon-btn sn-sidebar-toggle" data-sn-sidebar-toggle aria-label="Masquer le sommaire latéral" aria-pressed="false" title="Masquer le sommaire"><svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M9 4v16"></path></svg></button>
+      <button type="button" class="sn-icon-btn" data-sn-catalogue-open aria-label="Ouvrir le catalogue des 17 cours (Ctrl+K)">
+        <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.6-3.6"></path></svg>
+        <span class="sn-btn-label">Cours</span>
+        <kbd class="sn-kbd">Ctrl K</kbd>
+      </button>
+      <button type="button" class="sn-icon-btn sn-print-btn" data-sn-print aria-label="Imprimer ce cours" title="Imprimer ce cours">
+        <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V4h12v5"></path><rect x="4" y="9" width="16" height="8" rx="1.5"></rect><path d="M7 14h10v6H7z"></path></svg>
+      </button>
+      <button type="button" class="sn-icon-btn sn-theme-btn" data-sn-theme-toggle aria-label="Activer le thème sombre" aria-pressed="false">
+        <svg class="sn-icon sn-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"></path></svg>
+        <svg class="sn-icon sn-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.5v2.2M12 19.3v2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"></path></svg>
+      </button>
+    </div>
+  </div>
 </header>
 
-<section class="hero">
-    <div class="hero-inner">
-        <div class="eyebrow">Formation complète · Programmation</div>
-        <h1>Mastering<br><span>Python.</span></h1>
-        <p>
-            Une formation progressive et approfondie pour apprendre à programmer
-            en Python, comprendre les concepts fondamentaux de l'informatique,
-            résoudre des problèmes algorithmiques et développer des applications
-            structurées.
-        </p>
-        <div class="hero-stats">
-            <div class="stat"><strong>20+</strong><small>Modules de formation</small></div>
-            <div class="stat"><strong>40</strong><small>Exercices académiques</small></div>
-            <div class="stat"><strong>200</strong><small>Questions de quiz</small></div>
-            <div class="stat"><strong>3</strong><small>Parties principales</small></div>
-        </div>
+
+<section class="sn-course-hero">
+  <div class="sn-course-hero-inner">
+    <p class="sn-course-kicker"><a href="../../index.html#matieres" class="sn-hero-parent">Sommaire</a> · MATIÈRE 05 · PROGRAMMATION</p>
+    <h1>Programmation Python</h1>
+    <p class="sn-course-lead">Apprendre à programmer en Python pas à pas : types de données, structures de contrôle, fonctions, collections, fichiers et résolution rigoureuse de problèmes algorithmiques.</p>
+    <div class="sn-course-meta" aria-label="Repères du cours"><span>20 modules de cours</span><span>40 exercices corrigés</span><span>Banque de 200 questions</span><span>Niveau L1 TI</span></div>
+    <div class="sn-course-actions">
+      <a href="#cours" class="sn-btn sn-btn--primary">Commencer le cours ↓</a>
+      <button type="button" class="sn-btn sn-mark-btn" data-sn-mark aria-pressed="false">
+        <svg class="sn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+        <span data-sn-mark-label>Marquer comme étudié</span>
+      </button>
     </div>
+  </div>
 </section>
 
 <div class="container layout">
@@ -76,12 +114,12 @@
     <a href="#m27">Complexité algorithmique</a>
     <a href="#m28">Bonnes pratiques</a>
     <a href="#m29">Projets pratiques</a>
-    <hr style="margin:15px 0;border:0;border-top:1px solid #ddd">
+    <hr style="margin:15px 0;border:0;border-top:1px solid var(--sn-rule)">
     <a href="#exercices">02 — Exercices</a>
     <a href="#quiz">03 — Quiz interactif</a>
 </aside>
 
-<main>
+<main id="main-content">
 
 <section id="cours">
     <div class="section-label">Partie 01 / Formation</div>
@@ -143,7 +181,7 @@ print(moyenne)</code></pre>
         <h4>4. Installer et exécuter Python</h4>
         <p>
             Télécharger Python depuis le site officiel :
-            <a href="https://www.python.org/downloads/" target="_blank">python.org/downloads</a>.
+            <a href="https://www.python.org/downloads/" target="_blank" rel="noopener noreferrer">python.org/downloads</a>.
         </p>
         <p>Vérifier l'installation dans le terminal :</p>
         <pre><code>python --version
@@ -2908,14 +2946,14 @@ for fichier in dossier.glob("*.txt"):
     <div class="quiz-container">
         <div class="section-label">Partie 03 / Évaluation</div>
         <h2 class="section-title">Évaluation Python</h2>
-        <p style="color:#ccc">
+        <p style="color:var(--sn-ink-2)">
             Un examen interactif composé de questions aléatoires
             sélectionnées dans une banque de 200 questions.
         </p>
 
         <div class="quiz-box" id="quiz-start">
             <h3 style="font-size:23px;margin-bottom:12px">Préparer votre examen</h3>
-            <p style="color:#777;margin-bottom:25px">
+            <p style="color:var(--sn-mute);margin-bottom:25px">
                 Choisissez le nombre de questions. Chaque question possède
                 quatre propositions, une seule étant correcte.
             </p>
@@ -2949,7 +2987,7 @@ for fichier in dossier.glob("*.txt"):
             <div class="feedback" id="quiz-feedback"></div>
 
             <div class="quiz-actions">
-                <span id="answer-status" style="font-size:12px;color:#777">Sélectionnez une réponse.</span>
+                <span id="answer-status" style="font-size:12px;color:var(--sn-mute)">Sélectionnez une réponse.</span>
                 <button class="primary-btn" id="verify-btn" onclick="verifyAnswer()">Vérifier</button>
                 <button class="primary-btn" id="next-btn" onclick="nextQuestion()" style="display:none">Next →</button>
             </div>
@@ -2960,7 +2998,7 @@ for fichier in dossier.glob("*.txt"):
                 <div class="section-label">Résultat final</div>
                 <div class="result-score" id="final-score">0/30</div>
                 <h3 id="result-message">Résultat</h3>
-                <p id="result-description" style="color:#777"></p>
+                <p id="result-description" style="color:var(--sn-mute)"></p>
             </div>
             <div style="display:flex;justify-content:center;gap:25px;flex-wrap:wrap;margin:25px 0">
                 <div><strong id="correct-count">0</strong><br><small>Réponses correctes</small></div>
@@ -2969,7 +3007,7 @@ for fichier in dossier.glob("*.txt"):
             </div>
 
             <h3 style="margin:25px 0 10px">Correction détaillée</h3>
-            <p style="color:#777;font-size:13px">
+            <p style="color:var(--sn-mute);font-size:13px">
                 Voici les questions auxquelles tu as répondu incorrectement,
                 accompagnées de la bonne réponse et de son explication.
             </p>
@@ -2982,10 +3020,18 @@ for fichier in dossier.glob("*.txt"):
     </div>
 </section>
 
-<footer><div class="container footer-content"><a class="logo" href="#">Study<span>Net</span></a><h4><u> Réalisé par le développeur Mohamed Ali Sablaoui.</u></h4><p>© 2026 StudyNet. Tous droits réservés.</p></div></footer>
+<footer class="sn-footer">
+  <div class="sn-footer-inner">
+    <a href="../../index.html" class="sn-brand">
+      <svg class="sn-brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="4" y="6" width="56" height="52" rx="8" fill="#231E19"/><path d="M12 15.5C12 14.12 13.12 13 14.5 13H29.5C30.88 13 32 14.12 32 15.5V49.5C29.4 47.9 25.8 47.2 21.5 47.2H14.5C13.12 47.2 12 46.08 12 44.7V15.5Z" fill="#FAF7F1"/><path d="M52 15.5C52 14.12 50.88 13 49.5 13H34.5C33.12 13 32 14.12 32 15.5V49.5C34.6 47.9 38.2 47.2 42.5 47.2H49.5C50.88 47.2 52 46.08 52 44.7V15.5Z" fill="#F2EDE3"/><rect x="30.5" y="12" width="3" height="39" rx="1.5" fill="#A63E1C"/><path d="M40 13H45V29L42.5 26.8L40 29V13Z" fill="#A63E1C"/></svg>
+      <span class="sn-brand-name">Study<em>Net</em></span>
+    </a>
+    <p class="sn-footer-credit">Réalisé par <strong>Mohamed Ali Sablaoui</strong> · Licence 1 TI</p>
+    <p class="sn-footer-copy">© <span data-sn-year>2026</span> StudyNet · Tous droits réservés.</p>
+  </div>
+</footer>
 
     <script src="script.js" defer></script>
-
-
+  <script src="../../shared/studynet-ui.js" defer></script>
 </body>
 </html>

@@ -31,7 +31,7 @@ a{color:inherit;text-decoration:none}
   position:sticky;
   top:0;
   z-index:100;
-  background:rgba(246,245,242,.96);
+  background:var(--sn-surface);
   border-bottom:1px solid var(--line);
   backdrop-filter:blur(12px);
   display:flex;
@@ -110,7 +110,7 @@ a{color:inherit;text-decoration:none}
   position:sticky;
   top:88px;
   border:1px solid var(--line);
-  background:white;
+  background:var(--sn-surface);
   border-radius:var(--radius);
   padding:20px 16px;
   max-height:calc(100vh - 105px);
@@ -127,12 +127,12 @@ a{color:inherit;text-decoration:none}
   padding:8px 10px;
   border-radius:7px;
   font-size:12px;
-  color:#555;
+  color:var(--sn-ink-2);
   margin-bottom:3px;
 }
 .sidebar a:hover,.sidebar a.active{
   background:var(--orange-light);
-  color:#b75c28;
+  color:var(--sn-accent);
   font-weight:bold;
 }
 .side-number{color:var(--orange);margin-right:7px;font-weight:bold}
@@ -151,7 +151,7 @@ a{color:inherit;text-decoration:none}
   line-height:1.3;
   margin-bottom:12px;
 }
-.section-intro{color:#666;margin-bottom:23px;font-size:14px}
+.section-intro{color:var(--sn-mute);margin-bottom:23px;font-size:14px}
 .subsection{margin:30px 0}
 .subsection h3{font-size:19px;margin-bottom:12px}
 .subsection h4{font-size:15px;margin:18px 0 8px}
@@ -159,7 +159,7 @@ p{margin-bottom:12px}
 ul,ol{padding-left:24px;margin:10px 0 17px}
 li{padding-left:4px;margin:5px 0}
 .math-box{
-  background:white;
+  background:var(--sn-surface);
   border:1px solid var(--line);
   border-left:4px solid var(--orange);
   border-radius:9px;
@@ -170,15 +170,15 @@ li{padding-left:4px;margin:5px 0}
 .math-box.center{text-align:center}
 .math-box p:last-child{margin-bottom:0}
 .definition{
-  background:#fff8f1;
-  border:1px solid #f3d5bd;
+  background:var(--sn-accent-soft);
+  border:1px solid var(--sn-accent-rule);
   border-radius:10px;
   padding:20px;
   margin:17px 0;
 }
-.definition strong{color:#b75c28}
+.definition strong{color:var(--sn-accent)}
 .note{
-  background:#f0f0ed;
+  background:var(--sn-sunken);
   border-radius:9px;
   padding:16px 19px;
   margin:17px 0;
@@ -203,7 +203,7 @@ li{padding-left:4px;margin:5px 0}
 table{
   width:100%;
   border-collapse:collapse;
-  background:white;
+  background:var(--sn-surface);
   margin:17px 0;
   font-size:13px;
 }
@@ -214,10 +214,10 @@ th,td{
   vertical-align:middle;
 }
 th{background:#292929;color:white;font-weight:bold}
-tr:nth-child(even) td{background:#faf9f7}
+tr:nth-child(even) td{background:var(--sn-warning-soft)}
 .table-wrap{overflow-x:auto}
 .diagram{
-  background:white;
+  background:var(--sn-surface);
   border:1px solid var(--line);
   border-radius:12px;
   padding:16px;
@@ -230,7 +230,7 @@ tr:nth-child(even) td{background:#faf9f7}
 .step{
   display:flex;
   gap:14px;
-  background:white;
+  background:var(--sn-surface);
   border:1px solid var(--line);
   border-radius:9px;
   padding:15px;
@@ -240,7 +240,7 @@ tr:nth-child(even) td{background:#faf9f7}
   content:counter(step);
   min-width:29px;height:29px;
   background:var(--orange-light);
-  color:#b75c28;
+  color:var(--sn-accent);
   border-radius:50%;
   display:grid;
   place-items:center;
@@ -254,15 +254,15 @@ tr:nth-child(even) td{background:#faf9f7}
   margin:17px 0;
 }
 .info-card{
-  background:white;
+  background:var(--sn-surface);
   border:1px solid var(--line);
   border-radius:10px;
   padding:17px;
 }
-.info-card h4{margin:0 0 8px;color:#b75c28}
+.info-card h4{margin:0 0 8px;color:var(--sn-accent)}
 .info-card p{font-size:13px;margin:0}
 details{
-  background:white;
+  background:var(--sn-surface);
   border:1px solid var(--line);
   border-radius:9px;
   margin:12px 0;
@@ -287,7 +287,7 @@ details[open] summary:after{content:"−"}
   font-size:13px;
 }
 .exercise{
-  background:white;
+  background:var(--sn-surface);
   border:1px solid var(--line);
   border-radius:12px;
   margin:17px 0;
@@ -298,14 +298,14 @@ details[open] summary:after{content:"−"}
   justify-content:space-between;
   align-items:center;
   gap:12px;
-  background:#f0efec;
+  background:var(--sn-sunken);
   padding:13px 17px;
 }
 .exercise-head strong{font-size:14px}
 .level{
   font-size:10px;
   font-weight:bold;
-  color:#a75a2d;
+  color:var(--sn-accent);
   background:var(--orange-light);
   padding:4px 9px;
   border-radius:20px;
@@ -325,11 +325,11 @@ details[open] summary:after{content:"−"}
 .solution{display:none;padding:15px;margin-top:13px;background:var(--green-light);border-radius:8px;font-size:13px}
 .solution.show{display:block}
 .quiz-window{
-  background:white;
+  background:var(--sn-surface);
   border:1px solid var(--line);
   border-radius:13px;
   overflow:hidden;
-  box-shadow:var(--shadow);
+  box-shadow: none;
 }
 .quiz-header{
   background:var(--dark);
@@ -351,10 +351,10 @@ details[open] summary:after{content:"−"}
   width:90px;padding:9px;border:1px solid var(--line);border-radius:7px;
 }
 .primary-btn{background:var(--orange);color:white}
-.primary-btn:hover{background:#c76127}
-.secondary-btn{background:#eee;color:#333}
+.primary-btn:hover{background:var(--sn-accent)}
+.secondary-btn{background:var(--sn-sunken);color:var(--sn-ink)}
 .primary-btn:disabled{opacity:.5;cursor:not-allowed}
-.quiz-progress{height:6px;background:#eee}
+.quiz-progress{height:6px;background:var(--sn-sunken)}
 .quiz-progress div{height:100%;width:0;background:var(--orange);transition:.3s}
 .quiz-main{padding:25px;display:none}
 .quiz-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-bottom:18px}
@@ -371,7 +371,7 @@ details[open] summary:after{content:"−"}
   font-size:13px;
   transition:.15s;
 }
-.quiz-option:hover{border-color:var(--orange);background:#fffaf6}
+.quiz-option:hover{border-color:var(--orange);background:var(--sn-accent-soft)}
 .quiz-option.selected{border-color:var(--orange);background:var(--orange-light)}
 .quiz-option.correct{border-color:var(--green);background:var(--green-light)}
 .quiz-option.wrong{border-color:var(--red);background:var(--red-light)}
@@ -380,7 +380,7 @@ details[open] summary:after{content:"−"}
   flex-shrink:0;
   display:grid;place-items:center;
   border-radius:50%;
-  background:#eee;
+  background:var(--sn-sunken);
   font-size:11px;font-weight:bold;
 }
 .quiz-feedback{
@@ -390,8 +390,8 @@ details[open] summary:after{content:"−"}
   border-radius:8px;
   font-size:13px;
 }
-.quiz-feedback.correct{display:block;background:var(--green-light);color:#205c3d}
-.quiz-feedback.wrong{display:block;background:var(--red-light);color:#963535}
+.quiz-feedback.correct{display:block;background:var(--green-light);color:var(--sn-success)}
+.quiz-feedback.wrong{display:block;background:var(--red-light);color:var(--sn-danger)}
 .quiz-controls{display:flex;justify-content:space-between;gap:10px;margin-top:22px}
 .quiz-result{display:none;padding:25px}
 .result-score{
@@ -399,7 +399,7 @@ details[open] summary:after{content:"−"}
   letter-spacing:-3px;
 }
 .result-label{font-size:13px;color:var(--muted)}
-.result-bar{height:10px;background:#eee;border-radius:20px;margin:14px 0 22px;overflow:hidden}
+.result-bar{height:10px;background:var(--sn-sunken);border-radius:20px;margin:14px 0 22px;overflow:hidden}
 .result-bar div{height:100%;background:var(--orange);width:0}
 .review-item{
   padding:14px;
@@ -430,7 +430,7 @@ details[open] summary:after{content:"−"}
   position:fixed;bottom:20px;right:20px;
   width:42px;height:42px;border:0;border-radius:50%;
   background:var(--dark);color:white;font-size:20px;
-  box-shadow:var(--shadow);z-index:50;
+  box-shadow: none;z-index:50;
 }
 @media(max-width:850px){
   .layout{grid-template-columns:1fr}
@@ -440,7 +440,7 @@ details[open] summary:after{content:"−"}
   .menu-btn{display:block}
   .top-links.open{
     display:flex;position:absolute;top:67px;left:0;right:0;
-    background:white;padding:20px;flex-direction:column;
+    background:var(--sn-surface);padding:20px;flex-direction:column;
     border-bottom:1px solid var(--line);
   }
 }
@@ -457,6 +457,6 @@ details[open] summary:after{content:"−"}
 @media print{
   .topbar,.sidebar,.quiz-window,.back-top,.solution-btn{display:none!important}
   .layout{display:block}
-  body{background:white}
+  body{background:var(--sn-surface)}
   .math-box,.definition,.exercise{break-inside:avoid}
 }
