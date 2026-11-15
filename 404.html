@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page introuvable — StudyNet, cahier de cours universitaire L1 TI.">
+    <meta name="theme-color" content="#FAF7F1">
+    <meta name="robots" content="noindex">
+
+    <title>Page introuvable (404) — StudyNet</title>
+
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem("studynet:theme");
+                var theme = (saved === "dark" || saved === "light")
+                    ? saved
+                    : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+                document.documentElement.setAttribute("data-theme", theme);
+                var m = document.querySelector('meta[name="theme-color"]');
+                if (m) m.setAttribute("content", theme === "dark" ? "#151210" : "#FAF7F1");
+            } catch (_e) {}
+        })();
+    </script>
+
+    <!-- Inline SVG favicon so 404 renders identically from any missing URL depth on Vercel & GitHub Pages -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='6' width='56' height='52' rx='8' fill='%23231E19'/%3E%3Cpath d='M12 15.5C12 14.12 13.12 13 14.5 13H29.5C30.88 13 32 14.12 32 15.5V49.5C29.4 47.9 25.8 47.2 21.5 47.2H14.5C13.12 47.2 12 46.08 12 44.7V15.5Z' fill='%23FAF7F1'/%3E%3Cpath d='M52 15.5C52 14.12 50.88 13 49.5 13H34.5C33.12 13 32 14.12 32 15.5V49.5C34.6 47.9 38.2 47.2 42.5 47.2H49.5C50.88 47.2 52 46.08 52 44.7V15.5Z' fill='%23F2EDE3'/%3E%3Crect x='30.5' y='12' width='3' height='39' rx='1.5' fill='%23A63E1C'/%3E%3Cpath d='M40 13H45V29L42.5 26.8L40 29V13Z' fill='%23A63E1C'/%3E%3C/svg%3E">
+
+    <style>
+        :root {
+            color-scheme: light;
+            --sn-paper: #FAF7F1;
+            --sn-surface: #FFFDF9;
+            --sn-sunken: #F2EDE3;
+            --sn-ink: #231E19;
+            --sn-ink-2: #4A433B;
+            --sn-mute: #675F55;
+            --sn-rule: #DFD8CA;
+            --sn-rule-strong: #C6BCAE;
+            --sn-accent: #A63E1C;
+            --sn-accent-hover: #8C3214;
+            --sn-on-accent: #FFFDF9;
+            --sn-font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+            --sn-font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --sn-font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+        }
+
+        [data-theme="dark"] {
+            color-scheme: dark;
+            --sn-paper: #151210;
+            --sn-surface: #1D1916;
+            --sn-sunken: #100E0C;
+            --sn-ink: #F1ECE2;
+            --sn-ink-2: #CEC6B9;
+            --sn-mute: #A69D90;
+            --sn-rule: #2F2924;
+            --sn-rule-strong: #433B34;
+            --sn-accent: #E58560;
+            --sn-accent-hover: #F09A78;
+            --sn-on-accent: #151210;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: var(--sn-paper);
+            color: var(--sn-ink);
+            font-family: var(--sn-font-body);
+            font-size: 1rem;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--sn-accent);
+            outline-offset: 2px;
+        }
+
+        .skip-link {
+            position: fixed;
+            left: 1rem;
+            top: -5rem;
+            z-index: 50;
+            padding: 0.65rem 1rem;
+            background: var(--sn-accent);
+            color: var(--sn-on-accent);
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .skip-link:focus { top: 0.75rem; }
+
+        header {
+            border-bottom: 1px solid var(--sn-rule);
+            background: var(--sn-paper);
+        }
+
+        .wrap {
+            width: 100%;
+            max-width: 68rem;
+            margin-inline: auto;
+            padding-inline: clamp(1rem, 3vw, 2rem);
+        }
+
+        .bar {
+            min-height: 3.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--sn-ink);
+            text-decoration: none;
+            font-family: var(--sn-font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .brand em { font-style: normal; color: var(--sn-accent); }
+        .brand svg { width: 1.75rem; height: 1.75rem; flex-shrink: 0; }
+
+        .theme-btn {
+            min-height: 2.75rem;
+            min-width: 2.75rem;
+            padding: 0 0.85rem;
+            border: 1px solid var(--sn-rule-strong);
+            border-radius: 6px;
+            background: var(--sn-surface);
+            color: var(--sn-ink);
+            font-family: var(--sn-font-body);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        main {
+            flex: 1;
+            padding-block: clamp(2.5rem, 7vw, 5.5rem);
+        }
+
+        .sheet {
+            padding-left: clamp(1rem, 2.5vw, 1.75rem);
+            border-left: 2px solid var(--sn-accent);
+            max-width: 52rem;
+        }
+
+        .folio {
+            margin: 0 0 0.5rem;
+            font-family: var(--sn-font-mono);
+            font-size: 0.75rem;
+            letter-spacing: 0.11em;
+            text-transform: uppercase;
+            color: var(--sn-mute);
+            font-variant-numeric: tabular-nums;
+        }
+
+        h1 {
+            margin: 0 0 1rem;
+            font-family: var(--sn-font-display);
+            font-size: clamp(2.1rem, 5vw, 3.35rem);
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .lead {
+            margin: 0 0 1rem;
+            color: var(--sn-ink-2);
+            max-width: 56ch;
+        }
+
+        .missing-url {
+            display: inline-block;
+            margin: 0 0 1.75rem;
+            padding: 0.3rem 0.65rem;
+            background: var(--sn-sunken);
+            border: 1px solid var(--sn-rule);
+            border-radius: 4px;
+            font-family: var(--sn-font-mono);
+            font-size: 0.8125rem;
+            color: var(--sn-mute);
+            word-break: break-all;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            min-height: 2.75rem;
+            padding: 0.55rem 1.1rem;
+            border-radius: 6px;
+            border: 1px solid var(--sn-rule-strong);
+            background: var(--sn-surface);
+            color: var(--sn-ink);
+            font-size: 0.9375rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--sn-accent);
+            border-color: var(--sn-accent);
+            color: var(--sn-on-accent);
+        }
+
+        .btn-primary:hover { background: var(--sn-accent-hover); border-color: var(--sn-accent-hover); }
+
+        .index-title {
+            margin: 0 0 0.75rem;
+            font-family: var(--sn-font-mono);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--sn-mute);
+        }
+
+        .quick-grid {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            border-top: 1px solid var(--sn-rule-strong);
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 640px) {
+            .quick-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; }
+        }
+
+        .quick-grid li { border-bottom: 1px solid var(--sn-rule); }
+
+        .quick-grid a {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+            min-height: 2.875rem;
+            padding-block: 0.65rem;
+            color: var(--sn-ink);
+            text-decoration: none;
+            font-size: 0.9375rem;
+        }
+
+        .quick-grid a:hover { color: var(--sn-accent); }
+
+        .quick-grid span {
+            font-family: var(--sn-font-mono);
+            font-size: 0.75rem;
+            color: var(--sn-accent);
+            font-variant-numeric: tabular-nums;
+        }
+
+        footer {
+            border-top: 1px solid var(--sn-rule);
+            background: var(--sn-surface);
+            padding-block: 1.5rem;
+            font-size: 0.875rem;
+            color: var(--sn-mute);
+        }
+
+        .foot {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.5rem 1.5rem;
+        }
+
+        .foot strong { color: var(--sn-ink); }
+    </style>
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <header>
+        <div class="wrap bar">
+            <a href="/" class="brand" data-route="index.html">
+                <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                    <rect x="4" y="6" width="56" height="52" rx="8" fill="#231E19"/>
+                    <path d="M12 15.5C12 14.12 13.12 13 14.5 13H29.5C30.88 13 32 14.12 32 15.5V49.5C29.4 47.9 25.8 47.2 21.5 47.2H14.5C13.12 47.2 12 46.08 12 44.7V15.5Z" fill="#FAF7F1"/>
+                    <path d="M52 15.5C52 14.12 50.88 13 49.5 13H34.5C33.12 13 32 14.12 32 15.5V49.5C34.6 47.9 38.2 47.2 42.5 47.2H49.5C50.88 47.2 52 46.08 52 44.7V15.5Z" fill="#F2EDE3"/>
+                    <rect x="30.5" y="12" width="3" height="39" rx="1.5" fill="#A63E1C"/>
+                    <path d="M40 13H45V29L42.5 26.8L40 29V13Z" fill="#A63E1C"/>
+                </svg>
+                <span>Study<em>Net</em></span>
+            </a>
+
+            <button type="button" class="theme-btn" id="themeBtn" aria-label="Changer le thème">
+                Thème
+            </button>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <div class="wrap">
+            <div class="sheet">
+                <p class="folio">ERREUR 404 · FEUILLET INTROUVABLE</p>
+                <h1>Cette page ne figure pas dans le cahier.</h1>
+                <p class="lead">
+                    Le lien demandé a peut-être changé d'adresse ou contient une faute de frappe.
+                    Tu peux revenir au sommaire général ou ouvrir directement l'une des neuf matières ci-dessous.
+                </p>
+                <p class="missing-url" id="missingPath" hidden></p>
+
+                <div class="actions">
+                    <a href="/" class="btn btn-primary" data-route="index.html#matieres">
+                        ← Revenir au sommaire des cours
+                    </a>
+                    <a href="/" class="btn" data-route="index.html">
+                        Page d'accueil
+                    </a>
+                </div>
+
+                <h2 class="index-title">Accès direct aux 9 matières L1 TI</h2>
+                <ul class="quick-grid">
+                    <li><a href="/" data-route="cours/electricite/electricite.html"><span>01</span> Électricité &amp; Arduino Uno</a></li>
+                    <li><a href="/" data-route="cours/math/mathematiques.html"><span>02</span> Mathématiques (4 chapitres)</a></li>
+                    <li><a href="/" data-route="cours/algorithme/algorithmique.html"><span>03</span> Algorithmique</a></li>
+                    <li><a href="/" data-route="cours/systeme%20d%27exploitation/systemes-exploitation.html"><span>04</span> Systèmes d'exploitation &amp; Linux</a></li>
+                    <li><a href="/" data-route="cours/language%20python/python.html"><span>05</span> Programmation Python</a></li>
+                    <li><a href="/" data-route="cours/Fondamentaux/fondamentaux-informatique.html"><span>06</span> Fondamentaux de l'informatique</a></li>
+                    <li><a href="/" data-route="cours/tp%20math/tp-mathematiques.html"><span>07</span> TP Mathématiques — GNU Octave</a></li>
+                    <li><a href="/" data-route="cours/web/langages-web.html"><span>08</span> Langages &amp; Développement Web</a></li>
+                    <li><a href="/" data-route="cours/language%20c/langage-c.html"><span>09</span> Langage C</a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="wrap foot">
+            <span>Réalisé par <strong>Mohamed Ali Sablaoui</strong> · Licence 1 TI</span>
+            <span>© <span id="year">2026</span> StudyNet · Tous droits réservés.</span>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            // Resolve base path for both root domains (Vercel / custom) and GitHub Pages project subpath (/studynet/)
+            var host = window.location.hostname || "";
+            var pathname = window.location.pathname || "/";
+            var base = "/";
+            if (/\.github\.io$/i.test(host)) {
+                var parts = pathname.split("/").filter(Boolean);
+                if (parts.length > 0 && parts[0] !== "404.html" && parts[0] !== "index.html" && parts[0] !== "cours") {
+                    base = "/" + parts[0] + "/";
+                }
+            }
+            document.querySelectorAll("[data-route]").forEach(function (a) {
+                a.href = base + a.getAttribute("data-route");
+            });
+
+            var missing = document.getElementById("missingPath");
+            if (missing && pathname && pathname !== "/404.html" && !/\/404\.html$/.test(pathname)) {
+                missing.textContent = "Adresse demandée : " + decodeURI(pathname);
+                missing.hidden = false;
+            }
+
+            var y = document.getElementById("year");
+            if (y) y.textContent = String(new Date().getFullYear());
+
+            var btn = document.getElementById("themeBtn");
+            function syncBtn() {
+                var dark = document.documentElement.getAttribute("data-theme") === "dark";
+                btn.textContent = dark ? "Thème clair" : "Thème sombre";
+                btn.setAttribute("aria-pressed", String(dark));
+            }
+            if (btn) {
+                syncBtn();
+                btn.addEventListener("click", function () {
+                    var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+                    document.documentElement.setAttribute("data-theme", next);
+                    try { localStorage.setItem("studynet:theme", next); } catch (_e) {}
+                    var m = document.querySelector('meta[name="theme-color"]');
+                    if (m) m.setAttribute("content", next === "dark" ? "#151210" : "#FAF7F1");
+                    syncBtn();
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
