@@ -61,8 +61,6 @@ Puis ouvre `http://localhost:8000` dans ton navigateur.
 ## Déploiement (Vercel & GitHub Pages)
 
 Tous les liens internes sont relatifs, respectent la casse exacte des fichiers Linux et encodent les espaces et apostrophes (`%20`, `%27`), ce qui garantit un fonctionnement identique à la racine d'un domaine comme sous un sous-chemin `/studynet/`.
-
-- **Vercel** : importer le dépôt `Nour-yahyaoui/studynet` en tant que site statique (aucun framework, aucune commande de build, répertoire racine `.`). Le fichier `vercel.json` conserve les URL `.html` et `.htm` telles quelles et sert automatiquement `404.html` pour les adresses inexistantes.
 - **GitHub Pages** : dans *Settings → Pages*, choisir **GitHub Actions** (workflow `.github/workflows/pages.yml` déclenché à chaque fusion sur `main`) ou **Deploy from a branch** (`main` / `/ (root)`, pris en charge grâce à `.nojekyll`).
 
 ## Auteur
