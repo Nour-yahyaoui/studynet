@@ -1342,6 +1342,1565 @@
         });
     }
 
+    // -----------------------------------------------------------------------
+    // 10. VS Code Dark+ Colorful Multi-Language Syntax Highlighter
+    // -----------------------------------------------------------------------
+    var VSC_SETS = (function () {
+        function toSet(str) {
+            var map = Object.create(null);
+            str.split(" ").forEach(function (w) { if (w) map[w] = true; });
+            return map;
+        }
+        return {
+            sqlKw: toSet(
+                "SELECT DISTINCT FROM AND OR NOT IN IS NULL LIKE ILIKE BETWEEN AS " +
+                "ASC DESC FETCH FIRST NEXT ROWS ONLY INSERT INTO VALUES " +
+                "UPDATE SET DELETE TRUNCATE CREATE ALTER DROP RENAME DATABASE SCHEMA TABLE " +
+                "VIEW INDEX SEQUENCE TRIGGER PROCEDURE FUNCTION PRIMARY FOREIGN KEY REFERENCES " +
+                "UNIQUE CHECK DEFAULT CONSTRAINT AUTO_INCREMENT IDENTITY ADD COLUMN MODIFY " +
+                "CHANGE CASCADE RESTRICT NO ACTION BEGIN START TRANSACTION COMMIT ROLLBACK " +
+                "SAVEPOINT GRANT REVOKE TO WITH SHOW TABLES DATABASES DESCRIBE EXPLAIN USE " +
+                "TRUE FALSE ENGINE CHARACTER CHARSET COLLATE IF"
+            ),
+            sqlCtl: toSet(
+                "JOIN INNER LEFT RIGHT FULL OUTER CROSS NATURAL ON USING WHERE HAVING " +
+                "GROUP ORDER BY LIMIT OFFSET CASE WHEN THEN ELSE END EXISTS UNION INTERSECT " +
+                "EXCEPT ALL ANY SOME"
+            ),
+            sqlType: toSet(
+                "INT INTEGER SMALLINT BIGINT TINYINT MEDIUMINT DECIMAL NUMERIC FLOAT DOUBLE " +
+                "REAL CHAR VARCHAR NCHAR NVARCHAR TEXT TINYTEXT MEDIUMTEXT LONGTEXT DATE TIME " +
+                "DATETIME TIMESTAMP YEAR BOOLEAN BOOL BIT BLOB JSON ENUM SERIAL UNSIGNED"
+            ),
+            sqlFn: toSet(
+                "COUNT SUM AVG MIN MAX COALESCE IFNULL NULLIF CONCAT CONCAT_WS SUBSTRING SUBSTR " +
+                "LENGTH CHAR_LENGTH UPPER LOWER TRIM LTRIM RTRIM REPLACE ROUND CEIL CEILING " +
+                "FLOOR ABS MOD POWER SQRT NOW CURDATE CURTIME CURRENT_DATE CURRENT_TIME " +
+                "CURRENT_TIMESTAMP DATEDIFF TIMESTAMPDIFF DATE_ADD DATE_SUB DATE_FORMAT DAY " +
+                "MONTH QUARTER HOUR MINUTE SECOND CAST CONVERT GROUP_CONCAT ROW_NUMBER RANK DENSE_RANK"
+            ),
+            sqlTableAfter: toSet("FROM JOIN INTO UPDATE TABLE VIEW DATABASE SCHEMA REFERENCES USE DESCRIBE TRUNCATE"),
+            jsKw: toSet(
+                "const let var function class extends new this super typeof instanceof in of " +
+                "delete void static get set debugger"
+            ),
+            jsCtl: toSet(
+                "if else for while do switch case default break continue return try catch " +
+                "finally throw async await import from export as yield with"
+            ),
+            jsConst: toSet("true false null undefined NaN Infinity"),
+            jsType: toSet(
+                "Array Object String Number Boolean Math Date JSON Promise Map Set WeakMap " +
+                "WeakSet RegExp Error TypeError RangeError SyntaxError Symbol URL URLSearchParams " +
+                "FormData Headers Request Response Event CustomEvent HTMLElement NodeList " +
+                "IntersectionObserver MutationObserver console document window navigator history " +
+                "localStorage sessionStorage location"
+            ),
+            phpKw: toSet(
+                "function class interface trait extends implements public protected private " +
+                "static final abstract const var new clone instanceof echo print global use " +
+                "namespace array callable iterable object string int float bool void mixed self parent and or xor"
+            ),
+            phpCtl: toSet(
+                "if elseif else endif for endfor foreach endforeach while endwhile do switch " +
+                "case default endswitch break continue return try catch finally throw match " +
+                "include include_once require require_once goto declare yield as die exit"
+            ),
+            phpConst: toSet("true false null TRUE FALSE NULL PHP_EOL PHP_SELF MYSQLI_ASSOC MYSQLI_NUM MYSQLI_BOTH"),
+            pyKw: toSet("def class lambda and or not in is global nonlocal del self cls"),
+            pyCtl: toSet(
+                "if elif else for while break continue return import from as try except " +
+                "finally raise with pass yield assert async await match case"
+            ),
+            pyConst: toSet("True False None"),
+            pyType: toSet(
+                "int float str bool list dict set tuple frozenset bytes bytearray range object " +
+                "complex type Exception ValueError TypeError KeyError IndexError ZeroDivisionError " +
+                "FileNotFoundError IOError RuntimeError AttributeError StopIteration"
+            ),
+            pyFn: toSet(
+                "print input len sum min max abs round sorted reversed enumerate zip map filter " +
+                "open isinstance issubclass id hex bin oct ord chr pow divmod any all dir help format super"
+            ),
+            cKw: toSet(
+                "int float double char void long short unsigned signed const static extern " +
+                "register volatile auto inline restrict struct union enum typedef sizeof bool _Bool"
+            ),
+            cCtl: toSet("if else for while do switch case default break continue return goto"),
+            cType: toSet(
+                "FILE size_t ssize_t ptrdiff_t int8_t int16_t int32_t int64_t uint8_t uint16_t " +
+                "uint32_t uint64_t time_t clock_t String Serial byte word boolean Servo LiquidCrystal"
+            ),
+            cConst: toSet(
+                "NULL EOF true false TRUE FALSE EXIT_SUCCESS EXIT_FAILURE INT_MAX INT_MIN " +
+                "HIGH LOW INPUT OUTPUT INPUT_PULLUP LED_BUILTIN PI A0 A1 A2 A3 A4 A5 " +
+                "SEEK_SET SEEK_CUR SEEK_END stdin stdout stderr"
+            ),
+            octKw: toSet("function endfunction global persistent"),
+            octCtl: toSet(
+                "if elseif else endif for endfor while endwhile do until switch case otherwise " +
+                "endswitch try catch end_try_catch end return break continue parfor"
+            ),
+            octConst: toSet("pi inf Inf NaN nan eps ans true false on off realmax realmin"),
+            octCmd: toSet(
+                "clc clear close hold grid box axis who whos help doc format diary echo more pkg load save"
+            ),
+            bashCtl: toSet(
+                "if then elif else fi for in do done while until case esac function select " +
+                "return exit break continue sudo time coproc"
+            ),
+            bashKw: toSet("local export readonly declare typeset unset alias unalias source set shopt"),
+            asmCtl: toSet(
+                "JMP JZ JNZ JE JNE JG JGE JL JLE JA JAE JB JBE JC JNC JO JNO JS JNS " +
+                "CALL RET IRET CMP TEST LOOP HLT HALT INT NOP STOP END"
+            ),
+            asmKw: toSet(
+                "LOAD STORE LDA STA LDI STI MOV MOVA MOVB ADD SUB MUL IMUL DIV IDIV INC DEC " +
+                "NEG AND OR XOR NOT SHL SHR SAL SAR ROL ROR PUSH POP IN OUT LEA XCHG READ WRITE"
+            ),
+            algoKw: toSet(
+                "algorithme variables variable constantes constante type types enregistrement " +
+                "finenregistrement fonction finfonction procedure finprocedure debut fin " +
+                "entree entrees sortie sorties parametres parametre resultat debutalgorithme finalgorithme"
+            ),
+            algoCtl: toSet(
+                "si alors sinon sinonsi finsi pour de a pas faire finpour tantque fintantque " +
+                "repeter jusqu jusqua selon cas autrement finselon retourner renvoyer sortir continuer"
+            ),
+            algoType: toSet(
+                "entier entiers reel reels booleen booleens caractere caracteres chaine chaines " +
+                "tableau tableaux matrice liste pile file arbre noeud pointeur fichier"
+            ),
+            algoConst: toSet("vrai faux nil nul null et ou non xor div mod"),
+            algoFn: toSet("lire ecrire afficher saisir allouer liberer longueur racine abs alea"),
+            cssValKw: toSet(
+                "none auto block inline inline-block flex inline-flex grid inline-grid contents " +
+                "relative absolute fixed sticky static hidden visible scroll clip pointer default " +
+                "center left right justify start end flex-start flex-end space-between space-around " +
+                "space-evenly stretch baseline row column wrap nowrap solid dashed dotted double " +
+                "transparent currentColor inherit initial unset revert bold normal italic underline " +
+                "uppercase lowercase capitalize cover contain no-repeat repeat border-box content-box " +
+                "ease linear ease-in ease-out ease-in-out infinite both forwards backwards white black"
+            )
+        };
+    })();
+
+    var VSC_BRACKET_CLS = ["b1", "b2", "b3"];
+
+    function vscEsc(str) {
+        return String(str)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+    }
+
+    // Emit token HTML while splitting across newlines so .vsc-line spans stay strictly nested
+    function vscSpan(cls, text) {
+        if (!text) return "";
+        if (!cls) return vscEsc(text);
+        if (text.indexOf("\n") === -1) {
+            return '<span class="vsc-' + cls + '">' + vscEsc(text) + "</span>";
+        }
+        return text
+            .split("\n")
+            .map(function (seg) {
+                return seg ? '<span class="vsc-' + cls + '">' + vscEsc(seg) + "</span>" : "";
+            })
+            .join("\n");
+    }
+
+    function vscBracket(ch, depthRef) {
+        var cls;
+        if (ch === "(" || ch === "[" || ch === "{") {
+            cls = VSC_BRACKET_CLS[depthRef.d % 3];
+            depthRef.d++;
+            return vscSpan(cls, ch);
+        }
+        depthRef.d = Math.max(0, depthRef.d - 1);
+        cls = VSC_BRACKET_CLS[depthRef.d % 3];
+        return vscSpan(cls, ch);
+    }
+
+    function vscStripAccents(s) {
+        return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function vscReadString(src, i, quote, allowDoubleQuoteEscape) {
+        var n = src.length;
+        var j = i + 1;
+        while (j < n) {
+            var c = src.charAt(j);
+            if (c === "\\") {
+                j += 2;
+                continue;
+            }
+            if (c === quote) {
+                if (allowDoubleQuoteEscape && src.charAt(j + 1) === quote) {
+                    j += 2;
+                    continue;
+                }
+                j++;
+                break;
+            }
+            j++;
+        }
+        return j;
+    }
+
+    function vscFormatCString(raw) {
+        // Highlight %d, %.2f, %s and \n, \t inside C/Python/PHP strings like VS Code Dark+
+        var out = "";
+        var re = /(\\[nrt0\\'"x][0-9a-fA-F]{0,2}|%[-+0 #]*\d*(?:\.\d+)?[hlL]?[diuoxXfFeEgGaAcspn%])/g;
+        var last = 0;
+        var m;
+        while ((m = re.exec(raw)) !== null) {
+            if (m.index > last) out += vscSpan("str", raw.slice(last, m.index));
+            out += vscSpan("esc", m[0]);
+            last = m.index + m[0].length;
+        }
+        if (last < raw.length) out += vscSpan("str", raw.slice(last));
+        return out;
+    }
+
+    function vscNextNonSpace(src, idx) {
+        var n = src.length;
+        while (idx < n && /\s/.test(src.charAt(idx))) idx++;
+        return src.charAt(idx) || "";
+    }
+
+    function highlightSQL(src) {
+        var out = "";
+        var i = 0;
+        var n = src.length;
+        var br = { d: 0 };
+        var prevKind = ""; // "tableKw" | "tableName" | "as" | "dot" | "select" | ""
+
+        while (i < n) {
+            var c = src.charAt(i);
+            var c2 = src.slice(i, i + 2);
+
+            // Whitespace
+            if (/\s/.test(c)) {
+                var ws = i + 1;
+                while (ws < n && /\s/.test(src.charAt(ws))) ws++;
+                out += vscEsc(src.slice(i, ws));
+                i = ws;
+                continue;
+            }
+            // Single-line SQL comment: -- ... or # ...
+            if ((c2 === "--" && (i + 2 >= n || /\s|-/.test(src.charAt(i + 2)))) || c === "#") {
+                var le = src.indexOf("\n", i);
+                if (le === -1) le = n;
+                out += vscSpan("cmt", src.slice(i, le));
+                i = le;
+                continue;
+            }
+            // Block comment: /* ... */
+            if (c2 === "/*") {
+                var ce = src.indexOf("*/", i + 2);
+                ce = ce === -1 ? n : ce + 2;
+                out += vscSpan("cmt", src.slice(i, ce));
+                i = ce;
+                continue;
+            }
+            // Strings: '...' or "..."
+            if (c === "'" || c === '"') {
+                var se = vscReadString(src, i, c, true);
+                out += vscSpan("str", src.slice(i, se));
+                i = se;
+                prevKind = "";
+                continue;
+            }
+            // Backtick identifier: `col`
+            if (c === "`") {
+                var be = vscReadString(src, i, "`", true);
+                out += vscSpan(prevKind === "tableKw" ? "type" : "var", src.slice(i, be));
+                prevKind = prevKind === "tableKw" ? "tableName" : "";
+                i = be;
+                continue;
+            }
+            // Numbers
+            if (/\d/.test(c)) {
+                var nm = src.slice(i).match(/^\d+(?:\.\d+)?/);
+                out += vscSpan("num", nm[0]);
+                i += nm[0].length;
+                prevKind = "";
+                continue;
+            }
+            // Identifiers & SQL keywords (supports French accented names too)
+            if (/[A-Za-z_\u00C0-\u017F@]/.test(c)) {
+                var wm = src.slice(i).match(/^[A-Za-z0-9_\u00C0-\u017F@]+/);
+                var word = wm[0];
+                var up = word.toUpperCase();
+                var nextCh = vscNextNonSpace(src, i + word.length);
+                var rawNext = src.charAt(i + word.length);
+
+                if (prevKind === "dot") {
+                    out += vscSpan("var", word);
+                    prevKind = "";
+                } else if (VSC_SETS.sqlCtl[up]) {
+                    out += vscSpan("ctl", word);
+                    if (up === "JOIN") prevKind = "tableKw";
+                    else if (up === "EXISTS" && prevKind === "tableKw") { /* keep tableKw for CREATE TABLE IF NOT EXISTS */ }
+                    else prevKind = "";
+                } else if (VSC_SETS.sqlFn[up] && nextCh === "(") {
+                    out += vscSpan("fn", word);
+                    prevKind = "";
+                } else if (VSC_SETS.sqlType[up]) {
+                    out += vscSpan("type", word);
+                    prevKind = "";
+                } else if (VSC_SETS.sqlKw[up]) {
+                    out += vscSpan("kw", word);
+                    if (VSC_SETS.sqlTableAfter[up]) prevKind = "tableKw";
+                    else if (up === "AS") prevKind = "as";
+                    else if (up === "SELECT") prevKind = "select";
+                    else if (up === "IF" || up === "NOT" || up === "EXISTS") { /* keep tableKw if CREATE TABLE IF NOT EXISTS */ }
+                    else prevKind = "";
+                } else if (prevKind === "tableKw") {
+                    out += vscSpan("type", word);
+                    prevKind = rawNext === "." ? "dotPrefix" : "tableName";
+                } else if (prevKind === "tableName" || prevKind === "as") {
+                    out += vscSpan("sel", word);
+                    prevKind = "";
+                } else if (rawNext === ".") {
+                    out += vscSpan("sel", word);
+                    prevKind = "";
+                } else if (nextCh === "(") {
+                    out += vscSpan("fn", word);
+                    prevKind = "";
+                } else if (word.charAt(0) === "@") {
+                    out += vscSpan("const", word);
+                    prevKind = "";
+                } else {
+                    out += vscSpan("var", word);
+                    prevKind = "";
+                }
+                i += word.length;
+                continue;
+            }
+            // Brackets
+            if ("()[]{}".indexOf(c) !== -1) {
+                out += vscBracket(c, br);
+                prevKind = "";
+                i++;
+                continue;
+            }
+            // Dot qualifier
+            if (c === ".") {
+                out += vscSpan("punct", ".");
+                prevKind = "dot";
+                i++;
+                continue;
+            }
+            // Wildcard *
+            if (c === "*" && (prevKind === "select" || prevKind === "dot" || src.charAt(i - 1) === "(")) {
+                out += vscSpan("const", "*");
+                prevKind = "";
+                i++;
+                continue;
+            }
+            // Semicolon / comma reset context
+            if (c === ";" || c === ",") {
+                out += vscSpan("punct", c);
+                prevKind = "";
+                i++;
+                continue;
+            }
+            out += vscSpan("op", c);
+            prevKind = "";
+            i++;
+        }
+        return out;
+    }
+
+    function highlightCLike(src, mode) {
+        // Handles: "javascript", "c", "php-code", "python", "octave"
+        var out = "";
+        var i = 0;
+        var n = src.length;
+        var br = { d: 0 };
+        var prevWord = "";
+        var prevDot = false;
+        var lastSigChar = "";
+
+        while (i < n) {
+            var c = src.charAt(i);
+            var c2 = src.slice(i, i + 2);
+            var c3 = src.slice(i, i + 3);
+
+            if (/\s/.test(c)) {
+                var ws = i + 1;
+                while (ws < n && /\s/.test(src.charAt(ws))) ws++;
+                out += vscEsc(src.slice(i, ws));
+                i = ws;
+                continue;
+            }
+
+            // C preprocessor directive at line start: #include <stdio.h>, #define MAX 10
+            if (mode === "c" && c === "#" && (i === 0 || src.charAt(i - 1) === "\n" || /^\s*$/.test(src.slice(src.lastIndexOf("\n", i - 1) + 1, i)))) {
+                var pe = src.indexOf("\n", i);
+                if (pe === -1) pe = n;
+                var pline = src.slice(i, pe);
+                var pm = pline.match(/^(#\s*[a-zA-Z_]+)(.*)$/);
+                if (pm) {
+                    out += vscSpan("ctl", pm[1]);
+                    var rest = pm[2];
+                    var incM = rest.match(/^(\s*)(<[^>]+>|"[^"]+")(.*)$/);
+                    if (incM) {
+                        out += vscEsc(incM[1]) + vscSpan("str", incM[2]) + highlightCLike(incM[3], "c");
+                    } else {
+                        var defM = rest.match(/^(\s*)([A-Za-z_]\w*)(.*)$/);
+                        if (defM && /define|ifdef|ifndef|undef/.test(pm[1])) {
+                            out += vscEsc(defM[1]) + vscSpan("const", defM[2]) + highlightCLike(defM[3], "c");
+                        } else {
+                            out += highlightCLike(rest, "c");
+                        }
+                    }
+                    i = pe;
+                    lastSigChar = "";
+                    continue;
+                }
+            }
+
+            // Comments
+            if ((mode === "javascript" || mode === "c" || mode === "php-code") && c2 === "//") {
+                var le1 = src.indexOf("\n", i);
+                if (le1 === -1) le1 = n;
+                out += vscSpan("cmt", src.slice(i, le1));
+                i = le1;
+                continue;
+            }
+            if ((mode === "javascript" || mode === "c" || mode === "php-code") && c2 === "/*") {
+                var ce1 = src.indexOf("*/", i + 2);
+                ce1 = ce1 === -1 ? n : ce1 + 2;
+                out += vscSpan("cmt", src.slice(i, ce1));
+                i = ce1;
+                continue;
+            }
+            if ((mode === "python" || mode === "php-code" || mode === "octave") && c === "#") {
+                var le2 = src.indexOf("\n", i);
+                if (le2 === -1) le2 = n;
+                out += vscSpan("cmt", src.slice(i, le2));
+                i = le2;
+                continue;
+            }
+            if (mode === "octave" && c === "%") {
+                var le3 = src.indexOf("\n", i);
+                if (le3 === -1) le3 = n;
+                out += vscSpan("cmt", src.slice(i, le3));
+                i = le3;
+                continue;
+            }
+
+            // Python triple-quoted strings & f-strings
+            if (mode === "python" && /^[fFrRbBuU]{1,2}['"]/.test(src.slice(i, i + 3))) {
+                var pfxM = src.slice(i).match(/^([fFrRbBuU]{1,2})("""|'''|["'])/);
+                if (pfxM) {
+                    var pfx = pfxM[1];
+                    var delim = pfxM[2];
+                    var isF = /f/i.test(pfx);
+                    out += vscSpan("kw", pfx);
+                    i += pfx.length;
+                    var endIdx;
+                    if (delim.length === 3) {
+                        var tIdx = src.indexOf(delim, i + 3);
+                        endIdx = tIdx === -1 ? n : tIdx + 3;
+                    } else {
+                        endIdx = vscReadString(src, i, delim, false);
+                    }
+                    var body = src.slice(i, endIdx);
+                    if (isF) {
+                        var parts = body.split(/(\{[^{}\n]+\})/);
+                        parts.forEach(function (pt) {
+                            if (pt.length > 2 && pt.charAt(0) === "{" && pt.charAt(pt.length - 1) === "}") {
+                                out += vscSpan("ctl", "{") + highlightCLike(pt.slice(1, -1), "python") + vscSpan("ctl", "}");
+                            } else {
+                                out += vscSpan("str", pt);
+                            }
+                        });
+                    } else {
+                        out += vscSpan("str", body);
+                    }
+                    i = endIdx;
+                    lastSigChar = '"';
+                    prevDot = false;
+                    continue;
+                }
+            }
+            if (mode === "python" && (c3 === '"""' || c3 === "'''")) {
+                var te = src.indexOf(c3, i + 3);
+                te = te === -1 ? n : te + 3;
+                out += vscSpan("str", src.slice(i, te));
+                i = te;
+                lastSigChar = '"';
+                prevDot = false;
+                continue;
+            }
+
+            // JS template literal: `...${expr}...`
+            if (mode === "javascript" && c === "`") {
+                out += vscSpan("str", "`");
+                i++;
+                var buf = "";
+                while (i < n) {
+                    var tc = src.charAt(i);
+                    if (tc === "\\") {
+                        buf += src.slice(i, i + 2);
+                        i += 2;
+                        continue;
+                    }
+                    if (tc === "`") {
+                        out += vscSpan("str", buf) + vscSpan("str", "`");
+                        buf = "";
+                        i++;
+                        break;
+                    }
+                    if (tc === "$" && src.charAt(i + 1) === "{") {
+                        out += vscSpan("str", buf) + vscSpan("ctl", "${");
+                        buf = "";
+                        i += 2;
+                        var exprStart = i;
+                        var bDepth = 1;
+                        while (i < n && bDepth > 0) {
+                            if (src.charAt(i) === "{") bDepth++;
+                            else if (src.charAt(i) === "}") bDepth--;
+                            if (bDepth > 0) i++;
+                        }
+                        out += highlightCLike(src.slice(exprStart, i), "javascript");
+                        if (i < n && src.charAt(i) === "}") {
+                            out += vscSpan("ctl", "}");
+                            i++;
+                        }
+                        continue;
+                    }
+                    buf += tc;
+                    i++;
+                }
+                if (buf) out += vscSpan("str", buf);
+                lastSigChar = "`";
+                prevDot = false;
+                continue;
+            }
+
+            // Standard strings (in Octave, ' after ident/number/)/] is transpose, not string!)
+            if (c === '"' || c === "'") {
+                if (mode === "octave" && c === "'" && /[A-Za-z0-9_)\]}]/.test(lastSigChar)) {
+                    out += vscSpan("op", "'");
+                    i++;
+                    lastSigChar = "'";
+                    continue;
+                }
+                var se2 = vscReadString(src, i, c, mode === "octave" && c === "'");
+                var sraw = src.slice(i, se2);
+                if (mode === "c" && c === '"') {
+                    out += vscFormatCString(sraw);
+                } else if (mode === "php-code" && c === '"') {
+                    // Highlight $variable interpolation inside PHP double-quoted strings
+                    var pParts = sraw.split(/(\$[A-Za-z_]\w*)/);
+                    pParts.forEach(function (pp) {
+                        out += pp.charAt(0) === "$" ? vscSpan("var", pp) : vscFormatCString(pp);
+                    });
+                } else {
+                    out += vscFormatCString(sraw);
+                }
+                i = se2;
+                lastSigChar = c;
+                prevDot = false;
+                prevWord = "";
+                continue;
+            }
+
+            // Python decorator @name
+            if (mode === "python" && c === "@") {
+                var dm = src.slice(i).match(/^@[A-Za-z_][\w.]*/);
+                if (dm) {
+                    out += vscSpan("fn", dm[0]);
+                    i += dm[0].length;
+                    lastSigChar = "a";
+                    continue;
+                }
+            }
+
+            // PHP variables $nom, $_POST
+            if (mode === "php-code" && c === "$" && /[A-Za-z_]/.test(src.charAt(i + 1) || "")) {
+                var vm = src.slice(i).match(/^\$[A-Za-z_]\w*/);
+                var vname = vm[0];
+                var isSuper = /^\$_(GET|POST|SESSION|COOKIE|SERVER|FILES|REQUEST|ENV|GLOBALS)$/.test(vname);
+                out += vscSpan(isSuper ? "const" : "var", vname);
+                i += vname.length;
+                lastSigChar = "a";
+                prevDot = false;
+                prevWord = vname;
+                continue;
+            }
+
+            // Numbers (hex, binary, scientific, decimal)
+            if (/\d/.test(c) || (c === "." && /\d/.test(src.charAt(i + 1) || ""))) {
+                var numM = src.slice(i).match(/^(?:0[xX][0-9a-fA-F]+|0[bB][01]+|0[oO][0-7]+|\d+(?:\.\d+)?(?:[eE][+-]?\d+)?[fFlLuU]*|\.\d+(?:[eE][+-]?\d+)?)/);
+                if (numM) {
+                    out += vscSpan("num", numM[0]);
+                    i += numM[0].length;
+                    lastSigChar = "0";
+                    prevDot = false;
+                    prevWord = "";
+                    continue;
+                }
+            }
+
+            // Identifiers & keywords
+            if (/[A-Za-z_\u00C0-\u017F]/.test(c)) {
+                var idM = src.slice(i).match(/^[A-Za-z0-9_\u00C0-\u017F]+/);
+                var id = idM[0];
+                var nxt = vscNextNonSpace(src, i + id.length);
+                var cls = "var";
+
+                if (prevDot) {
+                    cls = nxt === "(" ? "fn" : "var";
+                } else if (prevWord === "function" || prevWord === "def") {
+                    cls = "fn";
+                } else if (prevWord === "class" || prevWord === "struct" || prevWord === "enum" || prevWord === "new" || prevWord === "extends" || prevWord === "implements") {
+                    cls = "type";
+                } else if (mode === "javascript") {
+                    if (VSC_SETS.jsCtl[id]) cls = "ctl";
+                    else if (VSC_SETS.jsKw[id]) cls = "kw";
+                    else if (VSC_SETS.jsConst[id]) cls = "const";
+                    else if (VSC_SETS.jsType[id]) cls = "type";
+                    else if (nxt === "(") cls = "fn";
+                    else if (/^[A-Z][A-Z0-9_]{2,}$/.test(id)) cls = "const";
+                    else if (/^[A-Z][a-zA-Z0-9]*$/.test(id)) cls = "type";
+                } else if (mode === "php-code") {
+                    var low = id.toLowerCase();
+                    if (VSC_SETS.phpCtl[low]) cls = "ctl";
+                    else if (VSC_SETS.phpConst[id] || VSC_SETS.phpConst[low]) cls = "const";
+                    else if (VSC_SETS.phpKw[low]) cls = "kw";
+                    else if (nxt === "(") cls = "fn";
+                    else if (/^[A-Z][A-Z0-9_]{2,}$/.test(id)) cls = "const";
+                    else if (/^[A-Z][a-zA-Z0-9]*$/.test(id) || id === "mysqli") cls = "type";
+                } else if (mode === "python") {
+                    if (VSC_SETS.pyCtl[id]) cls = "ctl";
+                    else if (VSC_SETS.pyConst[id]) cls = "const";
+                    else if (VSC_SETS.pyKw[id]) cls = "kw";
+                    else if (VSC_SETS.pyType[id]) cls = "type";
+                    else if (VSC_SETS.pyFn[id] || nxt === "(") cls = "fn";
+                    else if (/^[A-Z][A-Z0-9_]{2,}$/.test(id)) cls = "const";
+                    else if (/^[A-Z][a-zA-Z0-9]*$/.test(id)) cls = "type";
+                } else if (mode === "c") {
+                    if (VSC_SETS.cCtl[id]) cls = "ctl";
+                    else if (VSC_SETS.cConst[id]) cls = "const";
+                    else if (VSC_SETS.cKw[id]) cls = "kw";
+                    else if (VSC_SETS.cType[id] || /_t$/.test(id)) cls = "type";
+                    else if (nxt === "(") cls = "fn";
+                    else if (/^[A-Z][A-Z0-9_]{2,}$/.test(id)) cls = "const";
+                } else if (mode === "octave") {
+                    if (VSC_SETS.octCtl[id]) cls = "ctl";
+                    else if (VSC_SETS.octKw[id]) cls = "kw";
+                    else if (VSC_SETS.octConst[id]) cls = "const";
+                    else if (nxt === "(" || VSC_SETS.octCmd[id]) cls = "fn";
+                }
+
+                out += vscSpan(cls, id);
+                prevWord = id;
+                prevDot = false;
+                lastSigChar = "a";
+                i += id.length;
+                continue;
+            }
+
+            // Member access: . or -> or ::
+            if (c2 === "->" || c2 === "::") {
+                out += vscSpan("punct", c2);
+                prevDot = true;
+                lastSigChar = ">";
+                i += 2;
+                continue;
+            }
+            if (c2 === "=>") {
+                out += vscSpan("kw", "=>");
+                prevDot = false;
+                lastSigChar = ">";
+                i += 2;
+                continue;
+            }
+            if (c === ".") {
+                out += vscSpan("punct", ".");
+                prevDot = true;
+                lastSigChar = ".";
+                i++;
+                continue;
+            }
+            if ("()[]{}".indexOf(c) !== -1) {
+                out += vscBracket(c, br);
+                prevDot = false;
+                prevWord = "";
+                lastSigChar = c;
+                i++;
+                continue;
+            }
+            if (c === ";" || c === "," || c === ":") {
+                out += vscSpan("punct", c);
+                prevDot = false;
+                prevWord = "";
+                lastSigChar = c;
+                i++;
+                continue;
+            }
+            out += vscSpan("op", c);
+            prevDot = false;
+            prevWord = "";
+            lastSigChar = c;
+            i++;
+        }
+        return out;
+    }
+
+    function highlightCSS(src) {
+        var out = "";
+        var i = 0;
+        var n = src.length;
+        var br = { d: 0 };
+        var inBlock = false;
+        var afterColon = false;
+
+        while (i < n) {
+            var c = src.charAt(i);
+            if (/\s/.test(c)) {
+                var ws = i + 1;
+                while (ws < n && /\s/.test(src.charAt(ws))) ws++;
+                out += vscEsc(src.slice(i, ws));
+                i = ws;
+                continue;
+            }
+            if (src.slice(i, i + 2) === "/*") {
+                var ce = src.indexOf("*/", i + 2);
+                ce = ce === -1 ? n : ce + 2;
+                out += vscSpan("cmt", src.slice(i, ce));
+                i = ce;
+                continue;
+            }
+            if (c === '"' || c === "'") {
+                var se = vscReadString(src, i, c, false);
+                out += vscSpan("str", src.slice(i, se));
+                i = se;
+                continue;
+            }
+            if (c === "{") {
+                out += vscBracket(c, br);
+                inBlock = br.d > 0;
+                afterColon = false;
+                i++;
+                continue;
+            }
+            if (c === "}") {
+                out += vscBracket(c, br);
+                inBlock = br.d > 0;
+                afterColon = false;
+                i++;
+                continue;
+            }
+            if (c === "@") {
+                var am = src.slice(i).match(/^@[a-zA-Z-]+/);
+                if (am) {
+                    out += vscSpan("ctl", am[0]);
+                    i += am[0].length;
+                    continue;
+                }
+            }
+            if (!inBlock) {
+                // Selector tokens
+                var sm = src.slice(i).match(/^[^{,/\s]+/);
+                if (sm) {
+                    out += vscSpan("sel", sm[0]);
+                    i += sm[0].length;
+                    continue;
+                }
+            } else if (!afterColon) {
+                if (c === ":") {
+                    // Distinguish media/nested selector vs property declaration
+                    var semiPos = src.indexOf(";", i);
+                    var bracePos = src.indexOf("{", i);
+                    if (bracePos !== -1 && (semiPos === -1 || bracePos < semiPos)) {
+                        out += vscSpan("sel", ":");
+                    } else {
+                        out += vscSpan("punct", ":");
+                        afterColon = true;
+                    }
+                    i++;
+                    continue;
+                }
+                var pm = src.slice(i).match(/^--[a-zA-Z0-9_-]+|^-?[a-zA-Z][a-zA-Z0-9-]*/);
+                if (pm) {
+                    var brace2 = src.indexOf("{", i);
+                    var colon2 = src.indexOf(":", i);
+                    var semi2 = src.indexOf(";", i);
+                    var isNestedSel = brace2 !== -1 && (semi2 === -1 || brace2 < semi2) && (colon2 === -1 || brace2 < colon2);
+                    out += vscSpan(isNestedSel ? "sel" : "var", pm[0]);
+                    i += pm[0].length;
+                    continue;
+                }
+            } else {
+                // Inside property value
+                if (c === ";") {
+                    out += vscSpan("punct", ";");
+                    afterColon = false;
+                    i++;
+                    continue;
+                }
+                if (src.slice(i).match(/^!important\b/i)) {
+                    var im = src.slice(i).match(/^!important\b/i);
+                    out += vscSpan("ctl", im[0]);
+                    i += im[0].length;
+                    continue;
+                }
+                if (c === "#") {
+                    var hm = src.slice(i).match(/^#[0-9a-fA-F]{3,8}\b/);
+                    if (hm) {
+                        out += vscSpan("const", hm[0]);
+                        i += hm[0].length;
+                        continue;
+                    }
+                }
+                var nm = src.slice(i).match(/^-?(?:\d+\.?\d*|\.\d+)(?:%|px|rem|em|vh|vw|vmin|vmax|ch|fr|deg|rad|turn|s|ms|dpi)?/);
+                if (nm && nm[0] && nm[0] !== "-") {
+                    out += vscSpan("num", nm[0]);
+                    i += nm[0].length;
+                    continue;
+                }
+                var vm = src.slice(i).match(/^--[a-zA-Z0-9_-]+|^[a-zA-Z][a-zA-Z0-9-]*/);
+                if (vm) {
+                    var vw = vm[0];
+                    var nx = src.charAt(i + vw.length);
+                    if (vw.slice(0, 2) === "--") out += vscSpan("var", vw);
+                    else if (nx === "(") out += vscSpan("fn", vw);
+                    else if (VSC_SETS.cssValKw[vw]) out += vscSpan("str", vw);
+                    else out += vscSpan("var", vw);
+                    i += vw.length;
+                    continue;
+                }
+            }
+            if ("()[]".indexOf(c) !== -1) {
+                out += vscBracket(c, br);
+                i++;
+                continue;
+            }
+            out += vscSpan("punct", c);
+            i++;
+        }
+        return out;
+    }
+
+    function highlightHTML(src, allowPHP) {
+        var out = "";
+        var i = 0;
+        var n = src.length;
+
+        while (i < n) {
+            // PHP embedded block: <?php ... ?> or <?= ... ?>
+            if (allowPHP && src.slice(i, i + 2) === "<?") {
+                var openM = src.slice(i).match(/^<\?(?:php|=)?/i);
+                out += vscSpan("ctl", openM[0]);
+                i += openM[0].length;
+                var phpEnd = src.indexOf("?>", i);
+                if (phpEnd === -1) {
+                    out += highlightCLike(src.slice(i), "php-code");
+                    break;
+                }
+                out += highlightCLike(src.slice(i, phpEnd), "php-code");
+                out += vscSpan("ctl", "?>");
+                i = phpEnd + 2;
+                continue;
+            }
+            // HTML comment: <!-- ... -->
+            if (src.slice(i, i + 4) === "<!--") {
+                var ce = src.indexOf("-->", i + 4);
+                ce = ce === -1 ? n : ce + 3;
+                out += vscSpan("cmt", src.slice(i, ce));
+                i = ce;
+                continue;
+            }
+            // DOCTYPE
+            if (/^<!doctype/i.test(src.slice(i, i + 9))) {
+                var de = src.indexOf(">", i);
+                de = de === -1 ? n : de + 1;
+                out += vscSpan("kw", src.slice(i, de));
+                i = de;
+                continue;
+            }
+            // HTML tag: <tag ...> or </tag>
+            var tagM = src.slice(i).match(/^(<\/?)([A-Za-z][A-Za-z0-9:-]*)/);
+            if (tagM) {
+                var isClosing = tagM[1] === "</";
+                var tagName = tagM[2];
+                var tagLow = tagName.toLowerCase();
+                out += vscSpan("punct", tagM[1]) + vscSpan("kw", tagName);
+                i += tagM[0].length;
+
+                // Parse attributes until >
+                while (i < n) {
+                    if (allowPHP && src.slice(i, i + 2) === "<?") {
+                        var pe2 = src.indexOf("?>", i + 2);
+                        var pChunk = pe2 === -1 ? src.slice(i) : src.slice(i, pe2 + 2);
+                        out += highlightHTML(pChunk, true);
+                        i += pChunk.length;
+                        continue;
+                    }
+                    var ac = src.charAt(i);
+                    if (/\s/.test(ac)) {
+                        var aws = i + 1;
+                        while (aws < n && /\s/.test(src.charAt(aws))) aws++;
+                        out += vscEsc(src.slice(i, aws));
+                        i = aws;
+                        continue;
+                    }
+                    if (src.slice(i, i + 2) === "/>") {
+                        out += vscSpan("punct", "/>");
+                        i += 2;
+                        isClosing = true;
+                        break;
+                    }
+                    if (ac === ">") {
+                        out += vscSpan("punct", ">");
+                        i++;
+                        break;
+                    }
+                    if (ac === "=") {
+                        out += vscSpan("punct", "=");
+                        i++;
+                        continue;
+                    }
+                    if (ac === '"' || ac === "'") {
+                        var ase = vscReadString(src, i, ac, false);
+                        out += vscSpan("str", src.slice(i, ase));
+                        i = ase;
+                        continue;
+                    }
+                    var anm = src.slice(i).match(/^[^\s=/>"']+/);
+                    if (anm) {
+                        out += vscSpan("var", anm[0]);
+                        i += anm[0].length;
+                        continue;
+                    }
+                    out += vscEsc(ac);
+                    i++;
+                }
+
+                // Sub-highlight <style>...</style> as CSS and <script>...</script> as JS
+                if (!isClosing && (tagLow === "style" || tagLow === "script")) {
+                    var closeRe = new RegExp("</" + tagLow + "\\s*>", "i");
+                    var cm = closeRe.exec(src.slice(i));
+                    var subEnd = cm ? i + cm.index : n;
+                    var subCode = src.slice(i, subEnd);
+                    out += tagLow === "style" ? highlightCSS(subCode) : highlightCLike(subCode, "javascript");
+                    i = subEnd;
+                }
+                continue;
+            }
+            // HTML entities: &amp; &lt;
+            if (src.charAt(i) === "&") {
+                var em = src.slice(i).match(/^&[a-zA-Z0-9#]+;/);
+                if (em) {
+                    out += vscSpan("const", em[0]);
+                    i += em[0].length;
+                    continue;
+                }
+            }
+            out += vscEsc(src.charAt(i));
+            i++;
+        }
+        return out;
+    }
+
+    function highlightAlgo(src) {
+        var out = "";
+        var i = 0;
+        var n = src.length;
+        var br = { d: 0 };
+        var prevHeader = false;
+
+        while (i < n) {
+            var c = src.charAt(i);
+            var c2 = src.slice(i, i + 2);
+
+            if (/\s/.test(c)) {
+                var ws = i + 1;
+                while (ws < n && /\s/.test(src.charAt(ws))) ws++;
+                out += vscEsc(src.slice(i, ws));
+                i = ws;
+                continue;
+            }
+            if (c2 === "//") {
+                var le = src.indexOf("\n", i);
+                if (le === -1) le = n;
+                out += vscSpan("cmt", src.slice(i, le));
+                i = le;
+                continue;
+            }
+            if (c2 === "/*") {
+                var ce = src.indexOf("*/", i + 2);
+                ce = ce === -1 ? n : ce + 2;
+                out += vscSpan("cmt", src.slice(i, ce));
+                i = ce;
+                continue;
+            }
+            if (c === '"' || c === "'") {
+                // Handle Jusqu'à gracefully before treating ' as quote
+                var se = vscReadString(src, i, c, false);
+                out += vscSpan("str", src.slice(i, se));
+                i = se;
+                prevHeader = false;
+                continue;
+            }
+            if (c === "\u2190" || c2 === "<-") {
+                var arrow = c === "\u2190" ? c : c2;
+                out += vscSpan("ctl", arrow);
+                i += arrow.length;
+                prevHeader = false;
+                continue;
+            }
+            if (/\d/.test(c)) {
+                var nm = src.slice(i).match(/^\d+(?:\.\d+)?/);
+                out += vscSpan("num", nm[0]);
+                i += nm[0].length;
+                prevHeader = false;
+                continue;
+            }
+            // Match Jusqu'à as single control keyword
+            var jq = src.slice(i).match(/^Jusqu['\u2019][àa]/i);
+            if (jq) {
+                out += vscSpan("ctl", jq[0]);
+                i += jq[0].length;
+                prevHeader = false;
+                continue;
+            }
+            if (/[A-Za-z_\u00C0-\u017F]/.test(c)) {
+                var wm = src.slice(i).match(/^[A-Za-z0-9_\u00C0-\u017F]+/);
+                var w = wm[0];
+                var norm = vscStripAccents(w);
+                var nxt = vscNextNonSpace(src, i + w.length);
+                var cls = "var";
+
+                if (prevHeader) {
+                    cls = "fn";
+                    prevHeader = false;
+                } else if (norm === "a" && w !== "À" && w !== "A") {
+                    // Lowercase 'a' is normally a variable (Lire(a, b)), whereas 'À' is loop keyword Pour i de 1 À n
+                    cls = "var";
+                } else if (VSC_SETS.algoCtl[norm]) {
+                    cls = "ctl";
+                } else if (VSC_SETS.algoKw[norm]) {
+                    cls = "kw";
+                    if (norm === "algorithme" || norm === "fonction" || norm === "procedure") {
+                        prevHeader = true;
+                    }
+                } else if (VSC_SETS.algoType[norm]) {
+                    cls = "type";
+                } else if (VSC_SETS.algoConst[norm]) {
+                    cls = "const";
+                } else if (VSC_SETS.algoFn[norm] || nxt === "(") {
+                    cls = "fn";
+                }
+                out += vscSpan(cls, w);
+                i += w.length;
+                continue;
+            }
+            if ("()[]{}".indexOf(c) !== -1) {
+                out += vscBracket(c, br);
+                prevHeader = false;
+                i++;
+                continue;
+            }
+            out += vscSpan("punct", c);
+            prevHeader = false;
+            i++;
+        }
+        return out;
+    }
+
+    function highlightBashCommand(line) {
+        var out = "";
+        var i = 0;
+        var n = line.length;
+        var expectCmd = true;
+        var br = { d: 0 };
+
+        while (i < n) {
+            var c = line.charAt(i);
+            var c2 = line.slice(i, i + 2);
+            if (/\s/.test(c)) {
+                var ws = i + 1;
+                while (ws < n && /\s/.test(line.charAt(ws))) ws++;
+                out += vscEsc(line.slice(i, ws));
+                i = ws;
+                continue;
+            }
+            if (c === "#" && (i === 0 || /\s/.test(line.charAt(i - 1)))) {
+                out += vscSpan("cmt", line.slice(i));
+                break;
+            }
+            if (c === '"' || c === "'") {
+                var se = vscReadString(line, i, c, false);
+                out += vscSpan("str", line.slice(i, se));
+                i = se;
+                expectCmd = false;
+                continue;
+            }
+            if (c === "$") {
+                var vm = line.slice(i).match(/^\$(?:\{[^}]+\}|[A-Za-z_]\w*|[0-9?$!#@*-])/);
+                if (vm) {
+                    out += vscSpan("var", vm[0]);
+                    i += vm[0].length;
+                    expectCmd = false;
+                    continue;
+                }
+            }
+            if (c2 === "&&" || c2 === "||" || c === "|" || c === ";") {
+                var sep = (c2 === "&&" || c2 === "||") ? c2 : c;
+                out += vscSpan("ctl", sep);
+                i += sep.length;
+                expectCmd = true;
+                continue;
+            }
+            var redir = line.slice(i).match(/^(?:\d*>>|\d*>&\d+|\d*>|<<<|<<|<)/);
+            if (redir) {
+                out += vscSpan("ctl", redir[0]);
+                i += redir[0].length;
+                expectCmd = false;
+                continue;
+            }
+            if ("()[]{}".indexOf(c) !== -1) {
+                out += vscBracket(c, br);
+                i++;
+                continue;
+            }
+            var tokM = line.slice(i).match(/^[^\s"'$|;&<>()[\]{}]+/);
+            if (tokM) {
+                var tok = tokM[0];
+                var eqIdx = tok.indexOf("=");
+                if (eqIdx > 0 && /^[A-Za-z_]\w*$/.test(tok.slice(0, eqIdx))) {
+                    out += vscSpan("var", tok.slice(0, eqIdx)) + vscSpan("punct", "=") + vscSpan("str", tok.slice(eqIdx + 1));
+                } else if (VSC_SETS.bashCtl[tok]) {
+                    out += vscSpan("ctl", tok);
+                    expectCmd = tok === "sudo" || tok === "time" || tok === "then" || tok === "do" || tok === "else";
+                } else if (VSC_SETS.bashKw[tok]) {
+                    out += vscSpan("kw", tok);
+                    expectCmd = false;
+                } else if (expectCmd) {
+                    out += vscSpan("fn", tok);
+                    expectCmd = false;
+                } else if (tok.charAt(0) === "-") {
+                    out += vscSpan("kw", tok);
+                } else if (/^(?:\/|~\/|\.\.?\/)/.test(tok)) {
+                    out += vscSpan("str", tok);
+                } else if (/^\d+(?:\.\d+)*$/.test(tok)) {
+                    out += vscSpan("num", tok);
+                } else {
+                    out += vscSpan("var", tok);
+                }
+                i += tok.length;
+                continue;
+            }
+            out += vscEsc(c);
+            i++;
+        }
+        return out;
+    }
+
+    function highlightBash(src) {
+        var lines = src.split("\n");
+        var hasPrompt = lines.some(function (l) {
+            return /^\s*(?:[a-zA-Z0-9_.-]+@[a-zA-Z0-9_.-]+:[^\s$#]*\s*)?[$#]\s+\S/.test(l) &&
+                   !/^\s*#\s+[A-ZÀ-Ÿa-z]/.test(l);
+        });
+        var isScript = /^#!/.test(src.trim()) || /\b(?:if\s+\[|for\s+\w+\s+in|while\s+\[|echo\s+)/.test(src);
+
+        return lines.map(function (line) {
+            // Shebang
+            if (/^#!/.test(line)) return vscSpan("cmt", line);
+            // Box / tree diagram lines (├── └── │ ┌──)
+            if (/[\u2500-\u257F]/.test(line)) {
+                return highlightTreeSafe(line);
+            }
+            // Prompt line: user@host:~$ cmd OR $ cmd
+            var pm = line.match(/^(\s*(?:[a-zA-Z0-9_.-]+@[a-zA-Z0-9_.-]+:[^\s$#]*\s*)?\$)(\s+)(.*)$/);
+            if (pm) {
+                return vscSpan("type", pm[1]) + vscEsc(pm[2]) + highlightBashCommand(pm[3]);
+            }
+            var rm = line.match(/^(\s*root@[a-zA-Z0-9_.-]+:[^\s#]*#)(\s+)(.*)$/);
+            if (rm) {
+                return vscSpan("ctl", rm[1]) + vscEsc(rm[2]) + highlightBashCommand(rm[3]);
+            }
+            if (!hasPrompt && isScript) {
+                return highlightBashCommand(line);
+            }
+            if (!hasPrompt && /^\s*(?:gcc|g\+\+|python3?|pip3?|ls|cd|pwd|mkdir|rm|cp|mv|cat|grep|find|chmod|chown|sudo|apt|ps|kill|tar|ssh|curl|wget|man|uname|echo|touch|head|tail|wc|sort|cut|df|du|free|top|id|whoami|hostname)\b/.test(line)) {
+                return highlightBashCommand(line);
+            }
+            // Terminal output line: highlight KEY="VAL", permissions drwxr-xr-x, numbers
+            var kv = line.match(/^([A-Z_][A-Z0-9_]*)(=)(.*)$/);
+            if (kv) {
+                var val = kv[3];
+                return vscSpan("var", kv[1]) + vscSpan("punct", "=") + vscSpan("str", val);
+            }
+            var perm = line.match(/^([-dlcbps][rwxstST-]{9})(\s+)(.*)$/);
+            if (perm) {
+                return vscSpan("type", perm[1]) + vscEsc(perm[2]) + vscEsc(perm[3]);
+            }
+            // Generic output line with subtle number coloring
+            var out = "";
+            var idx = 0;
+            var re = /(\b\d+(?:\.\d+)*\b)/g;
+            var mm;
+            while ((mm = re.exec(line)) !== null) {
+                if (mm.index > idx) out += vscEsc(line.slice(idx, mm.index));
+                out += vscSpan("num", mm[0]);
+                idx = mm.index + mm[0].length;
+            }
+            if (idx < line.length) out += vscEsc(line.slice(idx));
+            return out;
+        }).join("\n");
+    }
+
+    function highlightTreeSafe(src) {
+        // Safe token-by-token coloring for ASCII/Unicode tree, box & schema diagrams
+        return src.split("\n").map(function (line) {
+            if (/^\s*[-=]{3,}\s*$/.test(line)) return vscSpan("cmt", line);
+            if (/^\s*[A-ZÀ-Ÿ][A-ZÀ-Ÿ0-9_ ]+$/.test(line) && line.trim().length <= 36) {
+                return vscSpan("type", line);
+            }
+            if (/^\s*id_[a-zA-Z0-9_]+\s*$/.test(line)) {
+                return vscSpan("const", line);
+            }
+            var out = "";
+            var i = 0;
+            var n = line.length;
+            while (i < n) {
+                var sub = line.slice(i);
+                var bm = sub.match(/^[\u2500-\u257F\u2190-\u2199|+]+/);
+                if (bm) { out += vscSpan("cmt", bm[0]); i += bm[0].length; continue; }
+                var cm = sub.match(/^#\s.*$|^\/\/.*$/);
+                if (cm) { out += vscSpan("cmt", cm[0]); break; }
+                var fm = sub.match(/^[a-zA-Z0-9_.-]+\.(?:php|html?|css|js|sql|py|c|h|m|json|txt|sh|conf|log)\b/);
+                if (fm) { out += vscSpan("var", fm[0]); i += fm[0].length; continue; }
+                var dm = sub.match(/^\/[a-zA-Z0-9_.-]*|^[a-zA-Z0-9_.-]+\//);
+                if (dm) { out += vscSpan("type", dm[0]); i += dm[0].length; continue; }
+                var fl = sub.match(/^-[a-zA-Z0-9-]+/);
+                if (fl && (i === 0 || /\s/.test(line.charAt(i - 1)))) {
+                    out += vscSpan("kw", fl[0]); i += fl[0].length; continue;
+                }
+                out += vscEsc(line.charAt(i));
+                i++;
+            }
+            return out;
+        }).join("\n");
+    }
+
+    function highlightAsm(src) {
+        return src.split("\n").map(function (line) {
+            var out = "";
+            var i = 0;
+            var n = line.length;
+            while (i < n) {
+                var c = line.charAt(i);
+                if (/\s/.test(c)) {
+                    var ws = i + 1;
+                    while (ws < n && /\s/.test(line.charAt(ws))) ws++;
+                    out += vscEsc(line.slice(i, ws));
+                    i = ws;
+                    continue;
+                }
+                if (c === ";" || line.slice(i, i + 2) === "//") {
+                    out += vscSpan("cmt", line.slice(i));
+                    break;
+                }
+                var lbl = line.slice(i).match(/^[A-Za-z_]\w*:/);
+                if (lbl) {
+                    out += vscSpan("fn", lbl[0]);
+                    i += lbl[0].length;
+                    continue;
+                }
+                var imm = line.slice(i).match(/^(?:#?-?(?:0[xX][0-9a-fA-F]+|0[bB][01]+|\d+))/);
+                if (imm && imm[0] !== "#" && imm[0] !== "-") {
+                    out += vscSpan("num", imm[0]);
+                    i += imm[0].length;
+                    continue;
+                }
+                var wm = line.slice(i).match(/^[A-Za-z_]\w*/);
+                if (wm) {
+                    var up = wm[0].toUpperCase();
+                    if (VSC_SETS.asmCtl[up]) out += vscSpan("ctl", wm[0]);
+                    else if (VSC_SETS.asmKw[up]) out += vscSpan("kw", wm[0]);
+                    else out += vscSpan("var", wm[0]);
+                    i += wm[0].length;
+                    continue;
+                }
+                out += vscSpan("punct", c);
+                i++;
+            }
+            return out;
+        }).join("\n");
+    }
+
+    function highlightJSON(src) {
+        var out = "";
+        var i = 0;
+        var n = src.length;
+        var br = { d: 0 };
+        while (i < n) {
+            var c = src.charAt(i);
+            if (/\s/.test(c)) {
+                var ws = i + 1;
+                while (ws < n && /\s/.test(src.charAt(ws))) ws++;
+                out += vscEsc(src.slice(i, ws));
+                i = ws;
+                continue;
+            }
+            if (c === '"') {
+                var se = vscReadString(src, i, '"', false);
+                var isKey = vscNextNonSpace(src, se) === ":";
+                out += vscSpan(isKey ? "var" : "str", src.slice(i, se));
+                i = se;
+                continue;
+            }
+            var nm = src.slice(i).match(/^-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?/);
+            if (nm) {
+                out += vscSpan("num", nm[0]);
+                i += nm[0].length;
+                continue;
+            }
+            var kw = src.slice(i).match(/^(?:true|false|null)\b/);
+            if (kw) {
+                out += vscSpan("kw", kw[0]);
+                i += kw[0].length;
+                continue;
+            }
+            if ("()[]{}".indexOf(c) !== -1) {
+                out += vscBracket(c, br);
+                i++;
+                continue;
+            }
+            out += vscSpan("punct", c);
+            i++;
+        }
+        return out;
+    }
+
+    function detectVscLang(src, headerText, courseId) {
+        var s = src.trim();
+        var h = (headerText || "").toLowerCase();
+
+        // Box-drawing / file-tree / ER entity list
+        if (/[\u2514\u251C\u2502\u250C]/.test(s)) return { lang: "schema", label: headerText || "Schéma" };
+        if (/^[A-ZÀ-Ÿ_]+\n-{3,}\n/m.test(s) && !/\b(?:SELECT|CREATE)\b/i.test(s)) {
+            return { lang: "schema", label: headerText || "Schéma" };
+        }
+        // Explicit embedded markers
+        if (/<\?(?:php|=)/i.test(s)) return { lang: "php", label: headerText || "PHP" };
+        if (h === "json" || (/^\{\s*"[^"]+"\s*:/.test(s) && !/;/.test(s))) {
+            return { lang: "json", label: headerText || "JSON" };
+        }
+        if (/^<!doctype\s+html/i.test(s) || /^<(?:html|head|body|div|p|h[1-6]|ul|ol|li|table|form|input|button|section|header|nav|main|footer|a|img|span|label|select|style|script|link|meta)\b/i.test(s)) {
+            return { lang: "html", label: headerText || "HTML" };
+        }
+        if (/^sql\b|\.sql$/i.test(h) || /^(?:(?:--[^\n]*|\/\*[\s\S]*?\*\/)\s*)*(?:SELECT|CREATE\s+(?:TABLE|DATABASE|INDEX|VIEW)|INSERT\s+INTO|UPDATE\s+\w+\s+SET|DELETE\s+FROM|ALTER\s+TABLE|DROP\s+(?:TABLE|DATABASE|INDEX|VIEW)|USE\s+\w+|SHOW\s+(?:TABLES|DATABASES)|GRANT\s+|REVOKE\s+|START\s+TRANSACTION|BEGIN)\b/i.test(s)) {
+            return { lang: "sql", label: headerText || "SQL" };
+        }
+        if (/^(?:gcc|g\+\+|python3?|pip3?|\$\s+|sudo\s+|apt\s+|chmod\s+|mkdir\s+|ls\s+)/.test(s) && s.split("\n").length <= 4 && courseId !== "os") {
+            return { lang: "bash", label: headerText || "Terminal" };
+        }
+        if (/^https?:\/\/\S+$/.test(s)) {
+            return { lang: "schema", label: headerText || "URL" };
+        }
+
+        // Course-specific default grammars
+        switch (courseId) {
+            case "web-sql":  return { lang: "sql", label: headerText || "SQL" };
+            case "web-js":   return { lang: "javascript", label: headerText || "JavaScript" };
+            case "web-php":
+                if (/\.php\b/.test(h) || /\$[a-zA-Z_]|\becho\b|\bfunction\b/.test(s)) {
+                    return { lang: "php-code", cssLang: "php", label: headerText || "PHP" };
+                }
+                return { lang: "schema", label: headerText || "Structure" };
+            case "web-html":
+                if (/\{[^}]*:[^}]*\}/.test(s) && !/^</.test(s)) return { lang: "css", label: headerText || "CSS" };
+                return { lang: "html", label: headerText || "HTML" };
+            case "python":   return { lang: "python", label: headerText || "Python" };
+            case "lang-c":   return { lang: "c", label: headerText || "C" };
+            case "elec":     return { lang: "c", label: headerText || "Arduino · C++" };
+            case "tp-math":  return { lang: "octave", label: headerText || "GNU Octave" };
+            case "os":       return { lang: "bash", label: headerText || "Bash · Linux" };
+            case "algo":     return { lang: "algo", label: headerText || "Algorithmique" };
+            case "fond-arch": return { lang: "asm", label: headerText || "Assembleur" };
+            default:         return { lang: "javascript", label: headerText || "Code" };
+        }
+    }
+
+    function highlightSource(raw, lang) {
+        switch (lang) {
+            case "sql":        return highlightSQL(raw);
+            case "javascript": return highlightCLike(raw, "javascript");
+            case "c":          return highlightCLike(raw, "c");
+            case "python":     return highlightCLike(raw, "python");
+            case "octave":     return highlightCLike(raw, "octave");
+            case "php":        return highlightHTML(raw, true);
+            case "php-code":   return highlightCLike(raw, "php-code");
+            case "html":       return highlightHTML(raw, false);
+            case "css":        return highlightCSS(raw);
+            case "bash":       return highlightBash(raw);
+            case "algo":       return highlightAlgo(raw);
+            case "asm":        return highlightAsm(raw);
+            case "json":       return highlightJSON(raw);
+            case "schema":     return highlightTreeSafe(raw);
+            default:           return vscEsc(raw);
+        }
+    }
+
+    function wrapVscLines(html, lineCount) {
+        if (lineCount < 2) return html;
+        return html
+            .split("\n")
+            .map(function (lineHtml) {
+                return '<span class="vsc-line">' + lineHtml + "</span>";
+            })
+            .join("\n");
+    }
+
+    function bindCopyFeedback(btn, getText) {
+        if (!btn || btn.dataset.vscCopyBound === "1") return;
+        btn.dataset.vscCopyBound = "1";
+        btn.addEventListener("click", function () {
+            btn.classList.add("is-copied");
+            window.clearTimeout(btn._vscTimer);
+            btn._vscTimer = window.setTimeout(function () {
+                btn.classList.remove("is-copied");
+            }, 1400);
+            if (getText && navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(getText()).then(function () {
+                    btn.textContent = "Copié ✓";
+                    window.clearTimeout(btn._vscLblTimer);
+                    btn._vscLblTimer = window.setTimeout(function () {
+                        btn.textContent = "Copier";
+                    }, 1400);
+                }).catch(function () { /* noop */ });
+            }
+        });
+    }
+
+    function enhancePreElement(pre, courseId) {
+        if (!pre || pre.dataset.vscReady === "1") return;
+        if (pre.closest("iframe")) return;
+
+        var codeEl = pre.querySelector(":scope > code");
+        var target = codeEl || pre;
+        var raw = (target.textContent || "").replace(/^\n+/, "").replace(/\s+$/, "");
+        if (!raw) return;
+
+        pre.dataset.vscReady = "1";
+        pre.dataset.vscRaw = raw;
+
+        var wrapper = pre.closest(".code-window, .code-card, .codebox, .sn-vsc-block");
+        var headerText = "";
+        if (wrapper) {
+            var hEl = wrapper.querySelector(".code-header, .sn-vsc-header");
+            if (hEl) {
+                var existingBtn = hEl.querySelector("button");
+                // Extract clean header label (handles both "<span>SQL · JOIN</span>" and "Terminal <span>Exemple</span>")
+                var labelParts = [];
+                Array.prototype.slice.call(hEl.childNodes).forEach(function (nd) {
+                    if (nd === existingBtn) return;
+                    var t = (nd.textContent || "").trim();
+                    if (t) labelParts.push(t);
+                });
+                headerText = labelParts.join(" · ");
+                var firstEl = hEl.firstElementChild;
+                var hasLeadingText = hEl.firstChild && hEl.firstChild.nodeType === 3 && hEl.firstChild.nodeValue.trim();
+                if (headerText && (hasLeadingText || !firstEl || firstEl.tagName !== "SPAN")) {
+                    var lbl = document.createElement("span");
+                    lbl.textContent = headerText;
+                    hEl.innerHTML = "";
+                    hEl.appendChild(lbl);
+                    if (existingBtn) hEl.appendChild(existingBtn);
+                }
+                if (existingBtn) {
+                    bindCopyFeedback(existingBtn, null);
+                } else {
+                    var addBtn = document.createElement("button");
+                    addBtn.type = "button";
+                    addBtn.className = "sn-vsc-copy";
+                    addBtn.textContent = "Copier";
+                    addBtn.setAttribute("aria-label", "Copier le code");
+                    bindCopyFeedback(addBtn, function () { return pre.dataset.vscRaw || pre.textContent; });
+                    hEl.appendChild(addBtn);
+                }
+            }
+        } else if (pre.parentNode) {
+            // Upgrade bare <pre> blocks into full VS Code Dark+ editor windows with Copy button
+            wrapper = document.createElement("div");
+            wrapper.className = "sn-vsc-block";
+            var hdr = document.createElement("div");
+            hdr.className = "sn-vsc-header";
+            var tabSpan = document.createElement("span");
+            tabSpan.className = "sn-vsc-tab";
+            var cpBtn = document.createElement("button");
+            cpBtn.type = "button";
+            cpBtn.className = "sn-vsc-copy";
+            cpBtn.textContent = "Copier";
+            cpBtn.setAttribute("aria-label", "Copier le code");
+            bindCopyFeedback(cpBtn, function () { return pre.dataset.vscRaw || pre.textContent; });
+            hdr.appendChild(tabSpan);
+            hdr.appendChild(cpBtn);
+            pre.parentNode.insertBefore(wrapper, pre);
+            wrapper.appendChild(hdr);
+            wrapper.appendChild(pre);
+        }
+
+        var info = detectVscLang(raw, headerText, courseId);
+        var cssLang = info.cssLang || info.lang;
+        if (wrapper) {
+            wrapper.setAttribute("data-vsc-lang", cssLang);
+            var autoTab = wrapper.querySelector(".sn-vsc-tab");
+            if (autoTab && !autoTab.textContent) {
+                autoTab.textContent = info.label;
+            }
+        }
+
+        var highlighted = highlightSource(raw, info.lang);
+        var lineCount = raw.split("\n").length;
+        if (lineCount >= 2 && info.lang !== "schema") {
+            pre.classList.add("sn-vsc-numbered");
+            target.innerHTML = wrapVscLines(highlighted, lineCount);
+        } else {
+            target.innerHTML = highlighted;
+        }
+    }
+
+    function initCodeBlocks() {
+        var courseId = document.documentElement.getAttribute("data-sn-course") || "";
+        document.querySelectorAll("pre").forEach(function (pre) {
+            enhancePreElement(pre, courseId);
+        });
+
+        // Automatically highlight dynamically inserted exercise, project & quiz <pre> blocks
+        if ("MutationObserver" in window && document.body && document.body.classList.contains("sn-course-page")) {
+            var mo = new MutationObserver(function (mutations) {
+                mutations.forEach(function (mut) {
+                    if (mut.type === "childList") {
+                        mut.addedNodes.forEach(function (node) {
+                            if (!node || node.nodeType !== 1) return;
+                            if (node.tagName === "PRE") {
+                                enhancePreElement(node, courseId);
+                            } else if (node.querySelectorAll) {
+                                node.querySelectorAll("pre").forEach(function (p) {
+                                    enhancePreElement(p, courseId);
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+            mo.observe(document.body, { childList: true, subtree: true });
+        }
+    }
+
     function boot() {
         initTheme();
         initScrollChrome();
@@ -1349,6 +2908,7 @@
         decorateHubProgress();
         initCourseNavigation();
         initTabHashSync();
+        initCodeBlocks();
         initPalette();
         initResilience();
         initOnboarding();

@@ -767,24 +767,199 @@ body.sn-course-page table:not(.preview-frame table) tr:nth-child(even) td {
     border-radius: var(--sn-radius);
 }
 
-/* Code blocks & inline code across every course */
+/* =========================================================================
+   VS Code Dark Modern / Dark+ Code Blocks & Colorful Syntax Highlighting
+   ========================================================================= */
+body.sn-course-page :is(.code-card, .code-window, .codebox, .sn-vsc-block) {
+    background: var(--sn-code-bg) !important;
+    border: 1px solid var(--sn-code-rule) !important;
+    border-radius: var(--sn-radius-md) !important;
+    box-shadow: none !important;
+    overflow: hidden;
+    margin-block: 1.125rem;
+    min-width: 0;
+}
+
+body.sn-course-page :is(.code-header, .sn-vsc-header) {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    min-height: 2.625rem;
+    padding: 0.375rem 0.75rem 0.375rem 0.875rem !important;
+    background: var(--sn-code-header) !important;
+    color: var(--sn-code-mute) !important;
+    border-bottom: 1px solid var(--sn-code-rule) !important;
+    font-family: var(--sn-font-mono) !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.02em;
+}
+
+/* VS Code Dark Modern active-tab top indicator line */
+body.sn-course-page :is(.code-header, .sn-vsc-header)::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6.5rem;
+    height: 2px;
+    background: var(--sn-vsc-tab-accent);
+    pointer-events: none;
+}
+
+body.sn-course-page :is(.code-header, .sn-vsc-header) > span:first-child,
+body.sn-course-page .sn-vsc-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--sn-code-mute) !important;
+    font-family: var(--sn-font-mono) !important;
+    font-size: 0.75rem !important;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+/* Crisp VS Code language indicator swatch in tab bar */
+body.sn-course-page [data-vsc-lang] > :is(.code-header, .sn-vsc-header) > span:first-child::before {
+    content: "";
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 2px;
+    background: var(--vsc-lang-color, var(--sn-vsc-kw));
+    flex-shrink: 0;
+}
+
+body.sn-course-page [data-vsc-lang="sql"]        { --vsc-lang-color: #569CD6; }
+body.sn-course-page [data-vsc-lang="javascript"] { --vsc-lang-color: #DCDCAA; }
+body.sn-course-page [data-vsc-lang="python"]     { --vsc-lang-color: #4EC9B0; }
+body.sn-course-page [data-vsc-lang="c"]          { --vsc-lang-color: #4FC1FF; }
+body.sn-course-page [data-vsc-lang="php"]        { --vsc-lang-color: #C586C0; }
+body.sn-course-page [data-vsc-lang="html"]       { --vsc-lang-color: #CE9178; }
+body.sn-course-page [data-vsc-lang="css"]        { --vsc-lang-color: #569CD6; }
+body.sn-course-page [data-vsc-lang="bash"]       { --vsc-lang-color: #6A9955; }
+body.sn-course-page [data-vsc-lang="octave"]     { --vsc-lang-color: #D7BA7D; }
+body.sn-course-page [data-vsc-lang="algo"]       { --vsc-lang-color: #4EC9B0; }
+body.sn-course-page [data-vsc-lang="asm"]        { --vsc-lang-color: #C586C0; }
+body.sn-course-page [data-vsc-lang="json"]       { --vsc-lang-color: #DCDCAA; }
+body.sn-course-page [data-vsc-lang="schema"]     { --vsc-lang-color: #9CDCFE; }
+
 body.sn-course-page pre {
+    margin: 0;
+    padding: 1rem 1.25rem !important;
     background: var(--sn-code-bg) !important;
     color: var(--sn-code-fg) !important;
     border: 1px solid var(--sn-code-rule) !important;
-    border-radius: var(--sn-radius) !important;
+    border-radius: var(--sn-radius-md) !important;
     font-family: var(--sn-font-mono) !important;
+    font-size: 0.84375rem !important;
+    line-height: 1.72 !important;
+    tab-size: 4;
+    white-space: pre;
     overflow-x: auto;
     max-width: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: #424242 #1E1E1E;
+}
+
+body.sn-course-page pre::-webkit-scrollbar {
+    height: 10px;
+    background: #1E1E1E;
+}
+
+body.sn-course-page pre::-webkit-scrollbar-thumb {
+    background: #424242;
+    border: 2px solid #1E1E1E;
+    border-radius: 999px;
+}
+
+body.sn-course-page pre::-webkit-scrollbar-thumb:hover {
+    background: #4F4F4F;
+}
+
+/* Authentic VS Code selection highlight inside code editors */
+body.sn-course-page pre ::selection,
+body.sn-course-page pre::selection,
+body.sn-course-page textarea.code-editor::selection,
+body.sn-course-page #codeEditor::selection {
+    background: var(--sn-vsc-selection) !important;
+    color: #FFFFFF !important;
 }
 
 body.sn-course-page pre code {
     background: transparent !important;
     color: inherit !important;
     padding: 0 !important;
+    border: 0 !important;
     font-family: inherit !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
 }
 
+body.sn-course-page :is(.code-card, .code-window, .codebox, .sn-vsc-block) pre {
+    border: 0 !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+}
+
+/* VS Code non-selectable line-number gutter (CSS counter — never copied to clipboard) */
+body.sn-course-page pre.sn-vsc-numbered {
+    counter-reset: vsc-ln;
+    padding-left: 0.75rem !important;
+}
+
+body.sn-course-page pre.sn-vsc-numbered .vsc-line::before {
+    counter-increment: vsc-ln;
+    content: counter(vsc-ln);
+    display: inline-block;
+    width: 2.15rem;
+    margin-right: 1.1rem;
+    padding-right: 0.65rem;
+    text-align: right;
+    color: var(--sn-vsc-gutter);
+    border-right: 1px solid var(--sn-vsc-gutter-rule);
+    font-variant-numeric: tabular-nums;
+    user-select: none;
+    -webkit-user-select: none;
+    pointer-events: none;
+}
+
+/* Official VS Code Dark+ syntax token palette (15/15 pairs >= 4.5:1 WCAG AA on #1E1E1E) */
+.vsc-kw    { color: var(--sn-vsc-kw) !important; }
+.vsc-ctl   { color: var(--sn-vsc-ctl) !important; }
+.vsc-type  { color: var(--sn-vsc-type) !important; }
+.vsc-const { color: var(--sn-vsc-const) !important; }
+.vsc-var   { color: var(--sn-vsc-var) !important; }
+.vsc-fn    { color: var(--sn-vsc-fn) !important; }
+.vsc-str   { color: var(--sn-vsc-str) !important; }
+.vsc-num   { color: var(--sn-vsc-num) !important; }
+.vsc-cmt   { color: var(--sn-vsc-cmt) !important; font-style: italic; }
+.vsc-sel   { color: var(--sn-vsc-sel) !important; }
+.vsc-esc   { color: var(--sn-vsc-sel) !important; }
+.vsc-punct { color: var(--sn-vsc-punct) !important; }
+.vsc-op    { color: var(--sn-code-fg) !important; }
+.vsc-b1    { color: var(--sn-vsc-b1) !important; }
+.vsc-b2    { color: var(--sn-vsc-b2) !important; }
+.vsc-b3    { color: var(--sn-vsc-b3) !important; }
+
+/* Integrated VS Code output panel (e.g. GNU Octave results) */
+body.sn-course-page .code-output {
+    background: var(--sn-code-panel) !important;
+    color: var(--sn-code-fg) !important;
+    border-top: 1px solid var(--sn-code-rule) !important;
+    font-family: var(--sn-font-mono) !important;
+    font-size: 0.8125rem !important;
+    padding: 0.625rem 1.125rem !important;
+}
+
+body.sn-course-page .code-output strong {
+    color: var(--sn-vsc-type) !important;
+    font-weight: 600;
+}
+
+/* Inline code tokens inside prose */
 body.sn-course-page :not(pre) > code,
 body.sn-course-page .inline-code {
     background: var(--sn-inline-code-bg) !important;
@@ -795,29 +970,8 @@ body.sn-course-page .inline-code {
     font-size: 0.88em;
 }
 
-body.sn-course-page :is(.code-card, .code-window, .codebox) {
-    background: var(--sn-code-bg) !important;
-    border: 1px solid var(--sn-code-rule) !important;
-    overflow: hidden;
-}
-
-body.sn-course-page .code-header {
-    background: var(--sn-code-header) !important;
-    color: var(--sn-code-mute) !important;
-    border-bottom: 1px solid var(--sn-code-rule) !important;
-    font-family: var(--sn-font-mono) !important;
-}
-
-body.sn-course-page .code-card pre,
-body.sn-course-page .code-window pre,
-body.sn-course-page .codebox pre {
-    border: 0 !important;
-    border-radius: 0 !important;
-    margin: 0 !important;
-}
-
 /* Form controls inside courses & quizzes */
-body.sn-course-page :is(input[type="text"], input[type="number"], input[type="search"], select, textarea:not(.code-editor)) {
+body.sn-course-page :is(input[type="text"], input[type="number"], input[type="search"], select, textarea:not(.code-editor):not(#codeEditor)) {
     min-height: 2.75rem;
     background: var(--sn-surface) !important;
     color: var(--sn-ink) !important;
@@ -827,12 +981,15 @@ body.sn-course-page :is(input[type="text"], input[type="number"], input[type="se
     font-size: max(1rem, var(--sn-text-sm));
 }
 
-body.sn-course-page textarea.code-editor {
+body.sn-course-page textarea.code-editor,
+body.sn-course-page textarea#codeEditor {
     background: var(--sn-code-bg) !important;
     color: var(--sn-code-fg) !important;
+    caret-color: #AEAFAD;
     border: 1px solid var(--sn-code-rule) !important;
-    border-radius: var(--sn-radius) !important;
+    border-radius: var(--sn-radius-md) !important;
     font-family: var(--sn-font-mono) !important;
+    line-height: 1.65;
 }
 
 /* Interactive quiz choices (AA contrast + clear non-color states) */
@@ -907,21 +1064,80 @@ body.sn-course-page .btn-dark {
     color: var(--sn-on-ink) !important;
 }
 
-body.sn-course-page .copy-btn {
-    min-height: 2.25rem;
-    padding: 0.35rem 0.75rem;
+body.sn-course-page .copy-btn,
+body.sn-course-page .code-header button,
+body.sn-course-page .sn-vsc-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    min-height: 2rem;
+    padding: 0.3rem 0.7rem !important;
     border-radius: var(--sn-radius-sm) !important;
-    background: transparent !important;
-    border: 1px solid var(--sn-code-rule) !important;
-    color: var(--sn-code-fg) !important;
+    background: var(--sn-code-btn-bg) !important;
+    border: 1px solid var(--sn-code-btn-border) !important;
+    color: var(--sn-code-btn-fg) !important;
     font-family: var(--sn-font-body) !important;
     font-size: 0.75rem !important;
+    font-weight: 500 !important;
+    line-height: 1.2;
     cursor: pointer;
+    box-shadow: none !important;
+    transition:
+        background-color var(--sn-dur-fast) var(--sn-ease),
+        border-color var(--sn-dur-fast) var(--sn-ease),
+        color var(--sn-dur-fast) var(--sn-ease);
 }
 
-body.sn-course-page .copy-btn:hover {
-    border-color: var(--sn-accent) !important;
-    color: var(--sn-accent) !important;
+body.sn-course-page .copy-btn:hover,
+body.sn-course-page .code-header button:hover,
+body.sn-course-page .sn-vsc-copy:hover {
+    background: var(--sn-code-btn-hover) !important;
+    border-color: #555555 !important;
+    color: #FFFFFF !important;
+}
+
+body.sn-course-page :is(.copy-btn, .code-header button, .sn-vsc-copy):focus-visible {
+    outline: 2px solid var(--sn-vsc-tab-accent) !important;
+    outline-offset: 2px !important;
+}
+
+body.sn-course-page :is(.copy-btn, .code-header button, .sn-vsc-copy).is-copied {
+    background: #1B332A !important;
+    border-color: #4EC9B0 !important;
+    color: #4EC9B0 !important;
+}
+
+@media print {
+    body.sn-course-page :is(.code-card, .code-window, .codebox, .sn-vsc-block),
+    body.sn-course-page pre {
+        background: #F8F8F8 !important;
+        color: #111111 !important;
+        border: 1px solid #CCCCCC !important;
+    }
+
+    body.sn-course-page :is(.code-header, .sn-vsc-header) {
+        background: #EFEFEF !important;
+        color: #222222 !important;
+        border-bottom: 1px solid #CCCCCC !important;
+    }
+
+    body.sn-course-page :is(.code-header, .sn-vsc-header)::before,
+    body.sn-course-page :is(.copy-btn, .code-header button, .sn-vsc-copy) {
+        display: none !important;
+    }
+
+    body.sn-course-page pre [class^="vsc-"] {
+        color: #111111 !important;
+    }
+
+    body.sn-course-page pre .vsc-kw,
+    body.sn-course-page pre .vsc-ctl {
+        font-weight: 700 !important;
+    }
+
+    body.sn-course-page pre .vsc-cmt {
+        color: #555555 !important;
+    }
 }
 
 /* Course Sidebars — clean notebook margin rail + desktop collapse support */

@@ -47,7 +47,7 @@ REJECTED:        1) R2 Affiche Polytechnique (vélin #F8F9FB + noir #0C0D10 + ou
 | `--sn-success` | `#27633F` | `#6EC491` | Validation d'une bonne réponse de quiz (6.29:1 sur `#E9F3EC` / 7.59:1 sur `#15251C`, toujours accompagnée de texte). |
 | `--sn-warning` | `#8A5610` | `#E5AE5C` | Remarque méthodologique ou mode hors ligne (5.52:1 sur `#FBF2E1` / 8.23:1 sur `#271E11`). |
 | `--sn-danger` | `#A32929` | `#EE8484` | Réponse incorrecte ou erreur de chargement (6.26:1 sur `#FBEBEB` / 6.75:1 sur `#2A1616`). |
-| `--sn-code-bg` | `#1E1A16` | `#0F0D0B` | Encrier brun-noir chaud pour extraits C, Python, SQL, PHP, JS, Octave et Bash (14.71:1 / 16.47:1). |
+| `--sn-code-bg` | `#1E1E1E` | `#1E1E1E` | Éditeur VS Code *Dark Modern* / *Dark+* (`#1E1E1E`, en-tête `#252526`, onglet actif `#0078D4`, panneau `#181818`) avec coloration syntaxique multi-langage WCAG 2.2 AA (`#D4D4D4` 11.25:1, `#569CD6` 5.65:1, `#C586C0` 5.99:1, `#4EC9B0` 8.18:1, `#9CDCFE` 11.18:1, `#DCDCAA` 11.80:1, `#CE9178` 6.31:1, `#B5CEA8` 9.81:1, `#6A9955` 5.00:1, gouttière `#858585` 4.52:1). |
 
 ## Trois règles strictes
 

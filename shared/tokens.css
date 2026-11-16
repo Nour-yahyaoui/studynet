@@ -56,21 +56,45 @@
     --sn-danger-rule: #E4B7B7;
 
     /* Code inkwell */
-    --sn-code-bg: #1E1A16;
-    --sn-code-header: #28231E;
-    --sn-code-fg: #F2ECE2;
-    --sn-code-mute: #B5ACA0;
-    --sn-code-rule: #38312A;
+    /* VS Code Dark Modern / Dark+ code surfaces & syntax tokens (WCAG AA 4.52:1–11.80:1) */
+    --sn-code-bg: #1E1E1E;
+    --sn-code-header: #252526;
+    --sn-code-panel: #181818;
+    --sn-code-fg: #D4D4D4;
+    --sn-code-mute: #CCCCCC;
+    --sn-code-rule: #333333;
+    --sn-code-btn-bg: #2D2D30;
+    --sn-code-btn-hover: #37373D;
+    --sn-code-btn-border: #3E3E42;
+    --sn-code-btn-fg: #E0E0E0;
+    --sn-vsc-tab-accent: #0078D4;
+    --sn-vsc-selection: #264F78;
+    --sn-vsc-gutter: #858585;
+    --sn-vsc-gutter-rule: #2A2A2A;
+    --sn-vsc-kw: #569CD6;
+    --sn-vsc-ctl: #C586C0;
+    --sn-vsc-type: #4EC9B0;
+    --sn-vsc-const: #4FC1FF;
+    --sn-vsc-var: #9CDCFE;
+    --sn-vsc-fn: #DCDCAA;
+    --sn-vsc-str: #CE9178;
+    --sn-vsc-num: #B5CEA8;
+    --sn-vsc-cmt: #6A9955;
+    --sn-vsc-sel: #D7BA7D;
+    --sn-vsc-punct: #9DA5B4;
+    --sn-vsc-b1: #FFD700;
+    --sn-vsc-b2: #DA70D6;
+    --sn-vsc-b3: #4FC1FF;
     --sn-inline-code-bg: #EFE9DD;
     --sn-inline-code-fg: #6E2811;
 
     /* Floating elevation only (never used on flat cards) */
     --sn-shadow-float: 0 18px 44px rgba(35, 30, 25, 0.14), 0 2px 8px rgba(35, 30, 25, 0.06);
 
-    /* Typography — optical serif display + humanist sans working + mono data */
+    /* Typography — optical serif display + humanist sans working + VS Code mono stack */
     --sn-font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
     --sn-font-body: "Avenir Next", Avenir, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    --sn-font-mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    --sn-font-mono: "Cascadia Code", "JetBrains Mono", "Fira Code", "SFMono-Regular", Consolas, Menlo, Monaco, "Liberation Mono", monospace;
 
     /* Type scale (6 levels, fluid, real >= 1.5x hierarchy) */
     --sn-text-xs: 0.75rem;                                  /* 12px — tracked labels */
@@ -158,11 +182,12 @@
         --sn-danger-soft: #2A1616;
         --sn-danger-rule: #5E2B2B;
 
-        --sn-code-bg: #0F0D0B;
-        --sn-code-header: #181411;
-        --sn-code-fg: #F1ECE2;
-        --sn-code-mute: #A69D90;
-        --sn-code-rule: #2F2924;
+        --sn-code-bg: #1E1E1E;
+        --sn-code-header: #252526;
+        --sn-code-panel: #181818;
+        --sn-code-fg: #D4D4D4;
+        --sn-code-mute: #CCCCCC;
+        --sn-code-rule: #333333;
         --sn-inline-code-bg: #29221D;
         --sn-inline-code-fg: #F0A182;
 
@@ -214,11 +239,12 @@
     --sn-danger-soft: #2A1616;
     --sn-danger-rule: #5E2B2B;
 
-    --sn-code-bg: #0F0D0B;
-    --sn-code-header: #181411;
-    --sn-code-fg: #F1ECE2;
-    --sn-code-mute: #A69D90;
-    --sn-code-rule: #2F2924;
+    --sn-code-bg: #1E1E1E;
+    --sn-code-header: #252526;
+    --sn-code-panel: #181818;
+    --sn-code-fg: #D4D4D4;
+    --sn-code-mute: #CCCCCC;
+    --sn-code-rule: #333333;
     --sn-inline-code-bg: #29221D;
     --sn-inline-code-fg: #F0A182;
 
